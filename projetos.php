@@ -28,7 +28,7 @@
          <b>ENDEREÇO:</b> <?php echo $registro['endereco'] ?></br>
          <b>TELEFONE:</b> <?php echo $registro['telefone'] ?></br>
      </p>
-      <a href="#" class="btn btn-primary">Mais Informações</a> <a href="#" class="btn btn-danger">Deletar</a>
+      <a href="#" class="btn btn-primary">Mais Informações</a>  <a href="#" class="btn btn-danger">Deletar</a> 
       </div>
    </div>
  <?php } ?>

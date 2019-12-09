@@ -32,7 +32,7 @@
       <b>ENDEREÇO:</b> <?php echo $elemento['endereco'] ?></br>
       <b>TELEFONE:</b> <?php echo $elemento['telefone'] ?></br>
     </p>
-    <a href="projetos.php?id=<?php echo $elemento['id'] ?>" class="btn btn-primary">Mais Informações</a> <a href="#" class="btn btn-danger">Deletar</a>
+    <a href="projetos.php?id=<?php echo $elemento['id'] ?>" class="btn btn-primary">Projetos</a> <button type="button" class="btn btn-info">Editar</button> <a href="#" class="btn btn-danger">Deletar</a>
   </div>
 </div>
 <?php } ?>
