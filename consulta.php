@@ -1,7 +1,8 @@
-<?php require_once 'cabecalho.php';
-      require_once 'classes/Empresa.php';
+<?php include 'cabecalho.php';
+      include 'classes/Empresa.php';
 
-      $v = $_GET['v'];
+      //$v = $_GET['v'];
+      $v = 0;
 ?>
 <?php 
   $empresas = new Empresa();
@@ -15,34 +16,27 @@
 ?>
 <h1>Empresas Registradas</h1>
 <hr>
-<table class="table">
-  <form method="POST" action="processaConsulta.php"><label>CNPJ: <input type="text" name="cnpj" id="cnpj"></label></form>
 
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">CNPJ</th>
-      <th scope="col">Razão Social</th>
-      <th scope="col">Endereço</th>
-      <th scope="col">Telefone</th>
-      <th scope="col">Cidade</th>
-      <th scope="col">Estado</th>
-      <th scope="col">cep</th>
-    </tr>
-  </thead>
-  <tbody>
-  <?php foreach($lista as $elemento){ ?>
-    <tr>
-      <td><?php echo $elemento['cnpj'] ?></td>
-      <td><?php echo $elemento['razao'] ?></td>
-      <td><?php echo $elemento['endereco'] ?></td>
-      <td><?php echo $elemento['telefone'] ?></td>
-      <td><?php echo $elemento['estado'] ?></td>
-      <td><?php echo $elemento['cidade'] ?></td>
-      <td><?php echo $elemento['cep'] ?></td>
-    </tr>
-  <?php } ?>
-  </tbody>
-</table>
+
+<form name="form_pesquisa" method="POST" action="" id="form_pesquisa"><label> CNPJ: <input type="text" name="cnpj" id="cnpj" tabindex="1"></label></form>
+
+
+<?php foreach($lista as $elemento){ ?>
+<div class="card">
+  <h5 class="card-header"><?php echo $elemento['fantasia'] ?></h5>
+  <div class="card-body">
+    <p class="card-text">
+      <b>RAZÃO SOCIAL:</b> <?php echo $elemento['razao'] ?></br>
+      <b>CNPJ:</b> <?php echo $elemento['cnpj'] ?></br>
+      <b>ESTADO:</b> <?php echo $elemento['estado'] ?>&nbsp &nbsp <b>CIDADE:</b> <?php echo $elemento['cidade'] ?> &nbsp &nbsp <b>CEP:</b> <?php echo $elemento['cep'] ?></br>
+      <b>ENDEREÇO:</b> <?php echo $elemento['endereco'] ?></br>
+      <b>TELEFONE:</b> <?php echo $elemento['telefone'] ?></br>
+    </p>
+    <a href="projetos.php?id=<?php echo $elemento['id'] ?>" class="btn btn-primary">Mais Informações</a> <a href="#" class="btn btn-danger">Deletar</a>
+  </div>
+</div>
+<?php } ?>
+
 
 <?php 
     include 'rodape.php';  

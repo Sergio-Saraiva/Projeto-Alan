@@ -109,6 +109,18 @@
             }
         }
 
+        public function consultaProjetos($id){
+            $conexao = Conexao::getConexao();
+            $sql = "SELECT * FROM empresas WHERE id = '$id'";
+            $resultado_sql = $conexao->query($sql);
+
+            $resultado = $resultado_sql->fetchAll();
+
+            return $resultado;
+
+        }
+
+
 
         // public function razaoEstaVazio(){
         //     if($this->razao == ""){
