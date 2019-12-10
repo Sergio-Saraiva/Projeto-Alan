@@ -8,31 +8,31 @@
 
     $lista = $empresa->consultaProjetos($id);
 
-    
-
-
 ?>
-    
+
+<h1>Projetos Cadastrados</h1>
+<hr>    
 
 <?php foreach($lista as $registro)
  { ?>
 
     <div class="card">
-     <h5 class="card-header"><?php echo $registro['fantasia'] ?></h5>
-      <div class="card-body">
+     
+      <div class="card-body bg-light">
         <p class="card-text">
-        <b>NOME:
+        <b>NOME FANTASIA:</b> <?php echo $registro['fantasia'] ?></br>
         <b>RAZÃO SOCIAL:</b> <?php echo $registro['razao'] ?></br>
          <b>CNPJ:</b> <?php echo $registro['cnpj'] ?></br>
          <b>ESTADO:</b> <?php echo $registro['estado'] ?>&nbsp &nbsp <b>CIDADE:</b> <?php echo $registro['cidade'] ?> &nbsp &nbsp <b>CEP:</b> <?php echo $registro['cep'] ?></br>
          <b>ENDEREÇO:</b> <?php echo $registro['endereco'] ?></br>
          <b>TELEFONE:</b> <?php echo $registro['telefone'] ?></br>
      </p>
-      <a href="#" class="btn btn-primary">Mais Informações</a>  <a href="#" class="btn btn-danger">Deletar</a> 
+      
       </div>
    </div>
  <?php } ?>
 
+ <hr>    
 
 
 
