@@ -14,11 +14,18 @@
             </div>';
 }
 ?>
-<h1>Empresas Registradas</h1>
-<hr>
 
-
-<form name="form_pesquisa" method="POST" action="" id="form_pesquisa"><label> CNPJ: <input type="text" name="cnpj" id="cnpj" tabindex="1"></label></form>
+<div class="container">
+  <div class="form-row">
+    <div class="col">
+      <h1>Empresas Registradas</h1>
+      <hr>
+    </div>
+    <div class="row align-items-center">
+      <form name="form_pesquisa" method="POST" action="" id="form_pesquisa"><label> BUSCA: <input type="text" name="cnpj" id="cnpj" tabindex="1" placeholder="CNPJ" ></label></form>
+    </div>
+  </div>
+</div>
 
 
 <?php foreach($lista as $elemento){ ?>
