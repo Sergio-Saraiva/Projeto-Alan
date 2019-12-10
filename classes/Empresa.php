@@ -125,7 +125,12 @@
             $sql = "SELECT * FROM empresas WHERE id = '$id'";
             $resultado_sql = $conexao->query($sql);
 
-            $resultado = $resultado_sql->fetchAll();
+            $resultado[1] = $resultado_sql->fetchAll();
+
+            $sql_2="SELECT * FROM projetos WHERE id_empresa = '$id'";
+            $resultado_sql_2 = $conexao->query($sql_2);
+
+            $resultado[2] = $resultado_sql_2->fetchAll();
 
             return $resultado;
 
