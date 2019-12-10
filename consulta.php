@@ -27,11 +27,16 @@
     </div>
     
         <form name="form_pesquisa" method="POST" action="" id="form_pesquisa">
-          <div class="form-group input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-            <input name="razao_psq" id="razao_psq" placeholder="Razão Social" type="text" class="form-control">
-          </div>
+        
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default"><i class="fa fa-search" aria-hidden="true"></i></span>
+            </div>
+          <input name="razao_psq" id="razao_psq" placeholder="Razão Social" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+
         </form>
+        
    
   </div>
 </div>
