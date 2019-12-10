@@ -39,7 +39,7 @@ if($v == 1){
                  Obrigatório
             </div>
         </div>
-        <div class="form-row">
+        <div id="form-linha" class="form-row">
             <div class="form-group col-md-6">
                 <label for="endereco">Endereço</label>
                 <input type="text" class="form-control" id="endereco" name="endereco">
@@ -92,7 +92,7 @@ if($v == 1){
                 <input type="text" class="form-control" id="cep" name="cep"  placeholder="____-___">
             </div>
         </div>
-        <button type="submit" class="btn btn-primary"  >Registrar</button>
+        <button type="submit" class="btn btn-primary">Registrar</button>
     </form>
 
     <script>
