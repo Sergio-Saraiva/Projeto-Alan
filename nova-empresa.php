@@ -17,7 +17,7 @@
         $empresa->novaEmpresa();
         header('Location: consulta.php?v=1');
     }else{
-        header("Location: registro.php?v=1");
+        header("Location: registro-pessoa.php?v=1");
     }
     
     // $empresa->cnpjEstaVazio();

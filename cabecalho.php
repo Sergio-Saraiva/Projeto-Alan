@@ -21,7 +21,7 @@
             <div class="" >
                 <div class="navbar-nav">
                     <a class="nav-item nav-link active" href="index.php">Home</a>
-                    <a class="nav-item nav-link " href="registro.php">Registrar</a>
+                    <a class="nav-item nav-link " href="registro-pessoa.php">Registrar</a>
                     <a class="nav-item nav-link " href="consulta.php">Consultar</a>
                     <a class="nav-item nav-link " href="registro-projeto.php">Registrar Projeto</a>
                 </div>

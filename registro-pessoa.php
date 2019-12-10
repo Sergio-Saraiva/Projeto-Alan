@@ -22,9 +22,13 @@ if($v == 1){
             </div>';
 }
 ?>
-<h1>Registro de Empresa</h1>
+<h1>Cadastro</h1>
 <hr>
-    <form method="POST" class="needs-validation" action="nova-empresa.php" novalidate>
+<div class="btn-group" role="group" aria-label="Basic example">
+        <button id="botao-juridica" type="button" class="btn btn-secondary">Pessoa Juridica</button>
+        <button id="botao-fisica" type="button" class="btn btn-secondary">Pessoa Física</button>
+</div>
+    <form id="pessoa-juridica" method="POST" class="needs-validation" action="nova-empresa.php" novalidate>
         <div class="form-group">
             <label for="cnpj">CNPJ</label>
             <input id="cnpj" name="cnpj" type="text" class="form-control" placeholder="XX.XXX.XXX/XXXX-XX" required>
@@ -94,8 +98,89 @@ if($v == 1){
         </div>
         <button type="submit" class="btn btn-primary">Registrar</button>
     </form>
+    <form id="pessoa-fisica" method="POST" class="needs-validation" action="nova-empresa.php" novalidate style="display: none;">
+        <div class="form-group">
+            <label for="cnpj">Nome</label>
+            <input id="cnpj" name="cnpj" type="text" class="form-control" placeholder="XX.XXX.XXX/XXXX-XX" required>
+            <div class="invalid-feedback">
+                 Obrigatório
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="rsocial">Razão Social</label>
+            <input id="rsocial" name="razao" type="text" class="form-control" required>
+            <div class="invalid-feedback">
+                 Obrigatório
+            </div>
+        </div>
+        <div id="form-linha" class="form-row">
+            <div class="form-group col-md-6">
+                <label for="endereco">Endereço</label>
+                <input type="text" class="form-control" id="endereco" name="endereco">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="telefone">Telefone</label>
+                <input class="form-control phone_with_ddd" type="text" id="telefone" name="telefone"  placeholder="(__) ____-____">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="cidade">Cidade</label>
+                <input type="text" class="form-control" id="cidade" name="cidade"  >
+            </div>
+            <div class="form-group col-md-4">
+                <label for="estado">Estado</label>
+                <select id="estado" class="custom-select" name="estado">
+                    <option selected>Selecione o estado</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MT">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PB">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocatins</option>
+                </select>
+            </div>
+            <div class="form-group col-md-2">
+                <label for="cep">CEP</label>
+                <input type="text" class="form-control" id="cep" name="cep"  placeholder="____-___">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Registrar</button>
+    </form>
+
 
     <script>
+    btn1 = document.getElementById('botao-juridica');
+    btn2 = document.getElementById('botao-fisica');
+    btn1.addEventListener("click", function () {
+        document.getElementById('pessoa-fisica').style.display = "none";
+        document.getElementById('pessoa-juridica').style.display="block";
+    });
+    btn2.addEventListener("click", function () {
+        document.getElementById('pessoa-fisica').style.display = "block";
+        document.getElementById('pessoa-juridica').style.display="none";
+    })
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {
   'use strict';
