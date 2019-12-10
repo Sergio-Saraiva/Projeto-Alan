@@ -109,6 +109,17 @@
             }
         }
 
+        public function consultaPessoas($razao){
+            $conexao = Conexao::getConexao();
+            $sql = "SELECT * FROM empresas WHERE razao LIKE '%$razao%'";
+            $resultado_sql = $conexao->query($sql);
+
+            $resultado = $resultado_sql->fetchAll();
+
+            return $resultado;
+
+        }
+
         public function consultaProjetos($id){
             $conexao = Conexao::getConexao();
             $sql = "SELECT * FROM empresas WHERE id = '$id'";
@@ -119,6 +130,7 @@
             return $resultado;
 
         }
+
 
 
 
