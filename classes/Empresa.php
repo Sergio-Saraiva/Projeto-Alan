@@ -40,14 +40,14 @@
             $lista_sql = $conexao->query($query);
 
             $lista = $lista_sql->fetchAll();
-
             $cont = 0;
-        
+            var_dump($lista);
             foreach($lista as $elemento){
                 if($elemento['cnpj']==$this->cnpj){
                     return false;
                 }else{
                     $cont = $cont + 1;
+                    
                 }
             }
             if($cont != 0){
