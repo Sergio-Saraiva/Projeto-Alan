@@ -16,7 +16,7 @@
     }else{
         foreach($resultado_pesquisa as $elemento){ 
             echo "<div class='card'>";
-                echo "<h5 class='card-header'>".$elemento['fantasia']."</h5>";
+                echo "<h5 class='card-header'> <i class='fa fa-briefcase' aria-hidden='true'></i>  ".$elemento['fantasia']."</h5>";
                 echo "<div class='card-body'>";
                         echo "<p class='card-text'>";
                         echo "<b clas='h6'>RAZÃO SOCIAL: </b>".$elemento['razao']."</br>";
@@ -30,6 +30,7 @@
                     echo "</div>";
                 echo "</div>";
             echo "</div>";
+            echo "</br>";
         } //fim do foreach
     }
     

@@ -47,7 +47,7 @@
 <div class="resultado" id ="resultado" style="display: block;">
   <?php foreach($lista[1] as $elemento){ ?>
   <div class="card">
-    <h5 class="card-header"><?php echo $elemento['fantasia'] ?></h5>
+    <h5 class="card-header"><i class="fa fa-briefcase" aria-hidden="true"></i><?php echo " ".$elemento['fantasia'] ?></h5>
     <div class="card-body">
       <p class="card-text">
         <b clas="h6">RAZÃO SOCIAL:</b> <?php echo $elemento['razao'] ?></br>
@@ -68,6 +68,7 @@
       </div>
     </div>
   </div>
+  </br>
   <?php } ?>
 </div>
 
