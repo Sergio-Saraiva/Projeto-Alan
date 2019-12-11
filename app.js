@@ -58,3 +58,28 @@ function renderElement(json) {
     }
     
 }
+
+btn1 = document.getElementById('botao-juridica');
+btn2 = document.getElementById('botao-fisica');
+btn1.addEventListener("click", function () {
+    document.getElementById('pessoa-fisica').style.display = "none";
+    document.getElementById('pessoa-juridica').style.display="block";
+});
+btn2.addEventListener("click", function () {
+    document.getElementById('pessoa-fisica').style.display = "block";
+    document.getElementById('pessoa-juridica').style.display="none";
+});
+
+addtelefone = document.getElementById('addtelefone');
+addtelefone.addEventListener("click", function () {
+    $('#telefone-div').append('<div id="telefone-div" class="form-group col-md-6">    <label for="telefone">Telefone</label></i><i id="subtelefone" class="far fa-minus-square"></i>    <input class="form-control phone_with_ddd" type="text" id="telefone" name="telefone"  placeholder="(__) ____-____"></div>');
+    subtelefone = document.getElementById('subtelefone');
+    subtelefone.addEventListener("click", function () {
+    $('#subtelefone').unbind("click");
+    $('#subtelefone').bind("click", function () {
+        $('#subtelefone').parent().remove();     
+    })
+   
+})
+});
+

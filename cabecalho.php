@@ -11,6 +11,7 @@
     <script type="text/javascript" src="js/bootstrap.min.js" ></script>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="fontawesome/css/all.css">
     
     
     <title>Alan Araujo</title>

@@ -58,11 +58,12 @@ if($v == 1){
                     Obrigatório
                 </div>
             </div>
-                <div class="form-group col-md-6">
-                    <label for="telefone">Telefone</label>
+                <div id="telefone-div" class="form-group col-md-6">
+                    <label for="telefone">Telefone</label><i id="addtelefone" class="far fa-plus-square"></i>
                     <input class="form-control phone_with_ddd" type="text" id="telefone" name="telefone"  placeholder="(__) ____-____">
                 </div>
         </div>
+        
         <h1>Endereço</h1>
         <hr>
         <div class="form-group">
@@ -71,6 +72,7 @@ if($v == 1){
         </div>
         <div id="form-linha" class="form-row">
             <div class="form-group col-md-6">
+            
                 <label for="logradouro">Logradouro</label>
                 <input type="text" class="form-control" id="logradouro" name="logradouro">
             </div>
@@ -150,6 +152,7 @@ if($v == 1){
             </div>
             <div class="form-group col-md-6">
                 <label for="telefone">Telefone</label>
+                
                 <input class="form-control phone_with_ddd" type="text" id="telefone" name="telefone"  placeholder="(__) ____-____">
             </div>
         </div>
@@ -201,16 +204,6 @@ if($v == 1){
 
 
     <script>
-    btn1 = document.getElementById('botao-juridica');
-    btn2 = document.getElementById('botao-fisica');
-    btn1.addEventListener("click", function () {
-        document.getElementById('pessoa-fisica').style.display = "none";
-        document.getElementById('pessoa-juridica').style.display="block";
-    });
-    btn2.addEventListener("click", function () {
-        document.getElementById('pessoa-fisica').style.display = "block";
-        document.getElementById('pessoa-juridica').style.display="none";
-    })
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {
   'use strict';
