@@ -28,7 +28,7 @@ if($v == 1){
         <button id="botao-juridica" type="button" class="btn btn-secondary">Pessoa Juridica</button>
         <button id="botao-fisica" type="button" class="btn btn-secondary">Pessoa Física</button>
 </div>
-    <form id="pessoa-juridica" method="POST" class="needs-validation" action="nova-empresa.php" novalidate>
+    <form id="pessoa-juridica" method="POST" class="needs-validation" action="nova-pessoa-juridica.php" novalidate>
         <div class="form-group">
             <label for="cnpj">CNPJ</label>
             <input id="cnpj" name="cnpj" type="text" class="form-control" placeholder="XX.XXX.XXX/XXXX-XX" required>
@@ -43,18 +43,48 @@ if($v == 1){
                  Obrigatório
             </div>
         </div>
-        <div id="form-linha" class="form-row">
-            <div class="form-group col-md-6">
-                <label for="endereco">Endereço</label>
-                <input type="text" class="form-control" id="endereco" name="endereco">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="telefone">Telefone</label>
-                <input class="form-control phone_with_ddd" type="text" id="telefone" name="telefone"  placeholder="(__) ____-____">
+        <div class="form-group">
+            <label for="fantasia">Fantasia</label>
+            <input id="fantasia" name="fantasia" type="text" class="form-control" required>
+            <div class="invalid-feedback">
+                 Obrigatório
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
+                <label for="email">E-Mail</label>
+                <input id="email" name="email" type="email" class="form-control" required>
+                <div class="invalid-feedback">
+                    Obrigatório
+                </div>
+            </div>
+                <div class="form-group col-md-6">
+                    <label for="telefone">Telefone</label>
+                    <input class="form-control phone_with_ddd" type="text" id="telefone" name="telefone"  placeholder="(__) ____-____">
+                </div>
+        </div>
+        <h1>Endereço</h1>
+        <hr>
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text"class="form-control" name="nome" id="nome">
+        </div>
+        <div id="form-linha" class="form-row">
+            <div class="form-group col-md-6">
+                <label for="logradouro">Logradouro</label>
+                <input type="text" class="form-control" id="logradouro" name="logradouro">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="numero">Nº</label>
+                <input class="form-control" type="number" id="numero" name="numero">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="bairro">Bairro</label>
+                <input type="text" class="form-control" id="bairro" name="bairro">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
                 <label for="cidade">Cidade</label>
                 <input type="text" class="form-control" id="cidade" name="cidade"  >
             </div>
@@ -91,7 +121,7 @@ if($v == 1){
                     <option value="TO">Tocatins</option>
                 </select>
             </div>
-            <div class="form-group col-md-2">
+            <div class="form-group col-md-4">
                 <label for="cep">CEP</label>
                 <input type="text" class="form-control" id="cep" name="cep"  placeholder="____-___">
             </div>

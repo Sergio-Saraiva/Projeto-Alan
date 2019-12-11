@@ -1,5 +1,3 @@
-var btnJuridica = document.getElementById('botao-juridica');
-    btnJuridica.addEventListener("click", function () {
         var hcnpj = document.getElementById('cnpj');
     hcnpj.addEventListener("blur", function () {
         var cnpj = hcnpj.value.replace('.', '').replace('.', '').replace('/', '').replace('-', '');
@@ -20,7 +18,6 @@ var btnJuridica = document.getElementById('botao-juridica');
             })
         }
     });    
-})
 
 function renderElement(json) {
     var status = json.data.status; 
@@ -28,8 +25,20 @@ function renderElement(json) {
         var rsocial = document.getElementById('rsocial');
         rsocial.value = json.data.nome;
 
-        var endereco = document.getElementById('endereco');
-        endereco.value = json.data.logradouro + " nº " + json.data.numero + " - " + json.data.bairro;
+        var fantasia = document.getElementById('fantasia');
+        fantasia.value = json.data.fantasia;
+
+        var email = document.getElementById('email');
+        email.value = json.data.email;
+
+        var logradouro = document.getElementById('logradouro');
+        logradouro.value = json.data.logradouro;
+        
+        var numero = document.getElementById('numero');
+        numero.value = json.data.numero;
+
+        var bairro = document.getElementById('bairro');
+        bairro.value = json.data.bairro;
         
         var telefone = document.getElementById('telefone');
         var aux = json.data.telefone;
