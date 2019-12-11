@@ -75,11 +75,17 @@ addtelefone.addEventListener("click", function () {
     $('#telefone-div').append('<div id="telefone-div" class="form-group col-md-6">    <label for="telefone">Telefone</label></i><i id="subtelefone" class="far fa-minus-square"></i>    <input class="form-control phone_with_ddd" type="text" id="telefone" name="telefone"  placeholder="(__) ____-____"></div>');
     subtelefone = document.getElementById('subtelefone');
     subtelefone.addEventListener("click", function () {
-    $('#subtelefone').unbind("click");
-    $('#subtelefone').bind("click", function () {
-        $('#subtelefone').parent().remove();     
-    })
-   
+    $('#subtelefone').parent().remove();
 })
 });
+
+addtelefone = document.getElementById('addtelefone');
+addtelefone.addEventListener("click", function () {
+    var div = document.createElement('div');
+    div.setAttribute = ('id', 'telefone-div');
+    div.setAttribute = ('class', 'form-group col-md-6');
+    
+    var label = document.createElement()
+
+})
 
