@@ -19,7 +19,7 @@
     //     header("Location: registro.php?v=2");
     // }
         $empresa->novaEmpresa();
-        
+        header("Location: consulta.php");
     
     // $empresa->cnpjEstaVazio();
     // $empresa->razaoEstaVazio();
