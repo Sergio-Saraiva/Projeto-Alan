@@ -1,4 +1,12 @@
-        var hcnpj = document.getElementById('cnpj');
+psq_btn_juridica = document.getElementById('busca-juridica');
+psq_btn_pessoa = document.getElementById('busca-pessoa');
+
+psq_btn_juridica.addEventListener("click", function(){
+    psq_btn_juridica.setAttriute = ('class','btn btn-primary');
+});       
+       
+       
+       var hcnpj = document.getElementById('cnpj');
     hcnpj.addEventListener("blur", function () {
         var cnpj = hcnpj.value.replace('.', '').replace('.', '').replace('/', '').replace('-', '');
         console.log(cnpj); 
@@ -82,4 +90,11 @@ addtelefone.addEventListener("click", function () {
    
 })
 });
+
+// psq_btn_juridica = document.getElementById('busca-juridica');
+// psq_btn_pessoa = document.getElementById('busca-pessoa');
+
+// psq_btn_juridica.addEventListener("click", function(){
+//     psq_btn_juridica.setAttriute = ('class','btn btn-primary');
+// });
 
