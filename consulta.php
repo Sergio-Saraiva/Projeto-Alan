@@ -1,5 +1,5 @@
-<?php include 'cabecalho.php';
-      include 'classes/Empresa.php';
+<?php 
+      
 
       //$v = $_GET['v'];
       $v = 0;
@@ -64,7 +64,7 @@
       <div class="btn-group">
         <a href="projetos.php?id=<?php echo $elemento['id_juridica'] ?>" class="btn btn-primary">Serviços</a>
         <a href="#"  class="btn btn-secondary">Colaboradores</a>
-        <a href="maisInformacoesEmpresa.php?id=<?php echo $elemento['id_juridica'] ?>" class="btn btn-info">Mais Informações</a>
+        <a href="maisInformacoesEmpresa.php?id=<?php echo $elemento['id_juridica'] ?>" class="btn btn-info">Informações</a>
       </div>
     </div>
   </div>
@@ -73,6 +73,3 @@
 </div>
 
 
-<?php 
-    include 'rodape.php';  
-?>

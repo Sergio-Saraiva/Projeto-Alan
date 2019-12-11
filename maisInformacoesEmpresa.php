@@ -43,7 +43,7 @@
          
 
      </p>
-         <a href="consulta.php" class="btn btn-outline-secondary">Retornar</a>
+         <a href="consultar.php" class="btn btn-outline-secondary">Retornar</a>
       </div>
    </div>
  <?php } ?>
