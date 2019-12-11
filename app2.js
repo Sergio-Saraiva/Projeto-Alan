@@ -9,7 +9,7 @@ $(function(){
             var dados = {
                 palavra : pesquisa
             }
-            $.post('busca-empresas.php',dados, function(retorna){
+            $.post('busca-pessoa-juridica.php',dados, function(retorna){
                 //Mostra dentro da div resultado os resultados obtidos
                 $(".resultado_psq").html(retorna);
             });

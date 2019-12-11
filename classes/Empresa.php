@@ -108,10 +108,24 @@
                 return $elemento['razao'];
             }
         }
+        
+        //WG Edit
 
-        public function consultaPessoas($razao){
+        public function listarPessoasJuridicas(){
             $conexao = Conexao::getConexao();
-            $sql = "SELECT * FROM empresas WHERE razao LIKE '%$razao%'";
+
+            $query_juridica = "SELECT * FROM juridica";
+            $lista_sql = $conexao->query($query_juridica);
+            $lista[1] = $lista_sql->fetchAll();
+         
+
+            return $lista;
+        }
+
+
+        public function consultaPessoasJuridicas($razao){
+            $conexao = Conexao::getConexao();
+            $sql = "SELECT * FROM juridica WHERE razao LIKE '%$razao%'";
             $resultado_sql = $conexao->query($sql);
 
             $resultado = $resultado_sql->fetchAll();
@@ -119,6 +133,41 @@
             return $resultado;
 
         }
+
+        public function maisInformacoesPessoaJuridica($id){
+            $conexao = Conexao::getConexao();
+            $sql = "SELECT * FROM juridica WHERE id_juridica = '$id'";
+            $resultado_sql = $conexao->query($sql);
+
+            $sql_2 = "SELECT * FROM telefone_juridica WHERE id_juridica = '$id'";
+            $resultado_sql_2 = $conexao->query($sql_2);
+
+            $resultado[1] = $resultado_sql->fetchAll();
+            $resultado[2] = $resultado_sql_2->fetchAll();
+
+
+            return $resultado;
+
+        }
+
+        /*
+        public function consultaEmpresaServicos(){
+            $conexao = Conexao::getConexao();
+
+            $sql = "SELECT * FROM empresas WHERE id = '$id'";
+            $resultado_sql = $conexao->query($sql);
+
+            $resultado[1] = $resultado_sql->fetchAll();
+
+            $sql_2="SELECT * FROM projetos WHERE id_empresa = '$id'";
+            $resultado_sql_2 = $conexao->query($sql_2);
+
+            $resultado[2] = $resultado_sql_2->fetchAll();
+
+            return $resultado;
+
+        }
+        */
 
         public function consultaProjetos($id){
             $conexao = Conexao::getConexao();
