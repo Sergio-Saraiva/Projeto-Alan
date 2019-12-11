@@ -33,16 +33,16 @@
             $query = "INSERT INTO juridica(cnpj, razao, fantasia, email) VALUES ('".$this->cnpj."', '".$this->razao."', '".$this->fantasia."', '".$this->email."')";
             $conexao->exec($query);
             //pega id da empresa inserida
-            $query = "SELECT id FROM juridica WHERE cnpj='$this->cnpj'";
+            $query = "SELECT id_juridica FROM juridica WHERE cnpj='$this->cnpj'";
             $id_sql = $conexao->query($query);
             $idV = $id_sql->fetchAll();
             foreach ($idV as $elemento) {
-                $id = $elemento['id'];
+                $id = $elemento['id_juridica'];
             }
             //inserir na tabela endereco e telefone 
-            $query = "INSERT INTO endereco_juridica(nome, logradouro, bairro, numero, cidade, estado, CEP, juridica_id_juridica) VALUES ('".$this->nome."','".$this->logradouro."','".$this->bairro."','".$this->numero."','".$this->cidade."', '".$this->estado."', '".$this->CEP."', '".$id."')";
+            $query = "INSERT INTO endereco_juridica(nome, logradouro, bairro, numero, cidade, estado, CEP, juridica_id_juridica) VALUES ('".$this->nome."','".$this->logradouro."','".$this->bairro."','".$this->numero."','".$this->cidade."', '".$this->estado."', '".$this->cep."', '".$id."')";
             $conexao->exec($query);
-            
+
             $query = "INSERT INTO telefone_juridica(telefone_juridica, juridica_id_juridica) VALUES ('".$this->telefone."', '".$id."')";
             $conexao->exec($query);
         }

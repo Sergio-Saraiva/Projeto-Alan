@@ -1,5 +1,3 @@
-var btnJuridica = document.getElementById('botao-juridica');
-    btnJuridica.addEventListener("click", function () {
         var hcnpj = document.getElementById('cnpj');
     hcnpj.addEventListener("blur", function () {
         var cnpj = hcnpj.value.replace('.', '').replace('.', '').replace('/', '').replace('-', '');
@@ -20,7 +18,6 @@ var btnJuridica = document.getElementById('botao-juridica');
             })
         }
     });    
-})
 
 function renderElement(json) {
     var status = json.data.status; 
