@@ -154,11 +154,15 @@
             $sql = "SELECT * FROM juridica WHERE id_juridica = '$id'";
             $resultado_sql = $conexao->query($sql);
 
-            $sql_2 = "SELECT * FROM telefone_juridica WHERE id_juridica = '$id'";
+            $sql_2 = "SELECT * FROM telefone_juridica WHERE juridica_id_juridica = '$id'";
             $resultado_sql_2 = $conexao->query($sql_2);
+
+            $sql_3 = "SELECT * FROM endereco_juridica WHERE juridica_id_juridica = '$id'";
+            $resultado_sql_3 = $conexao->query($sql_3);
 
             $resultado[1] = $resultado_sql->fetchAll();
             $resultado[2] = $resultado_sql_2->fetchAll();
+            $resultado[3] = $resultado_sql_3->fetchAll();
 
 
             return $resultado;
