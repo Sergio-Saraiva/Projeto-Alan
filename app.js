@@ -1,12 +1,4 @@
-psq_btn_juridica = document.getElementById('busca-juridica');
-psq_btn_pessoa = document.getElementById('busca-pessoa');
-
-psq_btn_juridica.addEventListener("click", function(){
-    psq_btn_juridica.setAttriute = ('class','btn btn-primary');
-});       
-       
-       
-       var hcnpj = document.getElementById('cnpj');
+        var hcnpj = document.getElementById('cnpj');
     hcnpj.addEventListener("blur", function () {
         var cnpj = hcnpj.value.replace('.', '').replace('.', '').replace('/', '').replace('-', '');
         console.log(cnpj); 
@@ -78,6 +70,8 @@ btn2.addEventListener("click", function () {
     document.getElementById('pessoa-juridica').style.display="none";
 });
 
+
+
 addtelefone = document.getElementById('addtelefone');
 addtelefone.addEventListener("click", function () {
     $('#telefone-div').append('<div id="telefone-div" class="form-group col-md-6">    <label for="telefone">Telefone</label></i><i id="subtelefone" class="far fa-minus-square"></i>    <input class="form-control phone_with_ddd" type="text" id="telefone" name="telefone"  placeholder="(__) ____-____"></div>');
@@ -91,10 +85,10 @@ addtelefone.addEventListener("click", function () {
 })
 });
 
-// psq_btn_juridica = document.getElementById('busca-juridica');
-// psq_btn_pessoa = document.getElementById('busca-pessoa');
+psq_btn_juridica = document.getElementById('busca-juridica');
+psq_btn_pessoa = document.getElementById('busca-pessoa');
 
-// psq_btn_juridica.addEventListener("click", function(){
-//     psq_btn_juridica.setAttriute = ('class','btn btn-primary');
-// });
+psq_btn_juridica.addEventListener("click", function(){
+    psq_btn_juridica.setAttriute = ('class','btn btn-primary');
+});
 
