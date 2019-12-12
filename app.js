@@ -72,24 +72,46 @@ btn2.addEventListener("click", function () {
 
 
 
+// addtelefone = document.getElementById('addtelefone');
+// addtelefone.addEventListener("click", function () {
+//     $('#telefone-div').append('<div id="telefone-div" class="form-group col-md-6">    <label for="telefone">Telefone</label></i><i id="subtelefone" class="far fa-minus-square"></i>    <input class="form-control phone_with_ddd" type="text" id="telefone" name="telefone"  placeholder="(__) ____-____"></div>');
+//     subtelefone = document.getElementById('subtelefone');
+//     subtelefone.addEventListener("click", function () {
+//     $('#subtelefone').parent().remove();
+// })
+// });
+var c=1;
 addtelefone = document.getElementById('addtelefone');
 addtelefone.addEventListener("click", function () {
-    $('#telefone-div').append('<div id="telefone-div" class="form-group col-md-6">    <label for="telefone">Telefone</label></i><i id="subtelefone" class="far fa-minus-square"></i>    <input class="form-control phone_with_ddd" type="text" id="telefone" name="telefone"  placeholder="(__) ____-____"></div>');
-    subtelefone = document.getElementById('subtelefone');
-    subtelefone.addEventListener("click", function () {
-    $('#subtelefone').parent().remove();
-})
-});
- 
-addtelefone = document.getElementById('addtelefone');
-addtelefone.addEventListener("click", function () {
+    c++;
     var div = document.createElement('div');
-    div.setAttribute = ('id', 'telefone-div');
-    div.setAttribute = ('class', 'form-group col-md-6');
+    div.setAttribute('class', 'form-group col-md-4');
+    div.setAttribute('id', 'telefone-div'+c);
     
-    var label = document.createElement()
+    var label = document.createElement('label');
+    label.setAttribute('for', 'telefone'+c);
+    label.innerHTML = 'Telefone '+ c;
 
-psq_btn_juridica.addEventListener("click", function(){
-    psq_btn_juridica.setAttriute = ('class','btn btn-primary');
+    var input = document.createElement('input');
+    input.setAttribute('class', 'form-control');
+    input.setAttribute('type', 'number');
+    input.setAttribute('id', 'telefone'+c);
+    input.setAttribute('name', 'telefone');
+    input.setAttribute('placeholder', '(__)_____-____');
+
+    var divT = document.getElementById('divT');
+    divT.appendChild(div);
+    div.appendChild(label);
+    div.appendChild(input);
+    console.log("add:", c);
 });
+
+subtelefone = document.getElementById('subtelefone');
+subtelefone.addEventListener("click", function () {
+    var elemento = document.getElementById('telefone-div'+c);
+    elemento.parentNode.removeChild(elemento);
+    c--;
+    console.log(c);
+})
+
 
