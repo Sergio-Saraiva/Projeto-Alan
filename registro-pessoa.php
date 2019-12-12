@@ -4,13 +4,7 @@
 ?>
 
 
-<script>
-    jQuery(function($){
-		       $("#cnpj").mask("99.999.999/9999-99");
-               $("#telefone").mask("(99) 9999-9999");
-               $("#cep").mask("99999-999");
-		});
-</script>
+
 <?php
 if($v == 1){
     echo '<div class="alert alert-danger" role="alert">
@@ -50,7 +44,7 @@ if($v == 1){
                  Obrigatório
             </div>
         </div>
-        <div class="form-row">
+        <div id='divT' class="form-row">
             <div class="form-group col-md-6">
                 <label for="email">E-Mail</label>
                 <input id="email" name="email" type="email" class="form-control" required>
@@ -58,8 +52,8 @@ if($v == 1){
                     Obrigatório
                 </div>
             </div>
-                <div id="telefone-div" class="form-group col-md-6">
-                    <label for="telefone">Telefone</label><i id="addtelefone" class="far fa-plus-square"></i>
+                <div class="form-group col-md-6">
+                    <label for="telefone">Telefone</label><i id="addtelefone" class="far fa-plus-square"></i><i id="subtelefone" class=" far fa-minus-square"></i>
                     <input class="form-control phone_with_ddd" type="text" id="telefone" name="telefone"  placeholder="(__) ____-____">
                 </div>
         </div>
@@ -152,8 +146,7 @@ if($v == 1){
             </div>
             <div class="form-group col-md-6">
                 <label for="telefone">Telefone</label>
-                
-                <input class="form-control phone_with_ddd" type="text" id="telefone" name="telefone"  placeholder="(__) ____-____">
+                <input class="form-control" type="text" id="telefone" name="telefone"  placeholder="(__) ____-____">
             </div>
         </div>
         <div class="form-row">
@@ -203,6 +196,13 @@ if($v == 1){
     </form>
 
 
+    <script>
+    jQuery(function($){
+		       $("#cnpj").mask("99.999.999/9999-99");
+            //    $("#telefone").mask("(99) 9999-9999");
+               $("#cep").mask("99999-999");
+		});
+</script>
     <script>
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {

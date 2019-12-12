@@ -1,23 +1,23 @@
-        var hcnpj = document.getElementById('cnpj');
-    hcnpj.addEventListener("blur", function () {
-        var cnpj = hcnpj.value.replace('.', '').replace('.', '').replace('/', '').replace('-', '');
-        console.log(cnpj); 
-        var url = "https://cors-anywhere.herokuapp.com/https://www.receitaws.com.br/v1/cnpj/" + cnpj;
+var hcnpj = document.getElementById('cnpj');
+hcnpj.addEventListener("blur", function () {
+    var cnpj = hcnpj.value.replace('.', '').replace('.', '').replace('/', '').replace('-', '');
+    console.log(cnpj); 
+    var url = "https://cors-anywhere.herokuapp.com/https://www.receitaws.com.br/v1/cnpj/" + cnpj;
 
-        console.log(url);
+    console.log(url);
 
-        if(cnpj != "______________"){
-            axios.get(url, {type: 'GET', crossDomain: true, dataType: 'jsonp', headers :{
-                "Access-Control-Allow-Origin":"*",
-                "Content-Type": "application/jsonp",
-            }}).then(function(response) {
-                console.log(response);
-                renderElement(response);
-            }).catch(function(error) {
-                console.log(error);
-            })
-        }
-    });    
+    if(cnpj != "______________"){
+        axios.get(url, {type: 'GET', crossDomain: true, dataType: 'jsonp', headers :{
+            "Access-Control-Allow-Origin":"*",
+            "Content-Type": "application/jsonp",
+        }}).then(function(response) {
+            console.log(response);
+            renderElement(response);
+        }).catch(function(error) {
+            console.log(error);
+        })
+    }
+});    
 
 function renderElement(json) {
     var status = json.data.status; 
@@ -72,13 +72,52 @@ btn2.addEventListener("click", function () {
 
 
 
+// addtelefone = document.getElementById('addtelefone');
+// addtelefone.addEventListener("click", function () {
+//     $('#telefone-div').append('<div id="telefone-div" class="form-group col-md-6">    <label for="telefone">Telefone</label></i><i id="subtelefone" class="far fa-minus-square"></i>    <input class="form-control phone_with_ddd" type="text" id="telefone" name="telefone"  placeholder="(__) ____-____"></div>');
+//     subtelefone = document.getElementById('subtelefone');
+//     subtelefone.addEventListener("click", function () {
+//     $('#subtelefone').parent().remove();
+// })
+// });
+var c=1;
 addtelefone = document.getElementById('addtelefone');
 addtelefone.addEventListener("click", function () {
-    $('#telefone-div').append('<div id="telefone-div" class="form-group col-md-6">    <label for="telefone">Telefone</label></i><i id="subtelefone" class="far fa-minus-square"></i>    <input class="form-control phone_with_ddd" type="text" id="telefone" name="telefone"  placeholder="(__) ____-____"></div>');
-    subtelefone = document.getElementById('subtelefone');
-    subtelefone.addEventListener("click", function () {
-    $('#subtelefone').parent().remove();
-})
+    c++;
+    var div = document.createElement('div');
+    div.setAttribute('class', 'form-group col-md-4');
+    div.setAttribute('id', 'telefone-div'+c);
+    
+    var label = document.createElement('label');
+    label.setAttribute('for', 'telefone'+c);
+    label.innerHTML = 'Telefone '+ c;
+
+    var input = document.createElement('input');
+    input.setAttribute('class', 'form-control');
+    input.setAttribute('type', 'number');
+    input.setAttribute('id', 'telefone'+c);
+    input.setAttribute('name', 'telefone[]');
+    input.setAttribute('placeholder', '(__)_____-____');
+
+    var divT = document.getElementById('divT');
+    divT.appendChild(div);
+    div.appendChild(label);
+    div.appendChild(input);
+    
+    var inputOriginal = document.getElementById('telefone')
+    inputOriginal.setAttribute('name', 'telefone[]')
+    console.log("add:", c);
 });
 
+<<<<<<< HEAD
+=======
+subtelefone = document.getElementById('subtelefone');
+subtelefone.addEventListener("click", function () {
+    var elemento = document.getElementById('telefone-div'+c);
+    elemento.parentNode.removeChild(elemento);
+    c--;
+    console.log(c);
+})
+
+>>>>>>> d4b34971053474904708050cef70b85a515fa936
 
