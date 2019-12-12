@@ -6,14 +6,15 @@
         public $razao;
         public $fantasia;
         public $email;
-        public $telefone = array();
-        public $nome = array();
-        public $logradouro = array();
-        public $numero = array();
-        public $bairro = array();
-        public $cidade = array();
-        public $estado = array();
-        public $cep = array();
+        public $endereco;
+        // public $telefone = array();
+        // public $nome = array();
+        // public $logradouro = array();
+        // public $numero = array();
+        // public $bairro = array();
+        // public $cidade = array();
+        // public $estado = array();
+        // public $cep = array();
 
         public function listar(){
             $conexao = Conexao::getConexao();
@@ -30,25 +31,48 @@
         public function novaEmpresa(){
             $conexao = Conexao::getConexao();
             //insere empresa na tabela juridica
-            $query = "INSERT INTO juridica(cnpj, razao, fantasia, email) VALUES ('".$this->cnpj."', '".$this->razao."', '".$this->fantasia."', '".$this->email."')";
-            $conexao->exec($query);
-            //pega id da empresa inserida
-            $query = "SELECT id_juridica FROM juridica WHERE cnpj='$this->cnpj'";
-            $id_sql = $conexao->query($query);
-            $idV = $id_sql->fetchAll();
-            foreach ($idV as $elemento) {
-                $id = $elemento['id_juridica'];
+            // $query = "INSERT INTO juridica(cnpj, razao, fantasia, email) VALUES ('".$this->cnpj."', '".$this->razao."', '".$this->fantasia."', '".$this->email."')";
+            // $conexao->exec($query);
+            // //pega id da empresa inserida
+            // $query = "SELECT id_juridica FROM juridica WHERE cnpj='$this->cnpj'";
+            // $id_sql = $conexao->query($query);
+            // $idV = $id_sql->fetchAll();
+            // foreach ($idV as $elemento) {
+            //     $id = $elemento['id_juridica'];
+            // }
+            //inserir na tabela endereco e telefone
+            //('".$this->nome."','".$this->logradouro."','".$this->bairro."','".$this->numero."','".$this->cidade."', '".$this->estado."', '".$this->cep."', '".$id."')"; 
+            $query = "INSERT INTO endereco_juridica(nome, logradouro, bairro, numero, cidade, estado, CEP, juridica_id_juridica) VALUES";
+            
+            // foreach ($this->endereco as $elemento) {
+            //     $i = 0;
+            //      $nome[i] = $nome;
+            //      $i++;
+            // }
+
+            // var_dump($nome);
+            foreach ($this->endereco as $elemento) {
+                $nome = $elemento['nome'];
+                $logradouro = $elemento['logradouro'];
+                $bairro = $elemento['bairro'];
+                $numero = $elemento['numero'];
+                $cidade = $elemento['cidade'];
+                $estado = $elemento['estado'];
+                $cep = $elemento['cep'];
+                echo $nome;
+                $query = $query."('".$nome."','".$logradouro."','".$bairro."','".$numero."','".$cidade."', '".$estado."', '".$cep."', '".$id."'),";
             }
-            //inserir na tabela endereco e telefone 
-            $query = "INSERT INTO endereco_juridica(nome, logradouro, bairro, numero, cidade, estado, CEP, juridica_id_juridica) VALUES ('".$this->nome."','".$this->logradouro."','".$this->bairro."','".$this->numero."','".$this->cidade."', '".$this->estado."', '".$this->cep."', '".$id."')";
-            $conexao->exec($query);
-            $query = "INSERT INTO telefone_juridica(telefone_juridica, juridica_id_juridica) VALUES";
-            foreach($this->telefone as $tel){
-                $query = $query."('".$tel."', '".$id."'),";
-            }
-            $query = substr($query, 0, -1);
-            echo $query;
-            $conexao->exec($query);
+
+            var_dump($query);
+
+            //$conexao->exec($query);
+            // $query = "INSERT INTO telefone_juridica(telefone_juridica, juridica_id_juridica) VALUES";
+            // foreach($this->telefone as $tel){
+            //     $query = $query."('".$tel."', '".$id."'),";
+            // }
+            // $query = substr($query, 0, -1);
+            // echo $query;
+            // $conexao->exec($query);
         }
 
         public function validaCnpj(){
