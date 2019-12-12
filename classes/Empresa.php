@@ -118,7 +118,7 @@
         }
 
         public function selecionaEmpresaNome($id){
-            $query = "SELECT razao FROM empresas WHERE id= '$id'";
+            $query = "SELECT razao FROM juridica WHERE id_juridica= '$id'";
             $conexao = Conexao::getConexao();
             $id_sql = $conexao->query($query);
             $id = $id_sql->fetchAll();
@@ -173,24 +173,28 @@
 
         }
 
-        /*
-        public function consultaEmpresaServicos(){
+        
+        public function colaboradoresEmpresa($id){
             $conexao = Conexao::getConexao();
 
-            $sql = "SELECT * FROM empresas WHERE id = '$id'";
+            $sql = "SELECT * FROM juridica_has_pessoa WHERE juridica_id_juridica = '$id'";
             $resultado_sql = $conexao->query($sql);
 
-            $resultado[1] = $resultado_sql->fetchAll();
-
-            $sql_2="SELECT * FROM projetos WHERE id_empresa = '$id'";
-            $resultado_sql_2 = $conexao->query($sql_2);
-
-            $resultado[2] = $resultado_sql_2->fetchAll();
-
+            $resultado = $resultado_sql->fetchAll();
             return $resultado;
 
         }
-        */
+
+        public function cEmpresaColaborador($idColaborador){
+            $conexao = Conexao::getConexao();
+            $sql_2="SELECT * FROM pessoa WHERE idPessoa = '$idColaborador'";
+            $resultado_sql_2 = $conexao->query($sql_2);
+
+            $idPessoas = $resultado_sql_2->fetchAll();
+            return $idPessoas;
+
+        }
+        
 
         public function consultaProjetos($id){
             $conexao = Conexao::getConexao();

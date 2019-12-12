@@ -109,6 +109,8 @@ addtelefone.addEventListener("click", function () {
     console.log("add:", c);
 });
 
+<<<<<<< HEAD
+=======
 subtelefone = document.getElementById('subtelefone');
 subtelefone.addEventListener("click", function () {
     var elemento = document.getElementById('telefone-div'+c);
@@ -117,4 +119,5 @@ subtelefone.addEventListener("click", function () {
     console.log(c);
 })
 
+>>>>>>> d4b34971053474904708050cef70b85a515fa936
 
