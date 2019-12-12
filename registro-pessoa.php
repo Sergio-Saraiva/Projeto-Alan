@@ -199,7 +199,7 @@ if($v == 1){
     <script>
     jQuery(function($){
 		       $("#cnpj").mask("99.999.999/9999-99");
-               $("#telefone").mask("(99) 9999-9999");
+            //    $("#telefone").mask("(99) 9999-9999");
                $("#cep").mask("99999-999");
 		});
 </script>

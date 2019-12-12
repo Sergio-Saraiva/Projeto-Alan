@@ -6,7 +6,7 @@
         public $razao;
         public $fantasia;
         public $email;
-        public $telefone;
+        public $telefone = array();
         public $nome;
         public $logradouro;
         public $numero;
@@ -42,8 +42,11 @@
             //inserir na tabela endereco e telefone 
             $query = "INSERT INTO endereco_juridica(nome, logradouro, bairro, numero, cidade, estado, CEP, juridica_id_juridica) VALUES ('".$this->nome."','".$this->logradouro."','".$this->bairro."','".$this->numero."','".$this->cidade."', '".$this->estado."', '".$this->cep."', '".$id."')";
             $conexao->exec($query);
-
-            $query = "INSERT INTO telefone_juridica(telefone_juridica, juridica_id_juridica) VALUES ('".$this->telefone."', '".$id."')";
+            $query = "INSERT INTO telefone_juridica(telefone_juridica, juridica_id_juridica) VALUES";
+            foreach($this->telefone as $tel){
+                $query = $query."('".$tel."', '".$id."'),";
+            }
+            $query = substr($query, 0, -1);
             $conexao->exec($query);
         }
 

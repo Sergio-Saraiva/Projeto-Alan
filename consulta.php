@@ -1,6 +1,5 @@
 <?php 
-      
-
+      require_once 'classes/Empresa.php';
       //$v = $_GET['v'];
       $v = 0;
 

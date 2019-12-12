@@ -2,11 +2,16 @@
     require_once 'classes/Empresa.php';
 
     $empresa = new Empresa();
+
+    foreach($_POST['telefone'] as $elemento){
+        $empresa->telefone[] = $elemento;
+    }
+
     $empresa->cnpj = $_POST['cnpj'];
     $empresa->razao = $_POST['razao'];
     $empresa->fantasia = $_POST['fantasia'];
     $empresa->email = $_POST['email'];
-    $empresa->telefone = $_POST['telefone'];
+    // $empresa->telefone = $_POST['telefone'];
     $empresa->nome = $_POST['nome'];
     $empresa->logradouro = $_POST['logradouro'];
     $empresa->numero = $_POST['numero'];
@@ -15,12 +20,18 @@
     $empresa->estado = $_POST['estado'];
     $empresa->cep = $_POST['cep'];
 
+    
+    $empresa->novaEmpresa();
+    header("Location: consultar.php");
+
     // if($empresa->cnpjEstaVazio() OR $empresa->razaoEstaVazio()){
     //     header("Location: registro.php?v=2");
     // }
-        $empresa->novaEmpresa();
-        header("Location: consulta.php");
+        // $empresa->novaEmpresa();
+        // header("Location: consulta.php");
     
+    
+
     // $empresa->cnpjEstaVazio();
     // $empresa->razaoEstaVazio();
     // if($empresa->validaCnpj() AND $empresa->validaRazao()){

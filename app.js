@@ -96,13 +96,16 @@ addtelefone.addEventListener("click", function () {
     input.setAttribute('class', 'form-control');
     input.setAttribute('type', 'number');
     input.setAttribute('id', 'telefone'+c);
-    input.setAttribute('name', 'telefone');
+    input.setAttribute('name', 'telefone[]');
     input.setAttribute('placeholder', '(__)_____-____');
 
     var divT = document.getElementById('divT');
     divT.appendChild(div);
     div.appendChild(label);
     div.appendChild(input);
+    
+    var inputOriginal = document.getElementById('telefone')
+    inputOriginal.setAttribute('name', 'telefone[]')
     console.log("add:", c);
 });
 
