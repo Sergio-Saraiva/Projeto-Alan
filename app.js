@@ -1,3 +1,4 @@
+//requisição da api
 var hcnpj = document.getElementById('cnpj');
 hcnpj.addEventListener("blur", function () {
     var cnpj = hcnpj.value.replace('.', '').replace('.', '').replace('/', '').replace('-', '');
@@ -17,8 +18,9 @@ hcnpj.addEventListener("blur", function () {
             console.log(error);
         })
     }
-});    
+});  
 
+//mostrar dados recebidos da api
 function renderElement(json) {
     var status = json.data.status; 
     if( status == "OK" ){
@@ -59,6 +61,7 @@ function renderElement(json) {
     
 }
 
+//responsavel por mudar o tipo de formulario
 btn1 = document.getElementById('botao-juridica');
 btn2 = document.getElementById('botao-fisica');
 btn1.addEventListener("click", function () {
@@ -70,17 +73,11 @@ btn2.addEventListener("click", function () {
     document.getElementById('pessoa-juridica').style.display="none";
 });
 
+//responsavel por aceitar varios telefones
 var inputOriginal = document.getElementById('telefone');
     inputOriginal.setAttribute('name', 'telefone[]');
 
-// addtelefone = document.getElementById('addtelefone');
-// addtelefone.addEventListener("click", function () {
-//     $('#telefone-div').append('<div id="telefone-div" class="form-group col-md-6">    <label for="telefone">Telefone</label></i><i id="subtelefone" class="far fa-minus-square"></i>    <input class="form-control phone_with_ddd" type="text" id="telefone" name="telefone"  placeholder="(__) ____-____"></div>');
-//     subtelefone = document.getElementById('subtelefone');
-//     subtelefone.addEventListener("click", function () {
-//     $('#subtelefone').parent().remove();
-// })
-// });
+//Responsável pela criação de mais campos de telefone
 var c=1;
 addtelefone = document.getElementById('addtelefone');
 addtelefone.addEventListener("click", function () {
@@ -108,13 +105,68 @@ addtelefone.addEventListener("click", function () {
     
     console.log("add:", c);
 });
-
+//responsavel por remover o ultimo campo de telefone
 subtelefone = document.getElementById('subtelefone');
 subtelefone.addEventListener("click", function () {
     var elemento = document.getElementById('telefone-div'+c);
     elemento.parentNode.removeChild(elemento);
     c--;
     console.log(c);
-})
+});
+
+//responsavel por adicionar mais campos de endereço
+var e = 1;
+var addendereco = document.getElementById('addendereco');
+addendereco.addEventListener("click", function () {
+   var divEnd = document.getElementById('divEnd');
+   var div = document.createElement('div');
+   div.setAttribute('class', 'form-group');
+   var label = document.createElement('label');
+   label.setAttribute('for', 'nome');
+   label.innerHTML = 'Nome';
+   var input = document.createElement('input');
+   input.setAttribute('class', 'form-control');
+   input.setAttribute('type', 'text');
+   input.setAttribute('name', 'nome[]');
+   input.setAttribute('id', 'nome');
+
+   divEnd.appendChild(div);
+   div.appendChild(label);
+   div.appendChild(input);
+
+   div2 = document.createElement('div')
+   div2.setAttribute('class', 'form-row');
+   var divlog = document.createElement('div');
+   divlog.setAttribute('class', 'form-group col-md-6');
+   var divN = document.createElement('div');
+   divN.setAttribute('class', 'form-group col-md-2');
+   var divB = document.createElement('div'); 
+   divB.setAttribute('class', 'form-group col-md-4');
+   
+    var labelLog = document.createElement('label');
+    labelLog.setAttribute('for','logradouro');
+    labelLog.innerHTML = 'Logradouro';
+
+    var inputLog = document.createElement('input');
+    inputLog.setAttribute('class', 'form-control');
+   inputLog.setAttribute('type', 'text');
+   inputLog.setAttribute('name', 'logradouro[]');
+   inputLog.setAttribute('id', 'logradouro');
+
+
+   divEnd.appendChild(div2);
+   div2.appendChild(divlog);
+   divlog.appendChild(labelLog);
+   labelLog.appendChild(inputLog);
+   div2.appendChild(divN);
+   div2.appendChild(divB);
+
+   
+});
+
+// var addendereco = document.getElementById('addendereco');
+// addendereco.addEventListener("click", function () {
+    
+// })
 
 
