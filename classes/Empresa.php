@@ -7,13 +7,13 @@
         public $fantasia;
         public $email;
         public $telefone = array();
-        public $nome;
-        public $logradouro;
-        public $numero;
-        public $bairro;
-        public $cidade;
-        public $estado;
-        public $cep;
+        public $nome = array();
+        public $logradouro = array();
+        public $numero = array();
+        public $bairro = array();
+        public $cidade = array();
+        public $estado = array();
+        public $cep = array();
 
         public function listar(){
             $conexao = Conexao::getConexao();
@@ -47,6 +47,7 @@
                 $query = $query."('".$tel."', '".$id."'),";
             }
             $query = substr($query, 0, -1);
+            echo $query;
             $conexao->exec($query);
         }
 

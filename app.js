@@ -70,7 +70,8 @@ btn2.addEventListener("click", function () {
     document.getElementById('pessoa-juridica').style.display="none";
 });
 
-
+var inputOriginal = document.getElementById('telefone');
+    inputOriginal.setAttribute('name', 'telefone[]');
 
 // addtelefone = document.getElementById('addtelefone');
 // addtelefone.addEventListener("click", function () {
@@ -103,9 +104,8 @@ addtelefone.addEventListener("click", function () {
     divT.appendChild(div);
     div.appendChild(label);
     div.appendChild(input);
+
     
-    var inputOriginal = document.getElementById('telefone')
-    inputOriginal.setAttribute('name', 'telefone[]')
     console.log("add:", c);
 });
 
