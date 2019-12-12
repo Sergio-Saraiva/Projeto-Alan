@@ -1,23 +1,23 @@
-        var hcnpj = document.getElementById('cnpj');
-    hcnpj.addEventListener("blur", function () {
-        var cnpj = hcnpj.value.replace('.', '').replace('.', '').replace('/', '').replace('-', '');
-        console.log(cnpj); 
-        var url = "https://cors-anywhere.herokuapp.com/https://www.receitaws.com.br/v1/cnpj/" + cnpj;
+var hcnpj = document.getElementById('cnpj');
+hcnpj.addEventListener("blur", function () {
+    var cnpj = hcnpj.value.replace('.', '').replace('.', '').replace('/', '').replace('-', '');
+    console.log(cnpj); 
+    var url = "https://cors-anywhere.herokuapp.com/https://www.receitaws.com.br/v1/cnpj/" + cnpj;
 
-        console.log(url);
+    console.log(url);
 
-        if(cnpj != "______________"){
-            axios.get(url, {type: 'GET', crossDomain: true, dataType: 'jsonp', headers :{
-                "Access-Control-Allow-Origin":"*",
-                "Content-Type": "application/jsonp",
-            }}).then(function(response) {
-                console.log(response);
-                renderElement(response);
-            }).catch(function(error) {
-                console.log(error);
-            })
-        }
-    });    
+    if(cnpj != "______________"){
+        axios.get(url, {type: 'GET', crossDomain: true, dataType: 'jsonp', headers :{
+            "Access-Control-Allow-Origin":"*",
+            "Content-Type": "application/jsonp",
+        }}).then(function(response) {
+            console.log(response);
+            renderElement(response);
+        }).catch(function(error) {
+            console.log(error);
+        })
+    }
+});    
 
 function renderElement(json) {
     var status = json.data.status; 
@@ -78,7 +78,7 @@ addtelefone.addEventListener("click", function () {
     $('#subtelefone').parent().remove();
 })
 });
-
+ 
 addtelefone = document.getElementById('addtelefone');
 addtelefone.addEventListener("click", function () {
     var div = document.createElement('div');
