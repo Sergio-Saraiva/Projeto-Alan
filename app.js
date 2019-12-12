@@ -20,17 +20,19 @@ hcnpj.addEventListener("blur", function () {
     }
 });  
 
-
+var estados;
 axios.get("https://servicodados.ibge.gov.br/api/v1/localidades/estados").then(function (response) {
     console.log(response);
-    renderElementEstado(response);
+    estados = response;
+    renderElementEstado(response, '');
 }).catch(function (error) {
     console.log(error);
 });
 
 //mostrar dados recebidos da api de estados
-function renderElementEstado(json) {
-    var select = document.getElementById('estado');
+
+function renderElementEstado(json, e) {
+    var select = document.getElementById('estado'+e);
     var tam = json.data.length;
 
     for(i = 0; i<tam; i++){
@@ -149,13 +151,13 @@ addendereco.addEventListener("click", function () {
    div.setAttribute('class', 'form-group');
    div.setAttribute('id', 'div'+e);
    var label = document.createElement('label');
-   label.setAttribute('for', 'nome');
+   label.setAttribute('for', 'nome'+e);
    label.innerHTML = 'Nome '+e;
    var input = document.createElement('input');
    input.setAttribute('class', 'form-control');
    input.setAttribute('type', 'text');
    input.setAttribute('name', 'nome[]');
-   input.setAttribute('id', 'nome');
+   input.setAttribute('id', 'nome'+e);
 
    divEnd.appendChild(div);
    div.appendChild(label);
@@ -174,34 +176,34 @@ addendereco.addEventListener("click", function () {
    divB.setAttribute('class', 'form-group col-md-4');
    
    var labelLog = document.createElement('label');
-   labelLog.setAttribute('for','logradouro');
+   labelLog.setAttribute('for','logradouro'+e);
    labelLog.innerHTML = 'Logradouro '+e;
 
    var inputLog = document.createElement('input');
    inputLog.setAttribute('class', 'form-control');
    inputLog.setAttribute('type', 'text');
    inputLog.setAttribute('name', 'logradouro[]');
-   inputLog.setAttribute('id', 'logradouro');
+   inputLog.setAttribute('id', 'logradouro'+e);
    
    var labelN = document.createElement('label');
-   labelN.setAttribute('for','numero');
+   labelN.setAttribute('for','numero'+e);
    labelN.innerHTML = 'Nº '+e;
 
    var inputN = document.createElement('input');
    inputN.setAttribute('class', 'form-control');
    inputN.setAttribute('type', 'number');
    inputN.setAttribute('name', 'numero[]');
-   inputN.setAttribute('id', 'numero');
+   inputN.setAttribute('id', 'numero'+e);
 
    var labelB = document.createElement('label');
-   labelB.setAttribute('for','bairro');
+   labelB.setAttribute('for','bairro'+e);
    labelB.innerHTML = 'Bairro '+e;
 
    var inputB = document.createElement('input');
    inputB.setAttribute('class', 'form-control');
    inputB.setAttribute('type', 'text');
    inputB.setAttribute('name', 'bairro[]');
-   inputB.setAttribute('id', 'bairro');
+   inputB.setAttribute('id', 'bairro'+e);
 
 
    divEnd.appendChild(div2);
@@ -227,33 +229,38 @@ addendereco.addEventListener("click", function () {
     divCep.setAttribute('class', 'form-group col-md-4');
 
     var labelC = document.createElement('label');
-    labelC.setAttribute('for','cidade');
+    labelC.setAttribute('for','cidade'+e);
     labelC.innerHTML = 'Cidade '+e;
 
     var inputC = document.createElement('input');
     inputC.setAttribute('class', 'form-control');
     inputC.setAttribute('type', 'text');
     inputC.setAttribute('name', 'cidade[]');
-    inputC.setAttribute('id', 'cidade');
+    inputC.setAttribute('id', 'cidade'+e);
 
     var labelE = document.createElement('label');
-    labelE.setAttribute('for','estado');
+    labelE.setAttribute('for','estado'+e);
     labelE.innerHTML = 'Estado '+e;
 
     var selectE = document.createElement('select');
     selectE.setAttribute('class', 'custom-select');
     selectE.setAttribute('name', 'estado[]');
-    selectE.setAttribute('id', 'estado');
+    selectE.setAttribute('id', 'estado'+e);
+
+    var option = document.createElement('option');
+    option.innerHTML = "Selecione o Estado"
+    option.selected;
+    
 
     var labelCep = document.createElement('label');
-    labelCep.setAttribute('for','cep');
+    labelCep.setAttribute('for','cep'+e);
     labelCep.innerHTML = 'CEP '+e;
 
     var inputCep = document.createElement('input');
     inputCep.setAttribute('class', 'form-control');
     inputCep.setAttribute('type', 'number');
     inputCep.setAttribute('name', 'cep[]');
-    inputCep.setAttribute('id', 'cep');
+    inputCep.setAttribute('id', 'cep'+e);
 
     divEnd.appendChild(div3);
     div3.appendChild(divC);
@@ -263,12 +270,13 @@ addendereco.addEventListener("click", function () {
     div3.appendChild(divE)
     divE.appendChild(labelE);
     divE.appendChild(selectE);
+    selectE.appendChild(option);
 
     div3.appendChild(divCep);
     divCep.appendChild(labelCep);
     divCep.appendChild(inputCep);
 
-    renderElementEstado();   
+    renderElementEstado(estados,e);   
 });
 
 var subendereco = document.getElementById('subendereco');
