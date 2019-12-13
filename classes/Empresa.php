@@ -7,6 +7,7 @@
         public $fantasia;
         public $email;
         public $endereco;
+        public $dono;
         
         public function listar(){
             $conexao = Conexao::getConexao();
@@ -57,12 +58,16 @@
             $query = substr($query, 0, -1);
             echo $query;
             $conexao->exec($query);
+
+            //relaciona empresa com pessao fisica
+            $query = "INSERT INTO juridica_has_pessoa(juridica_id_juridica, pessoa_idPessoa) VALUES('".$id."', '".$this->dono."')";
+            $conexao->exec($query);
         }
 
         public function validaCnpj(){
             $conexao = Conexao::getConexao();
 
-            $query = "SELECT cnpj FROM empresas";
+            $query = "SELECT cnpj FROM juridica";
 
             $lista_sql = $conexao->query($query);
 
@@ -93,7 +98,7 @@
         public function validaRazao(){
             $conexao = Conexao::getConexao();
 
-            $query = "SELECT razao FROM empresas";
+            $query = "SELECT razao FROM juridica";
 
             $lista_sql = $conexao->query($query);
 
