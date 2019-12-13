@@ -168,12 +168,12 @@ addendereco.addEventListener("click", function () {
    div.setAttribute('id', 'div'+e);
    var label = document.createElement('label');
    label.setAttribute('for', 'nome'+e);
-   label.innerHTML = 'Nome '+e;
+   label.innerHTML = 'Titulo '+e;
    var input = document.createElement('input');
    input.setAttribute('class', 'form-control');
    input.setAttribute('type', 'text');
    input.setAttribute('name', 'nome[]');
-   input.setAttribute('id', 'Titulo'+e);
+   input.setAttribute('id', 'nome'+e);
 
    divEnd.appendChild(div);
    div.appendChild(h1);
