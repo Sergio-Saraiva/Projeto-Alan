@@ -19,7 +19,7 @@ if($v == 1){
 <h1>Cadastro</h1>
 <hr>
 <div class="btn-group" role="group" aria-label="Basic example">
-        <button id="botao-juridica" type="button" class="btn btn-secondary">Pessoa Juridica</button>
+        <button id="botao-juridica" type="button" class="btn btn-primary">Pessoa Juridica</button>
         <button id="botao-fisica" type="button" class="btn btn-secondary">Pessoa Física</button>
 </div>
     <form id="pessoa-juridica" method="POST" class="needs-validation" action="nova-pessoa-juridica.php" novalidate>

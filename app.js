@@ -98,10 +98,14 @@ btn2 = document.getElementById('botao-fisica');
 btn1.addEventListener("click", function () {
     document.getElementById('pessoa-fisica').style.display = "none";
     document.getElementById('pessoa-juridica').style.display="block";
+    btn1.setAttribute('class','btn btn-primary');
+    btn2.setAttribute('class','btn btn-secondary');
 });
 btn2.addEventListener("click", function () {
     document.getElementById('pessoa-fisica').style.display = "block";
     document.getElementById('pessoa-juridica').style.display="none";
+    btn1.setAttribute('class','btn btn-secondary');
+    btn2.setAttribute('class','btn btn-primary');
 });
 
 //responsavel por aceitar varios telefones
