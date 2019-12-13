@@ -102,12 +102,12 @@ if($v == 1){
         <button type="submit" class="btn btn-primary">Registrar</button>
     </form>
 
-    <div id="destino"></div>
+
     <!-- formulario de cadastro pessoa física -->
-    <form id="pessoa-fisica" method="POST" class="needs-validation" action="nova-empresa.php" novalidate style="display: none;">
+    <form id="pessoa-fisica" method="POST" class="needs-validation" action="nova-pessoa-fisica.php" novalidate style="display: none;">
         <div class="form-group">
-            <label for="nome">Nome</label>
-            <input id="nome" name="nome" type="text" class="form-control" required>
+            <label for="nomepf">Nome</label>
+            <input id="nomepf" name="nomepf" type="text" class="form-control" required>
             <div class="invalid-feedback">
                 Obrigatório
             </div>
@@ -143,7 +143,7 @@ if($v == 1){
             </div>
             <div class="form-group col-md-6">
                 <label for="telefone">Telefone</label><i id="addtelefonef" class="far fa-plus-square"></i><i id="subtelefonef" class=" far fa-minus-square"></i>
-                <input class="form-control phone_with_ddd" type="text" id="telefone" name="telefone"  placeholder="(__) ____-____">
+                <input class="form-control phone_with_ddd" type="text" id="telefonef" name="telefone"  placeholder="(__) ____-____">
             </div>
         </div>
         <h1>Endereço</h1>

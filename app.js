@@ -108,6 +108,9 @@ btn2.addEventListener("click", function () {
 var inputOriginal = document.getElementById('telefone');
     inputOriginal.setAttribute('name', 'telefone[]');
 
+var inputOriginalf = document.getElementById('telefonef');
+inputOriginalf.setAttribute('name', 'telefone[]');
+
 //Responsável pela criação de mais campos de telefone
 var c=1;
 addtelefone = document.getElementById('addtelefone');
