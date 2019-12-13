@@ -69,7 +69,7 @@
       </p>
       <div class="btn-group">
         <a href="projetos.php?id=<?php echo $elemento['id_juridica'] ?>" class="btn btn-primary">Serviços</a>
-        <a href="colaboradoresEmpresa.php?id=<?php echo $elemento['id_juridica'] ?>"  class="btn btn-secondary">Servidores</a>
+        <a href="colaboradoresEmpresa.php?id=<?php echo $elemento['id_juridica'] ?>"  class="btn btn-secondary">Sócios</a>
         <a href="maisInformacoesEmpresa.php?id=<?php echo $elemento['id_juridica'] ?>" class="btn btn-info">Informações</a>
       </div>
     </div>
