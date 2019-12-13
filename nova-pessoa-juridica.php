@@ -3,6 +3,12 @@
 
     $empresa = new Empresa();
 
+    // if($_POST['dono']!=NULL){
+        
+    // }
+
+    $empresa->dono = $_POST['dono'];
+
     foreach($_POST['telefone'] as $elemento){
         $empresa->telefone[] = $elemento;
     }

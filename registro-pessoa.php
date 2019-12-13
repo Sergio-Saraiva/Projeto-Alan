@@ -1,6 +1,10 @@
 ﻿<?php
     include 'cabecalho.php';
+    require_once 'classes/PessoaFisica.php';
+    $pfisica = new pFisica();
+    $lista = $pfisica->listar();
     $v = $_GET['v'];
+
 ?>
 
 
@@ -23,6 +27,15 @@ if($v == 1){
         <button id="botao-fisica" type="button" class="btn btn-secondary">Pessoa Física</button>
 </div>
     <form id="pessoa-juridica" method="POST" class="needs-validation" action="nova-pessoa-juridica.php" novalidate>
+        <div class="form-group">
+            <label for="dono">A quem pertence essa empresa?</label>
+            <select name="dono" id="dono" class="custom-select">
+                <option value="">Nova empresa</option>
+                <?php foreach ($lista as $elemento) { ?>
+                    <option value="<?php echo $elemento['idPessoa'] ?>"><?php echo $elemento['Nome'] ?></option>
+                <?php } ?>
+            </select>
+        </div>
         <div class="form-group">
             <label for="cnpj">CNPJ</label>
             <input id="cnpj" name="cnpj" type="text" class="form-control" placeholder="XX.XXX.XXX/XXXX-XX" required>
