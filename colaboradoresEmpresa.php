@@ -1,3 +1,4 @@
+
 <?php
     include 'cabecalho.php';
     include_once('classes/Empresa.php') ;
@@ -12,7 +13,7 @@
 
 ?>
 
-<h2>Colaboradores da empresa <?php echo $nomeEmpresa ?></h2>
+<h2 align="center">Colaboradores da empresa <?php echo $nomeEmpresa ?></h2>
 <hr>    
 
 <?php foreach($lista as $registro)

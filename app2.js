@@ -15,15 +15,17 @@ $(function(){
             });
             document.getElementById("resultado_psq").style.display = "block";
             document.getElementById("resultado").style.display = "none";
+            document.getElementById("alignpaginacao").style.display = "none";
         }else{
             document.getElementById("resultado_psq").style.display = "none";
             document.getElementById("resultado").style.display = "block";
+            document.getElementById("alignpaginacao").style.display = "block";
         }    
         
     });
 
 
-    // NAO ESTA FUNCIONANDO 
+    // VOLTOU A FUNCIONAR
     $("#nomeP").keyup(function(){
         var pesquisa = $(this).val();
         

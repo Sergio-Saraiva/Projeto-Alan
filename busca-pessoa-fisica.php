@@ -11,7 +11,7 @@
 
     if(count($resultado_pesquisa)<=0 ){
         echo "Nenhum cadastro encontrado.";
-        echo $nome_psq."olá";
+        
         
     }else{
         foreach($resultado_pesquisa as $dados){ 
