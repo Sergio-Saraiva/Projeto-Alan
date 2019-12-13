@@ -31,26 +31,18 @@
         public function novaEmpresa(){
             $conexao = Conexao::getConexao();
             //insere empresa na tabela juridica
-            // $query = "INSERT INTO juridica(cnpj, razao, fantasia, email) VALUES ('".$this->cnpj."', '".$this->razao."', '".$this->fantasia."', '".$this->email."')";
-            // $conexao->exec($query);
-            // //pega id da empresa inserida
-            // $query = "SELECT id_juridica FROM juridica WHERE cnpj='$this->cnpj'";
-            // $id_sql = $conexao->query($query);
-            // $idV = $id_sql->fetchAll();
-            // foreach ($idV as $elemento) {
-            //     $id = $elemento['id_juridica'];
-            // }
+            $query = "INSERT INTO juridica(cnpj, razao, fantasia, email) VALUES ('".$this->cnpj."', '".$this->razao."', '".$this->fantasia."', '".$this->email."')";
+            $conexao->exec($query);
+            //pega id da empresa inserida
+            $query = "SELECT id_juridica FROM juridica WHERE cnpj='$this->cnpj'";
+            $id_sql = $conexao->query($query);
+            $idV = $id_sql->fetchAll();
+            foreach ($idV as $elemento) {
+                $id = $elemento['id_juridica'];
+            }
             //inserir na tabela endereco e telefone
-            //('".$this->nome."','".$this->logradouro."','".$this->bairro."','".$this->numero."','".$this->cidade."', '".$this->estado."', '".$this->cep."', '".$id."')"; 
             $query = "INSERT INTO endereco_juridica(nome, logradouro, bairro, numero, cidade, estado, CEP, juridica_id_juridica) VALUES";
             
-            // foreach ($this->endereco as $elemento) {
-            //     $i = 0;
-            //      $nome[i] = $nome;
-            //      $i++;
-            // }
-
-            // var_dump($nome);
             foreach ($this->endereco as $elemento) {
                 $nome = $elemento['nome'];
                 $logradouro = $elemento['logradouro'];
@@ -63,16 +55,16 @@
                 $query = $query."('".$nome."','".$logradouro."','".$bairro."','".$numero."','".$cidade."', '".$estado."', '".$cep."', '".$id."'),";
             }
 
-            var_dump($query);
+            $query = substr($query, 0, -1);
 
-            //$conexao->exec($query);
-            // $query = "INSERT INTO telefone_juridica(telefone_juridica, juridica_id_juridica) VALUES";
-            // foreach($this->telefone as $tel){
-            //     $query = $query."('".$tel."', '".$id."'),";
-            // }
-            // $query = substr($query, 0, -1);
-            // echo $query;
-            // $conexao->exec($query);
+            $conexao->exec($query);
+            $query = "INSERT INTO telefone_juridica(telefone_juridica, juridica_id_juridica) VALUES";
+            foreach($this->telefone as $tel){
+                $query = $query."('".$tel."', '".$id."'),";
+            }
+            $query = substr($query, 0, -1);
+            echo $query;
+            $conexao->exec($query);
         }
 
         public function validaCnpj(){
