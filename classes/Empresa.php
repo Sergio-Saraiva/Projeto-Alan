@@ -7,15 +7,7 @@
         public $fantasia;
         public $email;
         public $endereco;
-        // public $telefone = array();
-        // public $nome = array();
-        // public $logradouro = array();
-        // public $numero = array();
-        // public $bairro = array();
-        // public $cidade = array();
-        // public $estado = array();
-        // public $cep = array();
-
+        
         public function listar(){
             $conexao = Conexao::getConexao();
 

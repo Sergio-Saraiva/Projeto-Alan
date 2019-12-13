@@ -145,6 +145,9 @@ var addendereco = document.getElementById('addendereco');
 addendereco.addEventListener("click", function () {
    e++;
    var divEnd = document.getElementById('divEnd');
+   var h1 = document.createElement('h1');
+   h1.innerHTML = "Endereço "+e;
+   var hr = document.createElement('hr');
    
    //cria elemento de nome
    var div = document.createElement('div');
@@ -160,6 +163,8 @@ addendereco.addEventListener("click", function () {
    input.setAttribute('id', 'nome'+e);
 
    divEnd.appendChild(div);
+   div.appendChild(h1);
+   div.appendChild(hr);
    div.appendChild(label);
    div.appendChild(input);
 
