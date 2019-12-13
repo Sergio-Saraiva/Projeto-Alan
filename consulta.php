@@ -19,22 +19,20 @@
 
 
 <div class="container">
-  <div class="row no-gutters">
-    <div class="col-12 col-sm-6 col-md-8">
+  <div class="row no-gutters justify-content-center">
+    <div class="col-8 col-sm-6 col-md-7.9 justify-content-center" >
       <h1>Empresas Registradas</h1>
       <hr>
     </div>
     
-        <form name="form_pesquisa" method="POST" action="" id="form_pesquisa">
-        
+      <div>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputGroup-sizing-default"><i class="fa fa-search" aria-hidden="true"></i></span>
             </div>
           <input name="razao_psq" id="razao_psq" placeholder="Razão Social" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
         </div>
-
-        </form>
+      </div>
         
    
   </div>

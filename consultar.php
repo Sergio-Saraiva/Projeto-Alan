@@ -15,7 +15,8 @@
       include 'consulta.php';
       echo "</div>";
 
-      echo "<div id='visivel2'>";
+      echo "<div id='visivel2' style='display: none;'>";
+      include 'consulta_pFisica.php';
       echo "</div>";
 
       include 'rodape.php';
