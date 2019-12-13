@@ -106,72 +106,87 @@ if($v == 1){
     <!-- formulario de cadastro pessoa física -->
     <form id="pessoa-fisica" method="POST" class="needs-validation" action="nova-empresa.php" novalidate style="display: none;">
         <div class="form-group">
-            <label for="cnpj">Nome</label>
-            <input id="cnpj" name="cnpj" type="text" class="form-control" placeholder="XX.XXX.XXX/XXXX-XX" required>
+            <label for="nome">Nome</label>
+            <input id="nome" name="nome" type="text" class="form-control" required>
             <div class="invalid-feedback">
-                 Obrigatório
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="rsocial">Razão Social</label>
-            <input id="rsocial" name="razao" type="text" class="form-control" required>
-            <div class="invalid-feedback">
-                 Obrigatório
-            </div>
-        </div>
-        <div id="form-linha" class="form-row">
-            <div class="form-group col-md-6">
-                <label for="endereco">Endereço</label>
-                <input type="text" class="form-control" id="endereco" name="endereco">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="telefone">Telefone</label>
-                <input class="form-control" type="text" id="telefone" name="telefone"  placeholder="(__) ____-____">
+                Obrigatório
             </div>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="cidade">Cidade</label>
-                <input type="text" class="form-control" id="cidade" name="cidade"  >
+            <div class="form-group col-md-4">
+                <label for="cpf">CPF</label>
+                <input id="cpf" name="cpf" type="number" placeholder="___.___.___-__" class="form-control" required>
+                <div class="invalid-feedback">
+                    Obrigatório
+                </div>
             </div>
             <div class="form-group col-md-4">
-                <label for="estado">Estado</label>
-                <select id="estado" class="custom-select" name="estado">
-                    <option selected>Selecione o estado</option>
-                    <option value="AC">Acre</option>
-                    <option value="AL">Alagoas</option>
-                    <option value="AP">Amapá</option>
-                    <option value="AM">Amazonas</option>
-                    <option value="BA">Bahia</option>
-                    <option value="CE">Ceará</option>
-                    <option value="DF">Distrito Federal</option>
-                    <option value="ES">Espírito Santo</option>
-                    <option value="GO">Goiás</option>
-                    <option value="MA">Maranhão</option>
-                    <option value="MT">Mato Grosso</option>
-                    <option value="MT">Mato Grosso do Sul</option>
-                    <option value="MG">Minas Gerais</option>
-                    <option value="PA">Pará</option>
-                    <option value="PB">Paraíba</option>
-                    <option value="PR">Paraná</option>
-                    <option value="PB">Pernambuco</option>
-                    <option value="PI">Piauí</option>
-                    <option value="RJ">Rio de Janeiro</option>
-                    <option value="RN">Rio Grande do Norte</option>
-                    <option value="RS">Rio Grande do Sul</option>
-                    <option value="RO">Rondônia</option>
-                    <option value="RR">Roraima</option>
-                    <option value="SC">Santa Catarina</option>
-                    <option value="SP">São Paulo</option>
-                    <option value="SE">Sergipe</option>
-                    <option value="TO">Tocatins</option>
+                <label for="datanasc">Data de Nascimento</label>
+                <input class="form-control" type="date" name="datanasc" id="datanasc">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="sexo">Sexo</label>
+                <select name="sexo" id="sexo" class="custom-select">
+                    <option selected>Selecione o sexo</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="feminino">Feminino</option>
                 </select>
             </div>
-            <div class="form-group col-md-2">
-                <label for="cep">CEP</label>
-                <input type="text" class="form-control" id="cep" name="cep"  placeholder="____-___">
+        </div>
+        <div id="divTf" class="form-row">
+        <div class="form-group col-md-6">
+                <label for="email">E-mail</label>
+                <input id="email" name="email" type="email" class="form-control" required>
+                <div class="invalid-feedback">
+                    Obrigatório
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="telefone">Telefone</label><i id="addtelefonef" class="far fa-plus-square"></i><i id="subtelefonef" class=" far fa-minus-square"></i>
+                <input class="form-control phone_with_ddd" type="text" id="telefone" name="telefone"  placeholder="(__) ____-____">
             </div>
         </div>
+        <h1>Endereço</h1>
+        <i id="addenderecof" class="far fa-plus-square"></i><i id="subenderecof" class=" far fa-minus-square"></i>
+        <hr>
+        <div id="divEndf">
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text"class="form-control" name="nome[]" id="nomef">
+            </div>
+            <div id="div" class="form-row">
+                <div class="form-group col-md-6">
+                
+                    <label for="logradouro">Logradouro</label>
+                    <input type="text" class="form-control" id="logradourof" name="logradouro[]">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="numero">Nº</label>
+                    <input class="form-control" type="number" id="numerof" name="numero[]">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="bairro">Bairro</label>
+                    <input type="text" class="form-control" id="bairrof" name="bairro[]">
+                </div>
+            </div>
+            <div id="divCit" class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="cidade">Cidade</label>
+                    <input type="text" class="form-control" id="cidadef" name="cidade[]"  >
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="estado">Estado</label>
+                    <select id="estadof" class="custom-select" name="estado[]">
+                        <option selected>Selecione o estado</option>
+                        
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="cep">CEP</label>
+                    <input type="text" class="form-control" id="cepf" name="cep[]"  placeholder="____-___">
+                </div>
+            </div>
+            </div>
         <button type="submit" class="btn btn-primary">Registrar</button>
     </form>
 
