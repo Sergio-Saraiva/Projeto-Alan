@@ -1,16 +1,25 @@
+<?php
+//Primeira parte Código de paginação
+  $maximo = 5;
+  //armazenamos o valor da pagina atual
+  $pagina = isset($_GET['pagina']) ? ($_GET['pagina']) : '1'; 
+  //subtraimos 1, porque os registros sempre começam do 0 (zero), como num array
+  $inicio = $pagina - 1;
+  //multiplicamos a quantidade de registros da pagina pelo valor da pagina atual 
+  $inicio = $maximo * $inicio;
+
+?>
+
 <?php 
       require_once 'classes/Empresa.php';
       //$v = $_GET['v'];
       $v = 0;
 
       $empresas = new Empresa();
-      $lista = $empresas->listarPessoasJuridicas();
+      $lista = $empresas->listarPessoasJuridicas($inicio,$maximo);
+      $total = count($lista[2]);
 
-      if($v == 1){
-        echo '<div class="alert alert-success" role="alert">
-            Empresa cadastrada com sucesso!
-            </div>';
-      }
+    
 ?>
 
 <head>
@@ -60,7 +69,7 @@
       </p>
       <div class="btn-group">
         <a href="projetos.php?id=<?php echo $elemento['id_juridica'] ?>" class="btn btn-primary">Serviços</a>
-        <a href="colaboradoresEmpresa.php?id=<?php echo $elemento['id_juridica'] ?>"  class="btn btn-secondary">Colaboradores</a>
+        <a href="colaboradoresEmpresa.php?id=<?php echo $elemento['id_juridica'] ?>"  class="btn btn-secondary">Servidores</a>
         <a href="maisInformacoesEmpresa.php?id=<?php echo $elemento['id_juridica'] ?>" class="btn btn-info">Informações</a>
       </div>
     </div>
@@ -68,5 +77,68 @@
   </br>
   <?php } ?>
 </div>
+
+<nav aria-label="...">
+<!----Aqui acrescenta-se o código dos botões de paginação---->
+<div id="alignpaginacao" name="alignpaginacao">
+<ul class="pagination justify-content-center">
+       <?php
+            //determina de quantos em quantos links serão adicionados e removidos
+            $max_links = 3;
+            //dados para os botões
+            $previous = $pagina - 1; 
+            $next = $pagina + 1; 
+            //usa uma funcção "ceil" para arrendondar o numero pra cima, ex 1,01 será 2
+            
+            $pgs = ceil($total / $maximo); 
+            
+            //se a tabela não for vazia, adiciona os botões
+            if($pgs > 1 ){   
+                echo "<br/>"; 
+                //botao anterior
+                if($previous > 0){
+                    echo "<li class='page-item'><a class='page-link' href=".$_SERVER['PHP_SELF']."?pagina=$previous>Anterior</a></li>";
+                } else{
+                    echo "<li class='page-item disabled'><a class='page-link' href=".$_SERVER['PHP_SELF']."?pagina=$previous>Anterior</a></li>";
+                }   
+                   
+                
+                    for($i=$pagina-$max_links; $i <= $pgs; $i++) {
+                        if ($i <= 0){
+                        //enquanto for negativo, não faz nada
+                        }else{
+                            //senão adiciona os links para outra pagina
+                            if($i != $pagina){
+                                if($i == $pgs){ //se for o final da pagina, coloca tres pontinhos
+                                    echo " <li class='page-item'><a class='page-link' href=".$_SERVER['PHP_SELF']."?pagina=".($i).">$i</a></li>"; 
+                                }else{
+                                    echo "<li class='page-item'><a class='page-link' href=".$_SERVER['PHP_SELF']."?pagina=".($i).">$i</a></li>"; 
+                                }
+                            } else{
+                                if($i == $pgs){ //se for o final da pagina, coloca tres pontinhos
+                                    echo "<li class='page-item active'><a class='page-link' href='#'><span> ".$i."</span></a></li>"; 
+                                }else{
+                                    echo "<li class='page-item active'><a class='page-link' href='#'><span> ".$i."</span></a></li>";
+                                }
+                            } 
+                        }
+                    }
+                       
+                
+                   
+                //botao proximo
+                if($next <= $pgs){
+                    echo " <li class='page-item'><a class='page-link' href=".$_SERVER['PHP_SELF']."?pagina=$next>Próxima</a></li>";
+                }else{
+                    echo "<li class='page-item disabled'><a class='page-link' href=".$_SERVER['PHP_SELF']."?pagina=$next>Próxima</a></li>";
+                }
+                               
+            }
+                           
+       ?>   
+</div>
+</ul>
+</nav>
+<!------ Fim do código de botões de paginação ------->
 
 

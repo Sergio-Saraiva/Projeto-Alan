@@ -143,12 +143,16 @@
         
         //WG Edit
 
-        public function listarPessoasJuridicas(){
+        public function listarPessoasJuridicas($inicio,$maximo){
             $conexao = Conexao::getConexao();
 
             $query_juridica = "SELECT * FROM juridica";
             $lista_sql = $conexao->query($query_juridica);
-            $lista[1] = $lista_sql->fetchAll();
+            $lista[2] = $lista_sql->fetchAll();
+
+            $query_juridica_2 = "SELECT * FROM juridica ORDER BY id_juridica LIMIT $inicio,$maximo";
+            $lista_sql_2 = $conexao->query($query_juridica_2);
+            $lista[1] = $lista_sql_2->fetchAll();
          
 
             return $lista;

@@ -10,7 +10,7 @@
 
 ?>
 
-<h1>Informações Gerais Sobre a Empresa</h1>
+<h1 align="center">Informações Gerais Sobre a Empresa</h1>
 <hr>    
 
 <?php foreach($lista[1] as $registro)

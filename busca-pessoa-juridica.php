@@ -25,8 +25,8 @@
                         echo "</p>";
                     echo "<div class='btn-group'>";
                     echo "<a href='projetos.php?id=".$elemento['id_juridica']."' class='btn btn-primary'>Serviços</a>";
-                    echo "<a href='#' class='btn btn-secondary' style='text-color:white;'>Colaboradores</a>"; 
-                    echo "<a href='#' class='btn btn-info'>Informações</a>";
+                    echo "<a href='colaboradoresEmpresa.php?id=".$elemento['id_juridica']."' class='btn btn-secondary' style='text-color:white;'>Servidores</a>"; 
+                    echo "<a href='maisInformacoesEmpresa.php?id=".$elemento['id_juridica']."' class='btn btn-info'>Informações</a>";
                     echo "</div>";
                 echo "</div>";
             echo "</div>";
