@@ -173,7 +173,7 @@ addendereco.addEventListener("click", function () {
    input.setAttribute('class', 'form-control');
    input.setAttribute('type', 'text');
    input.setAttribute('name', 'nome[]');
-   input.setAttribute('id', 'nome'+e);
+   input.setAttribute('id', 'Titulo'+e);
 
    divEnd.appendChild(div);
    div.appendChild(h1);
