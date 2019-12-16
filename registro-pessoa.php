@@ -1,7 +1,7 @@
 ﻿<?php
     include 'cabecalho.php';
-    require_once 'classes/PessoaFisica.php';
-    $pfisica = new pFisica();
+    require_once 'config.php';
+    $pfisica = new PessoaFisica();
     $lista = $pfisica->listar();
     //$v = $_GET['v'];
     $v = 0;
@@ -28,15 +28,6 @@ if($v == 1){
         <button id="botao-fisica" type="button" class="btn btn-secondary">Pessoa Física</button>
 </div>
     <form id="pessoa-juridica" method="POST" class="needs-validation" action="nova-pessoa-juridica.php" novalidate>
-        <div class="form-group">
-            <label for="dono">A quem pertence essa empresa?</label>
-            <select name="dono" id="dono" class="custom-select">
-                <option value="">Nova empresa</option>
-                <?php foreach ($lista as $elemento) { ?>
-                    <option value="<?php echo $elemento['idPessoa'] ?>"><?php echo $elemento['Nome'] ?></option>
-                <?php } ?>
-            </select>
-        </div>
         <div class="form-group">
             <label for="cnpj">CNPJ</label>
             <input id="cnpj" name="cnpj" type="text" class="form-control" placeholder="XX.XXX.XXX/XXXX-XX" required>
@@ -68,7 +59,10 @@ if($v == 1){
             </div>
                 <div class="form-group col-md-6">
                     <label for="telefone">Telefone</label><i id="addtelefone" class="far fa-plus-square"></i><i id="subtelefone" class=" far fa-minus-square"></i>
-                    <input class="form-control phone_with_ddd" type="text" id="telefone" name="telefone"  placeholder="(__) ____-____">
+                    <input class="form-control phone_with_ddd" type="text" id="telefone" name="telefone"  placeholder="(__) ____-____" required>
+                    <div class="invalid-feedback">
+                 Obrigatório
+            </div>
                 </div>
         </div>
         
@@ -77,39 +71,57 @@ if($v == 1){
         <hr>
         <div id="divEnd">
             <div class="form-group">
-                <label for="nome">Nome</label>
+                <label for="nome">Titulo</label>
                 <input type="text"class="form-control" name="nome[]" id="nome">
             </div>
             <div id="div" class="form-row">
                 <div class="form-group col-md-6">
                 
                     <label for="logradouro">Logradouro</label>
-                    <input type="text" class="form-control" id="logradouro" name="logradouro[]">
+                    <input type="text" class="form-control" id="logradouro" name="logradouro[]" required>
+                    <div class="invalid-feedback">
+                 Obrigatório
+            </div>
                 </div>
                 <div class="form-group col-md-2">
                     <label for="numero">Nº</label>
-                    <input class="form-control" type="number" id="numero" name="numero[]">
+                    <input class="form-control" type="number" id="numero" name="numero[]" required>
+                    <div class="invalid-feedback">
+                 Obrigatório
+            </div>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="bairro">Bairro</label>
-                    <input type="text" class="form-control" id="bairro" name="bairro[]">
+                    <input type="text" class="form-control" id="bairro" name="bairro[]" required>
+                    <div class="invalid-feedback">
+                 Obrigatório
+            </div>
                 </div>
             </div>
             <div id="divCit" class="form-row">
                 <div class="form-group col-md-4">
                     <label for="cidade">Cidade</label>
-                    <input type="text" class="form-control" id="cidade" name="cidade[]"  >
+                    <input type="text" class="form-control" id="cidade" name="cidade[]" required>
+                    <div class="invalid-feedback">
+                 Obrigatório
+            </div>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="estado">Estado</label>
-                    <select id="estado" class="custom-select" name="estado[]">
+                    <select id="estado" class="custom-select" name="estado[]" required>
+                    <div class="invalid-feedback">
+                        Obrigatório
+                     </div>
                         <option selected>Selecione o estado</option>
                         
                     </select>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="cep">CEP</label>
-                    <input type="text" class="form-control" id="cep" name="cep[]"  placeholder="____-___">
+                    <input type="text" class="form-control" id="cep" name="cep[]"  placeholder="____-___" required>
+                    <div class="invalid-feedback">
+                 Obrigatório
+            </div>
                 </div>
             </div>
             </div>
@@ -136,7 +148,10 @@ if($v == 1){
             </div>
             <div class="form-group col-md-4">
                 <label for="datanasc">Data de Nascimento</label>
-                <input class="form-control" type="date" name="datanasc" id="datanasc">
+                <input class="form-control" type="date" name="datanasc" id="datanasc" required>
+                <div class="invalid-feedback">
+                 Obrigatório
+            </div>
             </div>
             <div class="form-group col-md-4">
                 <label for="sexo">Sexo</label>
@@ -157,7 +172,10 @@ if($v == 1){
             </div>
             <div class="form-group col-md-6">
                 <label for="telefone">Telefone</label><i id="addtelefonef" class="far fa-plus-square"></i><i id="subtelefonef" class=" far fa-minus-square"></i>
-                <input class="form-control phone_with_ddd" type="text" id="telefonef" name="telefone"  placeholder="(__) ____-____">
+                <input class="form-control phone_with_ddd" type="text" id="telefonef" name="telefone"  placeholder="(__) ____-____" required>
+                <div class="invalid-feedback">
+                 Obrigatório
+            </div>
             </div>
         </div>
         <h1>Endereço</h1>
@@ -172,21 +190,33 @@ if($v == 1){
                 <div class="form-group col-md-6">
                 
                     <label for="logradouro">Logradouro</label>
-                    <input type="text" class="form-control" id="logradourof" name="logradouro[]">
+                    <input type="text" class="form-control" id="logradourof" name="logradouro[]" required>
+                    <div class="invalid-feedback">
+                 Obrigatório
+            </div>
                 </div>
                 <div class="form-group col-md-2">
                     <label for="numero">Nº</label>
-                    <input class="form-control" type="number" id="numerof" name="numero[]">
+                    <input class="form-control" type="number" id="numerof" name="numero[]" required>
+                    <div class="invalid-feedback">
+                 Obrigatório
+            </div>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="bairro">Bairro</label>
-                    <input type="text" class="form-control" id="bairrof" name="bairro[]">
+                    <input type="text" class="form-control" id="bairrof" name="bairro[]" required>
+                    <div class="invalid-feedback">
+                 Obrigatório
+            </div>
                 </div>
             </div>
             <div id="divCit" class="form-row">
                 <div class="form-group col-md-4">
                     <label for="cidade">Cidade</label>
-                    <input type="text" class="form-control" id="cidadef" name="cidade[]"  >
+                    <input type="text" class="form-control" id="cidadef" name="cidade[]" required>
+                    <div class="invalid-feedback">
+                 Obrigatório
+            </div>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="estado">Estado</label>
@@ -197,7 +227,10 @@ if($v == 1){
                 </div>
                 <div class="form-group col-md-4">
                     <label for="cep">CEP</label>
-                    <input type="text" class="form-control" id="cepf" name="cep[]"  placeholder="____-___">
+                    <input type="text" class="form-control" id="cepf" name="cep[]"  placeholder="____-___" required>
+                    <div class="invalid-feedback">
+                 Obrigatório
+            </div>
                 </div>
             </div>
             </div>
