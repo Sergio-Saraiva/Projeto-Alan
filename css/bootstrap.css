@@ -2022,6 +2022,8 @@ textarea.form-control {
   position: relative;
   display: block;
   padding-left: 1.25rem;
+  margin-left: 1.25em;
+  margin-top: -0.7em;
 }
 
 .form-check-input {

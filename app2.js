@@ -41,9 +41,11 @@ $(function(){
             });
             document.getElementById("resultado_psq_2").style.display = "block";
             document.getElementById("resultado_2").style.display = "none";
+            document.getElementById("alignpaginacao_2").style.display = "none";
         }else{
             document.getElementById("resultado_psq_2").style.display = "none";
             document.getElementById("resultado_2").style.display = "block";
+            document.getElementById("alignpaginacao_2").style.display = "block";
         }    
         
     });

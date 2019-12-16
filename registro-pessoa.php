@@ -3,7 +3,8 @@
     require_once 'classes/PessoaFisica.php';
     $pfisica = new pFisica();
     $lista = $pfisica->listar();
-    $v = $_GET['v'];
+    //$v = $_GET['v'];
+    $v = 0;
 
 ?>
 

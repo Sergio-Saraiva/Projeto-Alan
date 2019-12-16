@@ -2,7 +2,7 @@
 //Primeira parte Código de paginação
   $maximo = 5;
   //armazenamos o valor da pagina atual
-  $pagina = isset($_GET['pagina']) ? ($_GET['pagina']) : '1'; 
+  $pagina = isset($_GET['pagina_j']) ? ($_GET['pagina_j']) : '1'; 
   //subtraimos 1, porque os registros sempre começam do 0 (zero), como num array
   $inicio = $pagina - 1;
   //multiplicamos a quantidade de registros da pagina pelo valor da pagina atual 
@@ -40,7 +40,20 @@
               <span class="input-group-text" id="inputGroup-sizing-default"><i class="fa fa-search" aria-hidden="true"></i></span>
             </div>
           <input name="razao_psq" id="razao_psq" placeholder="Razão Social" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          
         </div>
+        
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+            <label class="form-check-label" for="exampleRadios1">
+              Razão Social &nbsp&nbsp&nbsp&nbsp
+            </label>
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+            <label class="form-check-label" for="exampleRadios2">
+              CNPJ
+            </label>
+          </div>
+          
       </div>
         
    
@@ -78,8 +91,9 @@
   <?php } ?>
 </div>
 
-<nav aria-label="...">
+
 <!----Aqui acrescenta-se o código dos botões de paginação---->
+<nav aria-label="...">
 <div id="alignpaginacao" name="alignpaginacao">
 <ul class="pagination justify-content-center">
        <?php
@@ -97,9 +111,9 @@
                 echo "<br/>"; 
                 //botao anterior
                 if($previous > 0){
-                    echo "<li class='page-item'><a class='page-link' href=".$_SERVER['PHP_SELF']."?pagina=$previous>Anterior</a></li>";
+                    echo "<li class='page-item'><a class='page-link' href=".$_SERVER['PHP_SELF']."?pagina_j=$previous>Anterior</a></li>";
                 } else{
-                    echo "<li class='page-item disabled'><a class='page-link' href=".$_SERVER['PHP_SELF']."?pagina=$previous>Anterior</a></li>";
+                    echo "<li class='page-item disabled'><a class='page-link' href=".$_SERVER['PHP_SELF']."?pagina_j=$previous>Anterior</a></li>";
                 }   
                    
                 
@@ -110,9 +124,9 @@
                             //senão adiciona os links para outra pagina
                             if($i != $pagina){
                                 if($i == $pgs){ //se for o final da pagina, coloca tres pontinhos
-                                    echo " <li class='page-item'><a class='page-link' href=".$_SERVER['PHP_SELF']."?pagina=".($i).">$i</a></li>"; 
+                                    echo " <li class='page-item'><a class='page-link' href=".$_SERVER['PHP_SELF']."?pagina_j=".($i).">$i</a></li>"; 
                                 }else{
-                                    echo "<li class='page-item'><a class='page-link' href=".$_SERVER['PHP_SELF']."?pagina=".($i).">$i</a></li>"; 
+                                    echo "<li class='page-item'><a class='page-link' href=".$_SERVER['PHP_SELF']."?pagina_j=".($i).">$i</a></li>"; 
                                 }
                             } else{
                                 if($i == $pgs){ //se for o final da pagina, coloca tres pontinhos
@@ -128,9 +142,9 @@
                    
                 //botao proximo
                 if($next <= $pgs){
-                    echo " <li class='page-item'><a class='page-link' href=".$_SERVER['PHP_SELF']."?pagina=$next>Próxima</a></li>";
+                    echo " <li class='page-item'><a class='page-link' href=".$_SERVER['PHP_SELF']."?pagina_j=$next>Próxima</a></li>";
                 }else{
-                    echo "<li class='page-item disabled'><a class='page-link' href=".$_SERVER['PHP_SELF']."?pagina=$next>Próxima</a></li>";
+                    echo "<li class='page-item disabled'><a class='page-link' href=".$_SERVER['PHP_SELF']."?pagina_j=$next>Próxima</a></li>";
                 }
                                
             }

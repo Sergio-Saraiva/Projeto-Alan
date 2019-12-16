@@ -11,7 +11,9 @@
     $resultado_pesquisa = $empresa->consultaPessoas($razao_psq);
 
     if(count($resultado_pesquisa)<=0 ){
+        echo "<p class='text-center'>";
         echo "Nenhum cadastro encontrado.";
+        echo "</p>";
         
     }else{
         foreach($resultado_pesquisa as $elemento){ 

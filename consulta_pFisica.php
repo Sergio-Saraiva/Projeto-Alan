@@ -1,10 +1,23 @@
+<?php
+//Primeira parte Código de paginação
+  $maximo = 2;
+  //armazenamos o valor da pagina atual
+  $pagina = isset($_GET['pagina']) ? ($_GET['pagina']) : '1'; 
+  //subtraimos 1, porque os registros sempre começam do 0 (zero), como num array
+  $inicio = $pagina - 1;
+  //multiplicamos a quantidade de registros da pagina pelo valor da pagina atual 
+  $inicio = $maximo * $inicio;
+
+?>
 <?php 
       require_once 'classes/PessoaFisica.php';
       //$v = $_GET['v'];
       $v = 0;
 
-      $empresas = new pFisica();
-      $lista = $empresas->listar();
+      $pFisica = new pFisica();
+      $lista = $pFisica->listarPessoasFisicas($inicio,$maximo);
+      $total = count($lista[2]);
+
 ?>
 
 
@@ -37,7 +50,7 @@
 </div>
 
 <div class="resultado_2" id ="resultado_2" style="display: block;">
-  <?php foreach($lista as $dados){ ?>
+  <?php foreach($lista[1] as $dados){ ?>
 
     <div class="card">
                 <h5 class="card-header"><i class="fa fa-address-card" aria-hidden="true"></i><?php echo " ".$dados['Nome'] ?></h5>
@@ -63,7 +76,74 @@
   <?php } ?>
 </div>
 
+<!----Aqui acrescenta-se o código dos botões de paginação---->
+<nav aria-label="...">
+<div id="alignpaginacao_2" name="alignpaginacao_2">
+<ul class="pagination justify-content-center">
+       <?php
+            //determina de quantos em quantos links serão adicionados e removidos
+            $max_links = 3;
+            //dados para os botões
+            $previous = $pagina - 1; 
+            $next = $pagina + 1; 
+            //usa uma funcção "ceil" para arrendondar o numero pra cima, ex 1,01 será 2
+            
+            $pgs = ceil($total / $maximo); 
+            
+            //se a tabela não for vazia, adiciona os botões
+            if($pgs > 1 ){   
+                echo "<br/>"; 
+                //botao anterior
+                if($previous > 0){
+                    echo "<li class='page-item'><a class='page-link' href=".$_SERVER['PHP_SELF']."?pagina=$previous&p=1>Anterior</a></li>";
+                } else{
+                    echo "<li class='page-item disabled'><a class='page-link' href=".$_SERVER['PHP_SELF']."?pagina=$previous&p=1>Anterior</a></li>";
+                }   
+                   
+                
+                    for($i=$pagina-$max_links; $i <= $pgs; $i++) {
+                        if ($i <= 0){
+                        //enquanto for negativo, não faz nada
+                        }else{
+                            //senão adiciona os links para outra pagina
+                            if($i != $pagina){
+                                if($i == $pgs){ //se for o final da pagina, coloca tres pontinhos
+                                    echo " <li class='page-item'><a class='page-link' href=".$_SERVER['PHP_SELF']."?pagina=".($i)."&p=1>$i</a></li>"; 
+                                }else{
+                                    echo "<li class='page-item'><a class='page-link' href=".$_SERVER['PHP_SELF']."?pagina=".($i)."&p=1>$i</a></li>"; 
+                                }
+                            } else{
+                                if($i == $pgs){ //se for o final da pagina, coloca tres pontinhos
+                                    echo "<li class='page-item active'><a class='page-link' href='#'><span> ".$i."</span></a></li>"; 
+                                }else{
+                                    echo "<li class='page-item active'><a class='page-link' href='#'><span> ".$i."</span></a></li>";
+                                }
+                            } 
+                        }
+                    }
+                       
+                
+                   
+                //botao proximo
+                if($next <= $pgs){
+                    echo " <li class='page-item'><a class='page-link' href=".$_SERVER['PHP_SELF']."?pagina=$next&p=1>Próxima</a></li>";
+                }else{
+                    echo "<li class='page-item disabled'><a class='page-link' href=".$_SERVER['PHP_SELF']."?pagina=$next&p=1>Próxima</a></li>";
+                }
+                               
+            }
+                           
+       ?>   
+</div>
+</ul>
+</nav>
+<!------ Fim do código de botões de paginação ------->
+
+
+
+
 
 <head>
       <script type ="text/javascript" src="app2.js"></script>
 </head>
+

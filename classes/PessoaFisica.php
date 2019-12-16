@@ -64,6 +64,8 @@
             $conexao->exec($query);
         }
 
+        //WG Edit
+
         public function consultaPessoasFisicas($razao){
             $conexao = Conexao::getConexao();
             
@@ -75,6 +77,23 @@
             return $resultado;
 
         }
+
+        public function listarPessoasFisicas($inicio,$maximo){
+            $conexao = Conexao::getConexao();
+
+            $query_juridica = "SELECT * FROM pessoa";
+            $lista_sql = $conexao->query($query_juridica);
+            $lista[2] = $lista_sql->fetchAll();
+
+            $query_juridica_2 = "SELECT * FROM pessoa ORDER BY idPessoa LIMIT $inicio,$maximo";
+            $lista_sql_2 = $conexao->query($query_juridica_2);
+            $lista[1] = $lista_sql_2->fetchAll();
+         
+
+            return $lista;
+        }
+
+
         
     }
 ?>
