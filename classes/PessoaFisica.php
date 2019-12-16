@@ -27,9 +27,14 @@
         public function novaPessoaFisica(){
             $conexao = Conexao::getConexao();
             //insere a pessoa fisica na tabela pessoa
-            $query = "INSERT INTO pessoa(Nome, cpf, dataDeNasc, sexo, email) VALUES ('".$this->nomepf."', '".$this->cpf."', '".$this->datanasc."', '".$this->sexo."','".$this->email."')";
-
-            $conexao->exec($query);
+            $query = "INSERT INTO pessoa(Nome, cpf, dataDeNasc, sexo, email) VALUES (:nomepf, :cpf, :datanasc, :sexo, :email)";
+            $stmt = $conexao->prepare($query);
+            $stmt->bindValue(":nomepf", $this->nomepf);
+            $stmt->bindValue(":cpf", $this->cpf);
+            $stmt->bindValue(":datanasc", $this->datanasc);
+            $stmt->bindValue(":sexo", $this->sexo);
+            $stmt->bindValue(":email", $this->email);
+            $stmt->execute();
 
             //pega id da pessoa inserida
             $query = "SELECT idPessoa FROM pessoa WHERE cpf='$this->cpf'";
@@ -40,28 +45,35 @@
             }
 
             //insere na tabela endereco
-            $query = "INSERT INTO endereco_pessoa(nome, logradouro, bairro, numero, cidade, estado, CEP, pessoa_idPessoa) VALUES";
-
             foreach ($this->endereco as $elemento) {
+                $query = "INSERT INTO endereco_pessoa(nome, logradouro, bairro, numero, cidade, estado, CEP, pessoa_idPessoa) VALUES(:nome, :logradouro, :bairro, :numero, :cidade, :estado, :cep, :id)";
+                $stmt = $conexao->prepare($query);
                 $nome = $elemento['nome'];
+                $stmt->bindValue(":nome", $nome);
                 $logradouro = $elemento['logradouro'];
+                $stmt->bindValue(":logradouro", $logradouro);
                 $bairro = $elemento['bairro'];
+                $stmt->bindValue(":bairro", $bairro);
                 $numero = $elemento['numero'];
+                $stmt->bindValue(":numero", $numero);
                 $cidade = $elemento['cidade'];
+                $stmt->bindValue(":cidade", $cidade);
                 $estado = $elemento['estado'];
+                $stmt->bindValue(":estado", $estado);
                 $cep = $elemento['cep'];
-                $query = $query."('".$nome."','".$logradouro."','".$bairro."','".$numero."','".$cidade."', '".$estado."', '".$cep."', '".$id."'),";
+                $stmt->bindValue(":cep", $cep);
+                $stmt->bindValue(":id", $id);
+                $stmt->execute();                
             }
-            $query = substr($query, 0, -1);
-            $conexao->exec($query);
 
             //insere na tabela telefone
-            $query = "INSERT INTO telefone_pessoa(telefone_pessoa, pessoa_idPessoa) VALUES";
             foreach($this->telefone as $tel){
-                $query = $query."('".$tel."', '".$id."'),";
+                $query = $query = "INSERT INTO telefone_pessoa(telefone_pessoa, pessoa_idPessoa) VALUES(:tel, :id)";
+                $stmt = $conexao->prepare($query);
+                $stmt->bindValue(":tel", $tel);
+                $stmt->bindValue(":id", $id);
+                $stmt->execute();
             }
-            $query = substr($query, 0, -1);
-            $conexao->exec($query);
         }
 
         //WG Edit

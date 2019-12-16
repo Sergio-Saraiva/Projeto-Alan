@@ -505,6 +505,20 @@ subenderecof.addEventListener("click", function () {
     ef  --;
 });
 
+var cont= 1;
+var addcontato = document.getElementById('addcontato');
+addcontato.addEventListener("click", function () {
+    cont++;
+    var div = document.createElement('div');
+    div.setAttribute('class', 'form-row');
+    div.setAttribute('id', 'divcont'+cont);
+
+    divResp = document.createElement('div');
+    divResp.setAttribute('class', 'form-group col-md-6');
+    labelResp = document.createElement('label');
+    label
+})
+
 // var addendereco = document.getElementById('addendereco');
 // addendereco.addEventListener("click", function () {
     
