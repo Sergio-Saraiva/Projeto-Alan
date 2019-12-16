@@ -1,7 +1,7 @@
 <?php 
     require_once 'Conexao.php';
 
-    class pFisica{
+    class PessoaFisica{
         public $nomepf;
         public $cpf;
         public $datanasc;

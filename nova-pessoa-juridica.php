@@ -1,4 +1,5 @@
 <?php 
+    require_once 'config.php';
     require_once 'classes/Empresa.php';
 
     $empresa = new Empresa();
@@ -6,7 +7,7 @@
     // if($_POST['dono']!=NULL){
         
     // }
-
+    try{
     $empresa->dono = $_POST['dono'];
 
     foreach($_POST['telefone'] as $elemento){
@@ -31,8 +32,12 @@
     $empresa->fantasia = $_POST['fantasia'];
     $empresa->email = $_POST['email'];
     
-    $empresa->novaEmpresa();
-    header("Location: consultar.php");
+        $empresa->novaEmpresa();
+        header("Location: consultar.php");
+    }catch(Exception $e){
+        Erro::tratarErro($e);
+    }
+    
 
     // if($empresa->cnpjEstaVazio() OR $empresa->razaoEstaVazio()){
     //     header("Location: registro.php?v=2");

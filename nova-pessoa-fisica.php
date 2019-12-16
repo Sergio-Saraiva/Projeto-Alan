@@ -1,7 +1,7 @@
 <?php
     require_once 'classes/PessoaFisica.php';
 
-    $pfisica = new pFisica();
+    $pfisica = new PessoaFisica();
 
     $pfisica->nomepf = $_POST['nomepf'];
     $pfisica->cpf = $_POST['cpf'];
