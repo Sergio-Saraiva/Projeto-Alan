@@ -509,14 +509,106 @@ var cont= 1;
 var addcontato = document.getElementById('addcontato');
 addcontato.addEventListener("click", function () {
     cont++;
+    var divCont = document.getElementById('divCont');
+    //começo criação dos campos responsavel
     var div = document.createElement('div');
     div.setAttribute('class', 'form-row');
-    div.setAttribute('id', 'divcont'+cont);
+    div.setAttribute('id', 'divResp'+cont);
 
     divResp = document.createElement('div');
     divResp.setAttribute('class', 'form-group col-md-6');
+
     labelResp = document.createElement('label');
-    label
+    labelResp.setAttribute('for', 'nomeResponsavel');
+    labelResp.innerHTML = 'Nome do Responsável '+cont;
+
+    inputResp = document.createElement('input');
+    inputResp.setAttribute('class', 'form-control');
+    inputResp.setAttribute('type', 'text');
+    inputResp.setAttribute('name', 'nomeResponsavel[]');
+    inputResp.setAttribute('id', 'nomeResponsavel');
+
+    divCont.appendChild(div);
+    div.appendChild(divResp);
+    divResp.appendChild(labelResp);
+    divResp.appendChild(inputResp);
+    //fim criação dos campos de responsavel
+
+
+    //inicio criação de campos do setor
+    divSetor = document.createElement('div');
+    divSetor.setAttribute('class', 'form-group  col-md-6');
+
+    labelSetor = document.createElement('label');
+    labelSetor.setAttribute('for', 'setor');
+    labelSetor.innerHTML = 'Setor';
+
+    inputSetor = document.createElement('input');
+    inputSetor.setAttribute('class', 'form-control');
+    inputSetor.setAttribute('type', 'text');
+    inputSetor.setAttribute('name', 'setor[]');
+    inputSetor.setAttribute('id', 'setor');
+
+    divCont.appendChild(div);
+    div.appendChild(divSetor);
+    divSetor.appendChild(labelSetor);
+    divSetor.appendChild(inputSetor);
+
+    //fim da criação de campos do setor
+
+    //inicio criação de campos de email
+    div1 = document.createElement('div');
+    div1.setAttribute('class', 'form-row');
+    div1.setAttribute('id', 'divRespCont'+cont);
+
+    divEmail = document.createElement('div');
+    divEmail.setAttribute('class', 'form-group  col-md-6');
+
+    labelEmail = document.createElement('label');
+    labelEmail.setAttribute('for', 'email');
+    labelEmail.innerHTML = 'E-mail';
+
+    inputEmail = document.createElement('input');
+    inputEmail.setAttribute('class', 'form-control');
+    inputEmail.setAttribute('type', 'text');
+    inputEmail.setAttribute('name', 'email[]');
+    inputEmail.setAttribute('id', 'email');
+
+    divCont.appendChild(div1);
+    div1.appendChild(divEmail);
+    divEmail.appendChild(labelEmail);
+    divEmail.appendChild(inputEmail);
+    //fim da criação de campo de email
+
+    //inicio criação campos de telefone
+    divTel = document.createElement('div');
+    divTel.setAttribute('class', 'form-group  col-md-6');
+
+    labelTel = document.createElement('label');
+    labelTel.setAttribute('for', 'telefone');
+    labelTel.innerHTML = 'Telefone';
+
+    inputTel = document.createElement('input');
+    inputTel.setAttribute('class', 'form-control');
+    inputTel.setAttribute('type', 'text');
+    inputTel.setAttribute('name', 'telefone[]');
+    inputTel.setAttribute('id', 'telefone');
+
+    divCont.appendChild(div1);
+    div1.appendChild(divTel);
+    divTel.appendChild(labelTel);
+    divTel.appendChild(inputTel);
+    //fim criação de campos de telefone;
+});
+
+var subcontato = document.getElementById('subcontato');
+subcontato.addEventListener("click", function () {
+    var div = document.getElementById('divResp'+cont);
+    var div1 = document.getElementById('divRespCont'+cont);
+    
+    div.parentNode.removeChild(div);
+    div1.parentNode.removeChild(div1);
+    cont--;
 })
 
 // var addendereco = document.getElementById('addendereco');

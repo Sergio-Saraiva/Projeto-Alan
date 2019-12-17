@@ -126,31 +126,33 @@ if($v == 1){
             </div>
             <h1>Contato</h1>
             <i id="addcontato" class="far fa-plus-square"></i><i id="subcontato" class=" far fa-minus-square"></i>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="nomeResponsavel">Nome do Responsável</label>
-                    <input class="form-control" type="text" name="nomeResponsavel" id="nomeResponsavel">
+            <div id="divCont">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="nomeResponsavel">Nome do Responsável</label>
+                        <input class="form-control" type="text" name="nomeResponsavel[]" id="nomeResponsavel">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="setor">Setor</label>
+                        <input class="form-control" type="text" name="setor[]" id="setor">
+                    </div>
                 </div>
+                <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="setor">Setor</label>
-                    <input class="form-control" type="text" name="setor" id="setor">
-                </div>
-            </div>
-            <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="email">E-Mail</label>
-                <input id="email" name="email" type="email" class="form-control" required>
-                <div class="invalid-feedback">
-                    Obrigatório
-                </div>
-            </div>
-                <div class="form-group col-md-6">
-                    <label for="telefone">Telefone</label><i id="addtelefone" class="far fa-plus-square"></i><i id="subtelefone" class=" far fa-minus-square"></i>
-                    <input class="form-control phone_with_ddd" type="text" id="telefone" name="telefone"  placeholder="(__) ____-____" required>
+                    <label for="email">E-Mail</label>
+                    <input id="email" name="email[]" type="email" class="form-control" required>
                     <div class="invalid-feedback">
                         Obrigatório
                     </div>
                 </div>
+                    <div class="form-group col-md-6">
+                        <label for="telefone">Telefone</label><i id="addtelefonecont" class="far fa-plus-square"></i><i id="subtelefonecont" class=" far fa-minus-square"></i>
+                        <input class="form-control phone_with_ddd" type="text" id="telefone" name="telefone[]"  placeholder="(__) ____-____" required>
+                        <div class="invalid-feedback">
+                            Obrigatório
+                        </div>
+                    </div>
+            </div>
         </div>
         <button type="submit" class="btn btn-primary">Registrar</button>
     </form>
