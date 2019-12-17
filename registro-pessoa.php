@@ -49,15 +49,19 @@ if($v == 1){
             </div>
         </div>
         <div id='divT' class="form-row">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-6" id="divEmailJ">
                 <label for="email">E-Mail</label>
+                <i class="far fa-plus-square" onclick="addEmail()"></i>
+                <i class="far fa-minus-square" onclick="subEmail()"></i>
                 <input id="email" name="email" type="email" class="form-control" required>
                 <div class="invalid-feedback">
                     Obrigatório
                 </div>
             </div>
                 <div class="form-group col-md-6">
-                    <label for="telefone">Telefone</label><i id="addtelefone" class="far fa-plus-square"></i><i id="subtelefone" class=" far fa-minus-square"></i>
+                    <label for="telefone">Telefone</label>
+                    <i id="addtelefone" class="far fa-plus-square"></i>
+                    <i id="subtelefone" class=" far fa-minus-square"></i>
                     <input class="form-control phone_with_ddd" type="text" id="telefone" name="telefone"  placeholder="(__) ____-____" required>
                     <div class="invalid-feedback">
                  Obrigatório
@@ -139,15 +143,15 @@ if($v == 1){
                 </div>
                 <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="email">E-Mail</label>
-                    <input id="email" name="email[]" type="email" class="form-control" required>
+                    <label for="emailcont">E-Mail</label>
+                    <input id="emailcont" name="email[]" type="email" class="form-control" required>
                     <div class="invalid-feedback">
                         Obrigatório
                     </div>
                 </div>
-                    <div class="form-group col-md-6">
-                        <label for="telefone">Telefone</label><i id="addtelefonecont" class="far fa-plus-square"></i><i id="subtelefonecont" class=" far fa-minus-square"></i>
-                        <input class="form-control phone_with_ddd" type="text" id="telefone" name="telefone[]"  placeholder="(__) ____-____" required>
+                    <div class="form-group col-md-6" id="divContTel">
+                        <label for="telefonecont">Telefone</label><i id="addtelefonecont" class="far fa-plus-square"></i><i id="subtelefonecont" class=" far fa-minus-square"></i>
+                        <input class="form-control phone_with_ddd" type="text" id="telefonecont" name="telefone[]"  placeholder="(__) ____-____" required>
                         <div class="invalid-feedback">
                             Obrigatório
                         </div>

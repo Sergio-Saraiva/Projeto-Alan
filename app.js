@@ -504,7 +504,9 @@ subenderecof.addEventListener("click", function () {
     div3.parentNode.removeChild(div3);
     ef  --;
 });
+//--------------------------------------------------------------
 
+//funções para adicionar e remover contato de responsaveis
 var cont= 1;
 var addcontato = document.getElementById('addcontato');
 addcontato.addEventListener("click", function () {
@@ -519,14 +521,14 @@ addcontato.addEventListener("click", function () {
     divResp.setAttribute('class', 'form-group col-md-6');
 
     labelResp = document.createElement('label');
-    labelResp.setAttribute('for', 'nomeResponsavel');
+    labelResp.setAttribute('for', 'nomeResponsavel'+cont);
     labelResp.innerHTML = 'Nome do Responsável '+cont;
 
     inputResp = document.createElement('input');
     inputResp.setAttribute('class', 'form-control');
     inputResp.setAttribute('type', 'text');
     inputResp.setAttribute('name', 'nomeResponsavel[]');
-    inputResp.setAttribute('id', 'nomeResponsavel');
+    inputResp.setAttribute('id', 'nomeResponsavel'+cont);
 
     divCont.appendChild(div);
     div.appendChild(divResp);
@@ -540,14 +542,14 @@ addcontato.addEventListener("click", function () {
     divSetor.setAttribute('class', 'form-group  col-md-6');
 
     labelSetor = document.createElement('label');
-    labelSetor.setAttribute('for', 'setor');
+    labelSetor.setAttribute('for', 'setor'+cont);
     labelSetor.innerHTML = 'Setor';
 
     inputSetor = document.createElement('input');
     inputSetor.setAttribute('class', 'form-control');
     inputSetor.setAttribute('type', 'text');
     inputSetor.setAttribute('name', 'setor[]');
-    inputSetor.setAttribute('id', 'setor');
+    inputSetor.setAttribute('id', 'setor'+cont);
 
     divCont.appendChild(div);
     div.appendChild(divSetor);
@@ -565,14 +567,14 @@ addcontato.addEventListener("click", function () {
     divEmail.setAttribute('class', 'form-group  col-md-6');
 
     labelEmail = document.createElement('label');
-    labelEmail.setAttribute('for', 'email');
+    labelEmail.setAttribute('for', 'emailcont'+cont);
     labelEmail.innerHTML = 'E-mail';
 
     inputEmail = document.createElement('input');
     inputEmail.setAttribute('class', 'form-control');
     inputEmail.setAttribute('type', 'text');
     inputEmail.setAttribute('name', 'email[]');
-    inputEmail.setAttribute('id', 'email');
+    inputEmail.setAttribute('id', 'emailcont'+cont);
 
     divCont.appendChild(div1);
     div1.appendChild(divEmail);
@@ -583,22 +585,35 @@ addcontato.addEventListener("click", function () {
     //inicio criação campos de telefone
     divTel = document.createElement('div');
     divTel.setAttribute('class', 'form-group  col-md-6');
+    divTel.setAttribute('id',  'divTel'+cont)
 
     labelTel = document.createElement('label');
-    labelTel.setAttribute('for', 'telefone');
+    labelTel.setAttribute('for', 'telefonecont'+cont);
     labelTel.innerHTML = 'Telefone';
 
     inputTel = document.createElement('input');
     inputTel.setAttribute('class', 'form-control');
     inputTel.setAttribute('type', 'text');
     inputTel.setAttribute('name', 'telefone[]');
-    inputTel.setAttribute('id', 'telefone');
+    inputTel.setAttribute('id', 'telefonecont'+cont);
+
+    var i = document.createElement('i');
+    i.setAttribute('class', 'far fa-plus-square');
+    i.setAttribute('id', 'addtelefonecont'+cont);
+    i.setAttribute('onclick', 'addTelefone('+cont+')');
+
+    var i1 = document.createElement('i');
+    i1.setAttribute('class', 'far fa-minus-square');
+    i1.setAttribute('id', 'subtelefonecont'+cont);
+    i1.setAttribute('onclick', 'subTelefone('+cont+')');
 
     divCont.appendChild(div1);
     div1.appendChild(divTel);
     divTel.appendChild(labelTel);
+    divTel.appendChild(i);
+    divTel.appendChild(i1);
     divTel.appendChild(inputTel);
-    //fim criação de campos de telefone;
+    //fim criação de campos de telefone
 });
 
 var subcontato = document.getElementById('subcontato');
@@ -609,11 +624,101 @@ subcontato.addEventListener("click", function () {
     div.parentNode.removeChild(div);
     div1.parentNode.removeChild(div1);
     cont--;
-})
-
-// var addendereco = document.getElementById('addendereco');
-// addendereco.addEventListener("click", function () {
-    
-// })
+});
+//--------------------------------------------------------------
 
 
+//funções de adicionar mais campos de telefone para o contato
+var telCont = 1;
+var addtelefonecont = document.getElementById('addtelefonecont');
+addtelefonecont.addEventListener("click", function () {
+    telCont++;
+    var divContTel = document.getElementById('divContTel');
+
+    var label = document.createElement('label');
+    label.setAttribute('for', 'telefone');
+    label.setAttribute('id', 'labelTelefoneCont'+telCont);
+    label.innerHTML = 'Telefone';
+
+    var input = document.createElement('input');
+    input.setAttribute('class', 'form-control');
+    input.setAttribute('type', 'text');
+    input.setAttribute('name', 'telefone[]');
+    input.setAttribute('id', 'inputTelefoneCont'+telCont);
+
+    divContTel.appendChild(label);
+    divContTel.appendChild(input);
+});
+
+var subtelefonecont = document.getElementById('subtelefonecont');
+subtelefonecont.addEventListener("click", function () {
+    var elemento = document.getElementById('labelTelefoneCont'+telCont);
+    var elemento1 = document.getElementById('inputTelefoneCont'+telCont);
+    elemento.parentNode.removeChild(elemento);
+    elemento1.parentNode.removeChild(elemento1);
+    telCont--;
+});
+//--------------------------------------------------------------
+
+
+//funcções de adicionar mais campos de email para a empresa
+var qtd =0;
+function addEmail() {
+    var divEmailJ = document.getElementById('divEmailJ');
+    var label = document.createElement('label');
+    label.setAttribute('for', 'email');
+    label.innerHTML = "E-Mail"
+    var input = document.createElement('input');
+    input.setAttribute('class', 'form-control');
+    input.setAttribute('type', 'email');
+    input.setAttribute('name', 'email[]');
+    input.setAttribute('id', 'email');
+
+    divEmailJ.appendChild(label);
+    divEmailJ.appendChild(input);
+    qtd = qtd+1;
+}
+
+function subEmail() {
+    var divEmailJ = document.getElementById('divEmailJ');
+    if(qtd !=0){
+        divEmailJ.lastChild.remove();
+        divEmailJ.lastChild.remove();
+    qtd--;
+    }else{
+        window.alert("Deve conter pelo menos um email");
+    }
+}
+//-----------------------------------------------------------
+
+//funções para adicionar e remover campos de cada contato de cada responsável
+function addTelefone(atual) {
+    var divContTel = document.getElementById('divTel'+atual);
+
+    var divNovoTelefoneContato = document.createElement('div');
+    divNovoTelefoneContato.setAttribute('class', 'form-group ');
+    divNovoTelefoneContato.setAttribute('id', 'divNovoTelefoneContato'+atual);
+
+    var label = document.createElement('label');
+    label.setAttribute('for', 'telefone');
+    label.setAttribute('id', 'labelTelefoneCont'+atual);
+    label.innerHTML = 'Telefone';
+
+    var input = document.createElement('input');
+    input.setAttribute('class', 'form-control');
+    input.setAttribute('type', 'text');
+    input.setAttribute('name', 'telefone[]');
+    input.setAttribute('id', 'inputTelefoneCont'+atual);
+
+    divContTel.appendChild(divNovoTelefoneContato);
+    divNovoTelefoneContato.appendChild(label);
+    divNovoTelefoneContato.appendChild(input);
+    console.log(atual);
+
+}
+
+function subTelefone(atual) {
+    elemento = document.getElementById('divNovoTelefoneContato'+atual);
+    elemento.remove();
+}
+//---------------------------------------------------------------
