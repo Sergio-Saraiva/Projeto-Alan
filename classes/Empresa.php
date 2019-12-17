@@ -23,6 +23,7 @@
 
         public function novaEmpresa(){
             $conexao = Conexao::getConexao();
+            
             //insere empresa na tabela juridica
             $query = "INSERT INTO juridica(cnpj, razao, fantasia, email) VALUES (:cnpj, :razao, :fantasia, :email)";
             $stmt = $conexao->prepare($query);
@@ -31,8 +32,7 @@
             $stmt->bindValue(":fantasia", $this->fantasia);
             $stmt->bindValue(":email", $this->email);
             $stmt->execute();
-            // echo "query juridica ". $query ."<br>";
-            // var_dump($stmt);
+
             //pega id da empresa inserida
             $query = "SELECT id_juridica FROM juridica WHERE cnpj='$this->cnpj'";
             $id_sql = $conexao->query($query);
@@ -40,9 +40,9 @@
             foreach ($idV as $elemento) {
                 $id = $elemento['id_juridica'];
             }
+
+
             //inserir na tabela endereco e telefone
-            
-            // $query = "INSERT INTO endereco_juridica(nome, logradouro, bairro, numero, cidade, estado, CEP, juridica_id_juridica) VALUES";
             foreach ($this->endereco as $elemento) {
                 $query = "INSERT INTO endereco_juridica(nome, logradouro, bairro, numero, cidade, estado, CEP, juridica_id_juridica) VALUES(:nome, :logradouro, :bairro, :numero, :cidade, :estado, :cep, :id)";
                 $stmt = $conexao->prepare($query);
@@ -64,12 +64,6 @@
                 $stmt->execute();                
             }
 
-            // $query = substr($query, 0, -1);
-            // echo "query endereco: ". $query ."<br>";
-            // var_dump($stmt);
-            // $stmt->execute();
-
-
             // $query = "INSERT INTO telefone_juridica(telefone_juridica, juridica_id_juridica) VALUES";
             foreach($this->telefone as $tel){
                 $query = $query = "INSERT INTO telefone_juridica(telefone_juridica, juridica_id_juridica) VALUES(:tel, :id)";
@@ -78,10 +72,6 @@
                 $stmt->bindValue(":id", $id);
                 $stmt->execute();
             }
-            // $query = substr($query, 0, -1);
-            // echo "query telefone: ". $query ."<br>";
-            // var_dump($stmt);
-            // $stmt->execute();
 
         }
 

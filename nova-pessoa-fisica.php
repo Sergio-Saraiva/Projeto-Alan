@@ -26,7 +26,6 @@
         $tam++;
     }
 
-    var_dump($pfisica);
 
     $pfisica->novaPessoaFisica();
     header("Location: consultar.php");

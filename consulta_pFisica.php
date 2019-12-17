@@ -10,7 +10,7 @@
 
 ?>
 <?php 
-      require_once 'classes/PessoaFisica.php';
+      require_once 'config.php';
       //$v = $_GET['v'];
       $v = 0;
 

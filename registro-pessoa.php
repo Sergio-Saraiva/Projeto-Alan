@@ -1,8 +1,6 @@
 ﻿<?php
     include 'cabecalho.php';
     require_once 'config.php';
-    $pfisica = new PessoaFisica();
-    $lista = $pfisica->listar();
     //$v = $_GET['v'];
     $v = 0;
 
@@ -28,6 +26,7 @@ if($v == 1){
         <button id="botao-fisica" type="button" class="btn btn-secondary">Pessoa Física</button>
 </div>
     <form id="pessoa-juridica" method="POST" class="needs-validation" action="nova-pessoa-juridica.php" novalidate>
+    <h1>Dados da Empresa</h1>
         <div class="form-group">
             <label for="cnpj">CNPJ</label>
             <input id="cnpj" name="cnpj" type="text" class="form-control" placeholder="XX.XXX.XXX/XXXX-XX" required>
@@ -103,8 +102,8 @@ if($v == 1){
                     <label for="cidade">Cidade</label>
                     <input type="text" class="form-control" id="cidade" name="cidade[]" required>
                     <div class="invalid-feedback">
-                 Obrigatório
-            </div>
+                         Obrigatório
+                    </div>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="estado">Estado</label>
@@ -120,11 +119,39 @@ if($v == 1){
                     <label for="cep">CEP</label>
                     <input type="text" class="form-control" id="cep" name="cep[]"  placeholder="____-___" required>
                     <div class="invalid-feedback">
-                 Obrigatório
-            </div>
+                        Obrigatório
+                    </div>
                 </div>
             </div>
             </div>
+            <h1>Contato</h1>
+            <i id="addcontato" class="far fa-plus-square"></i><i id="subcontato" class=" far fa-minus-square"></i>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="nomeResponsavel">Nome do Responsável</label>
+                    <input class="form-control" type="text" name="nomeResponsavel" id="nomeResponsavel">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="setor">Setor</label>
+                    <input class="form-control" type="text" name="setor" id="setor">
+                </div>
+            </div>
+            <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="email">E-Mail</label>
+                <input id="email" name="email" type="email" class="form-control" required>
+                <div class="invalid-feedback">
+                    Obrigatório
+                </div>
+            </div>
+                <div class="form-group col-md-6">
+                    <label for="telefone">Telefone</label><i id="addtelefone" class="far fa-plus-square"></i><i id="subtelefone" class=" far fa-minus-square"></i>
+                    <input class="form-control phone_with_ddd" type="text" id="telefone" name="telefone"  placeholder="(__) ____-____" required>
+                    <div class="invalid-feedback">
+                        Obrigatório
+                    </div>
+                </div>
+        </div>
         <button type="submit" class="btn btn-primary">Registrar</button>
     </form>
 
@@ -229,11 +256,11 @@ if($v == 1){
                     <label for="cep">CEP</label>
                     <input type="text" class="form-control" id="cepf" name="cep[]"  placeholder="____-___" required>
                     <div class="invalid-feedback">
-                 Obrigatório
-            </div>
+                        Obrigatório
+                    </div>
                 </div>
             </div>
-            </div>
+        </div>
         <button type="submit" class="btn btn-primary">Registrar</button>
     </form>
 
