@@ -43,13 +43,13 @@
           
         </div>
         
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-            <label class="form-check-label" for="exampleRadios1">
+        <div class="form-check-wg">
+            <input class="form-check-input" type="radio" name="tipoDeBusca" id="buscarnarazao" value="razao" checked>
+            <label class="form-check-label" for="buscarnarazao">
               Razão Social &nbsp&nbsp&nbsp&nbsp
             </label>
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-            <label class="form-check-label" for="exampleRadios2">
+            <input class="form-check-input" type="radio" name="tipoDeBusca" id="buscarnocnpj" value="cnpj">
+            <label class="form-check-label" for="buscarnocnpj">
               CNPJ
             </label>
           </div>
@@ -98,7 +98,7 @@
 <ul class="pagination justify-content-center">
        <?php
             //determina de quantos em quantos links serão adicionados e removidos
-            $max_links = 3;
+            $max_links = 4;
             //dados para os botões
             $previous = $pagina - 1; 
             $next = $pagina + 1; 
@@ -115,9 +115,16 @@
                 } else{
                     echo "<li class='page-item disabled'><a class='page-link' href=".$_SERVER['PHP_SELF']."?pagina_j=$previous>Anterior</a></li>";
                 }   
-                   
+                   //$pgs;
+
+                   ///Verificando se já chegou nas últimas paginas
+                   if($pagina >= $pgs - $max_links){
+                     $aupg = $pgs;
+                   }else{
+                    $aupg = $pagina+$max_links;
+                   }
                 
-                    for($i=$pagina-$max_links; $i <= $pgs; $i++) {
+                    for($i=$pagina-$max_links; $i <= $aupg; $i++) {
                         if ($i <= 0){
                         //enquanto for negativo, não faz nada
                         }else{

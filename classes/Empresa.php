@@ -180,9 +180,9 @@
         }
 
 
-        public function consultaPessoasJuridicas($razao){
+        public function consultaPessoasJuridicas($razao,$tBusca){
             $conexao = Conexao::getConexao();
-            $sql = "SELECT * FROM juridica WHERE razao LIKE '%$razao%'";
+            $sql = "SELECT * FROM juridica WHERE $tBusca LIKE '%$razao%'";
             $resultado_sql = $conexao->query($sql);
 
             $resultado = $resultado_sql->fetchAll();

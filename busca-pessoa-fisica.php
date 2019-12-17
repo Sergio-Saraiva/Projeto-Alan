@@ -6,7 +6,7 @@
     $nome_psq = $_POST['palavra'];
     
 
-    $pFisica = new pFisica();
+    $pFisica = new PessoaFisica();
     $resultado_pesquisa = $pFisica->consultaPessoasFisicas($nome_psq);
 
     if(count($resultado_pesquisa)<=0 ){

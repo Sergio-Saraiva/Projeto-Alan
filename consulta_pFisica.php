@@ -1,6 +1,6 @@
 <?php
 //Primeira parte Código de paginação
-  $maximo = 2;
+  $maximo = 5;
   //armazenamos o valor da pagina atual
   $pagina = isset($_GET['pagina']) ? ($_GET['pagina']) : '1'; 
   //subtraimos 1, porque os registros sempre começam do 0 (zero), como num array
@@ -14,7 +14,7 @@
       //$v = $_GET['v'];
       $v = 0;
 
-      $pFisica = new pFisica();
+      $pFisica = new PessoaFisica();
       $lista = $pFisica->listarPessoasFisicas($inicio,$maximo);
       $total = count($lista[2]);
 
@@ -82,7 +82,7 @@
 <ul class="pagination justify-content-center">
        <?php
             //determina de quantos em quantos links serão adicionados e removidos
-            $max_links = 3;
+            $max_links = 4;
             //dados para os botões
             $previous = $pagina - 1; 
             $next = $pagina + 1; 
@@ -100,8 +100,14 @@
                     echo "<li class='page-item disabled'><a class='page-link' href=".$_SERVER['PHP_SELF']."?pagina=$previous&p=1>Anterior</a></li>";
                 }   
                    
+                    ///Verificando se já chegou nas últimas paginas
+                    if($pagina >= $pgs - $max_links){
+                        $aupg = $pgs;
+                    }else{
+                    $aupg = $pagina+$max_links;
+                    }
                 
-                    for($i=$pagina-$max_links; $i <= $pgs; $i++) {
+                    for($i=$pagina-$max_links; $i <= $aupg; $i++) {
                         if ($i <= 0){
                         //enquanto for negativo, não faz nada
                         }else{

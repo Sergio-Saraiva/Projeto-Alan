@@ -3,12 +3,14 @@
 
     //recuperando o valor da palavra
     
+    
     $razao_psq = $_POST['palavra'];
+    $tBusca = $_POST['tipodebusca'];
     
 
     $empresa = new Empresa();
 
-    $resultado_pesquisa = $empresa->consultaPessoasJuridicas($razao_psq);
+    $resultado_pesquisa = $empresa->consultaPessoasJuridicas($razao_psq,$tBusca);
 
     if(count($resultado_pesquisa)<=0 ){
         echo "<p class='text-center'>";
