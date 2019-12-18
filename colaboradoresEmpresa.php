@@ -3,7 +3,7 @@
     include 'cabecalho.php';
     include_once('classes/Empresa.php') ;
 
-    $id = $_GET['id'];
+    $id = $_POST['id'];
 
     $empresa = new Empresa();
 

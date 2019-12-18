@@ -1,8 +1,8 @@
 <?php
     include 'cabecalho.php';
-    include_once('classes/Empresa.php') ;
+    include_once('config.php') ;
 
-    $id = $_GET['id'];
+    $id = $_POST['id'];
 
     $empresa = new Empresa();
 
@@ -10,7 +10,13 @@
 
 ?>
 
-<h1 align="center">Informações Gerais Sobre a Empresa</h1>
+<div class="text-center">
+    <h1 align="center">Informações Gerais Sobre a Empresa</h1>
+    <a href="#">
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar 
+    </a>
+    
+</div>
 <hr>    
 
 <?php foreach($lista[1] as $registro)
@@ -23,6 +29,7 @@
         <b class="h6">NOME FANTASIA:</b> <?php echo $registro['fantasia'] ?></br>
         <b class="h6">RAZÃO SOCIAL:</b> <?php echo $registro['razao'] ?></br>
          <b class="h6">CNPJ:</b> <?php echo $registro['cnpj'] ?></br>
+         <b class="h6">E-Mail:</b> <?php echo $registro['email'] ?></br>
 
          <b class="h6">TELEFONES:</b> <?php foreach($lista[2] as $listatelefonica){ echo $listatelefonica['telefone_juridica']." / "; } ?></br>
          </br>

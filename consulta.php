@@ -25,7 +25,15 @@
 <head>
       <script type ="text/javascript" src="app2.js"></script>
 </head>
-
+<!---alerta-->
+<div class="alert alert-warning" role="alert" id="alerta" style="display:none; text-align:center">
+  Aguarde
+  </br>
+  <div class="spinner-grow text-warning" role="status">
+      <span class="sr-only">Loading...</span>
+  </div>
+</div>
+<!----Fim de alerta--->
 
 <div class="container">
   <div class="row no-gutters justify-content-center">
@@ -81,9 +89,21 @@
         -->
       </p>
       <div class="btn-group">
-        <a href="projetos.php?id=<?php echo $elemento['id_juridica'] ?>" class="btn btn-primary">Serviços</a>
-        <a href="colaboradoresEmpresa.php?id=<?php echo $elemento['id_juridica'] ?>"  class="btn btn-secondary">Sócios</a>
-        <a href="maisInformacoesEmpresa.php?id=<?php echo $elemento['id_juridica'] ?>" class="btn btn-info">Informações</a>
+        <form method="post" action="servicos.php" id="submeterServicos">
+            <a href="#" onClick="document.getElementById('submeterServicos').submit();aguardar();" class="btn btn-primary">Serviços</a>
+            <input type="hidden" name="id" id="id" value="<?php print $elemento['id_juridica'] ?>" />
+        </form>
+        &nbsp
+        <form method="post" action="colaboradoresEmpresa.php" id="submeterColaborador">
+            <a href="#" onClick="document.getElementById('submeterColaborador').submit();aguardar();" class="btn btn-secondary">Contatos</a>
+            <input type="hidden" name="id" id="id" value="<?php print $elemento['id_juridica'] ?>" />
+        </form>
+        &nbsp
+        <form method="post" action="maisInformacoesEmpresa.php" id="submeterInfo">
+            <a href="#" onClick="document.getElementById('submeterInfo').submit();aguardar();" class="btn btn-info">Informações</a>
+            <input type="hidden" name="id" id="id" value="<?php print $elemento['id_juridica'] ?>" />
+        </form>
+
       </div>
     </div>
   </div>

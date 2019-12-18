@@ -82,6 +82,9 @@ $(function(){
                     $('#razao_psq').attr('placeholder','CNPJ');
                     $("#razao_psq").mask("99.999.999/9999-99");
                 }
+                if(c1==10){
+                    c1 = 2;
+                }
                 c1=c1+1;
                 c2=0;
             }
@@ -94,6 +97,9 @@ $(function(){
                       $("#razao_psq").mask("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
                       $("#razao_psq").unmask();
                 }
+                if(c2==10){
+                    c2 = 2;
+                }
                 c2=c2+1;
                 c1=0;
              }
@@ -101,8 +107,12 @@ $(function(){
 
         }, 500 );
 
-        
           //Fim de verificação    
 
-      
+   
 });
+
+function aguardar(){
+    document.getElementById("alerta").style.display = "block";
+}
+   
