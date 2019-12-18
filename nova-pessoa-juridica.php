@@ -7,12 +7,42 @@
     // if($_POST['dono']!=NULL){
         
     // }
-    try{
-    $empresa->dono = $_POST['dono'];
+    // try{
 
     foreach($_POST['telefone'] as $elemento){
         $empresa->telefone[] = $elemento;
     }
+
+    foreach($_POST['email'] as $elemento){
+        $empresa->email[] = $elemento;
+    }
+
+    $qtdResp =  $_POST['qtdResp'];
+    // echo $qtdResp;
+    echo sizeof($_POST['emailcont'][1]);
+
+    for($i = 1; $i<=$qtdResp; $i++){
+        $nomeResp = $_POST['nomeResponsavel'][$i-1];
+        $setor = $_POST['setor'][$i-1];
+        $empresa->contato[$i-1] = array('nomeResp' => $nomeResp, 'setor' => $setor);
+        for ($c = 0; $c<= sizeof($_POST['emailcont'][$i]); $c++) {
+            $emailResp = $_POST['emailcont'][$i][$c];
+            $telefoneResp = $_POST['telefonecont'][$i][$c];
+            $empresa->contato[$i-1] += array('emailResp' => $emailResp, 'telefoneResp' => $telefoneResp);
+        }
+    }
+
+    $tam = 0;
+    $i = 0;
+
+    echo $_POST['emailcont'][1][2];
+
+    // foreach ($_POST['nomeResponsavel'] as $nomeResponsavel) {
+    //     $nomeResp = $nomeResponsavel;
+    //     $setor = $_POST['setor'][$tam];
+    //     $tam++;
+        
+    // }
     
     $tam = 0;
     foreach ($_POST['nome'] as $nomepost) {
@@ -31,12 +61,14 @@
     $empresa->razao = $_POST['razao'];
     $empresa->fantasia = $_POST['fantasia'];
     $empresa->email = $_POST['email'];
+
+    var_dump($empresa);
     
-        $empresa->novaEmpresa();
-        header("Location: consultar.php");
-    }catch(Exception $e){
-        Erro::tratarErro($e);
-    }
+        // $empresa->novaEmpresa();
+        // header("Location: consultar.php");
+    // }catch(Exception $e){
+        // Erro::tratarErro($e);
+    // }
     
 
     // if($empresa->cnpjEstaVazio() OR $empresa->razaoEstaVazio()){

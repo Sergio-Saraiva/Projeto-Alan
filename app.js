@@ -511,6 +511,10 @@ var cont= 1;
 var addcontato = document.getElementById('addcontato');
 addcontato.addEventListener("click", function () {
     cont++;
+
+    var inputHidden = document.getElementById('qtdResp');
+    inputHidden.setAttribute('value', cont);
+
     var divCont = document.getElementById('divCont');
     //começo criação dos campos responsavel
     var div = document.createElement('div');
@@ -565,6 +569,7 @@ addcontato.addEventListener("click", function () {
 
     divEmail = document.createElement('div');
     divEmail.setAttribute('class', 'form-group  col-md-6');
+    divEmail.setAttribute('id', 'divEmailC'+cont);
 
     labelEmail = document.createElement('label');
     labelEmail.setAttribute('for', 'emailcont'+cont);
@@ -573,12 +578,24 @@ addcontato.addEventListener("click", function () {
     inputEmail = document.createElement('input');
     inputEmail.setAttribute('class', 'form-control');
     inputEmail.setAttribute('type', 'text');
-    inputEmail.setAttribute('name', 'email[]');
+    inputEmail.setAttribute('name', 'emailcont['+cont+'][]');
     inputEmail.setAttribute('id', 'emailcont'+cont);
+
+    var iE = document.createElement('i');
+    iE.setAttribute('class', 'far fa-plus-square');
+    iE.setAttribute('id', 'addEmailC'+cont);
+    iE.setAttribute('onclick', 'addEmailC('+cont+')');
+
+    var iE1 = document.createElement('i');
+    iE1.setAttribute('class', 'far fa-minus-square');
+    iE1.setAttribute('id', 'subEmailC'+cont);
+    iE1.setAttribute('onclick', 'subEmailC('+cont+')');
 
     divCont.appendChild(div1);
     div1.appendChild(divEmail);
     divEmail.appendChild(labelEmail);
+    divEmail.appendChild(iE);
+    divEmail.appendChild(iE1);
     divEmail.appendChild(inputEmail);
     //fim da criação de campo de email
 
@@ -594,7 +611,7 @@ addcontato.addEventListener("click", function () {
     inputTel = document.createElement('input');
     inputTel.setAttribute('class', 'form-control');
     inputTel.setAttribute('type', 'text');
-    inputTel.setAttribute('name', 'telefone[]');
+    inputTel.setAttribute('name', 'telefonecont[]');
     inputTel.setAttribute('id', 'telefonecont'+cont);
 
     var i = document.createElement('i');
@@ -636,14 +653,14 @@ addtelefonecont.addEventListener("click", function () {
     var divContTel = document.getElementById('divContTel');
 
     var label = document.createElement('label');
-    label.setAttribute('for', 'telefone');
+    label.setAttribute('for', 'inputTelefoneCont'+telCont);
     label.setAttribute('id', 'labelTelefoneCont'+telCont);
     label.innerHTML = 'Telefone';
 
     var input = document.createElement('input');
     input.setAttribute('class', 'form-control');
     input.setAttribute('type', 'text');
-    input.setAttribute('name', 'telefone[]');
+    input.setAttribute('name', 'telefonecont[]');
     input.setAttribute('id', 'inputTelefoneCont'+telCont);
 
     divContTel.appendChild(label);
@@ -663,7 +680,7 @@ subtelefonecont.addEventListener("click", function () {
 
 //funcções de adicionar mais campos de email para a empresa
 var qtd =0;
-function addEmail() {
+function addEmailJ() {
     var divEmailJ = document.getElementById('divEmailJ');
     var label = document.createElement('label');
     label.setAttribute('for', 'email');
@@ -679,7 +696,7 @@ function addEmail() {
     qtd = qtd+1;
 }
 
-function subEmail() {
+function subEmailJ() {
     var divEmailJ = document.getElementById('divEmailJ');
     if(qtd !=0){
         divEmailJ.lastChild.remove();
@@ -693,28 +710,27 @@ function subEmail() {
 
 //funções para adicionar e remover campos de cada contato de cada responsável
 function addTelefone(atual) {
+    
     var divContTel = document.getElementById('divTel'+atual);
 
     var divNovoTelefoneContato = document.createElement('div');
     divNovoTelefoneContato.setAttribute('class', 'form-group ');
     divNovoTelefoneContato.setAttribute('id', 'divNovoTelefoneContato'+atual);
-
+    
     var label = document.createElement('label');
-    label.setAttribute('for', 'telefone');
+    label.setAttribute('for', 'inputTelefoneCont'+atual);
     label.setAttribute('id', 'labelTelefoneCont'+atual);
     label.innerHTML = 'Telefone';
 
     var input = document.createElement('input');
     input.setAttribute('class', 'form-control');
     input.setAttribute('type', 'text');
-    input.setAttribute('name', 'telefone[]');
+    input.setAttribute('name', 'telefonecont[]');
     input.setAttribute('id', 'inputTelefoneCont'+atual);
 
     divContTel.appendChild(divNovoTelefoneContato);
     divNovoTelefoneContato.appendChild(label);
     divNovoTelefoneContato.appendChild(input);
-    console.log(atual);
-
 }
 
 function subTelefone(atual) {
@@ -722,3 +738,44 @@ function subTelefone(atual) {
     elemento.remove();
 }
 //---------------------------------------------------------------
+
+//funções para adicionar e remover campos de email de cada contato responsável
+function addEmailC(atual) {
+    if(atual == 1){
+        atual = '';
+    }
+    var divEmailC = document.getElementById('divEmailC'+atual);
+
+    var divNovoEmailContato = document.createElement('div');
+    divNovoEmailContato.setAttribute('class', 'form-group');
+    divNovoEmailContato.setAttribute('id', 'divNovoEmailContato'+atual);
+
+    if(atual == ''){
+        atual = 1;
+    }
+
+    var label = document.createElement('label');
+    label.setAttribute('for', 'inputEmailCont'+atual);
+    label.setAttribute('id', 'labelEmailCont'+atual);
+    label.innerHTML = 'Email';
+
+    var input = document.createElement('input');
+    input.setAttribute('class', 'form-control');
+    input.setAttribute('type', 'email');
+    input.setAttribute('name', 'emailcont['+atual+'][]');
+    input.setAttribute('id', 'inputEmailCont'+atual);
+
+    divEmailC.appendChild(divNovoEmailContato);
+    divNovoEmailContato.appendChild(label);
+    divNovoEmailContato.appendChild(input);
+}
+
+function subEmailC(atual) {
+    if(atual==1){
+        atual = '';
+    }
+    elemento = document.getElementById('divNovoEmailContato'+atual);
+    elemento.remove();
+}
+//-----------------------------------------------------------------
+

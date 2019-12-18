@@ -7,7 +7,7 @@
         public $fantasia;
         public $email;
         public $endereco;
-        public $dono;
+        public $contato;
         
         public function listar(){
             $conexao = Conexao::getConexao();
