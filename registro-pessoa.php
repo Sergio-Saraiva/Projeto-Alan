@@ -51,8 +51,8 @@ if($v == 1){
         <div id='divT' class="form-row">
             <div class="form-group col-md-6" id="divEmailJ">
                 <label for="email">E-Mail</label>
-                <i class="far fa-plus-square" onclick="addEmail()"></i>
-                <i class="far fa-minus-square" onclick="subEmail()"></i>
+                <i class="far fa-plus-square" onclick="addEmailJ()"></i>
+                <i class="far fa-minus-square" onclick="subEmailJ()"></i>
                 <input id="email" name="email" type="email" class="form-control" required>
                 <div class="invalid-feedback">
                     Obrigatório
@@ -142,8 +142,9 @@ if($v == 1){
                     </div>
                 </div>
                 <div class="form-row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-6" id="divEmailC">
                     <label for="emailcont">E-Mail</label>
+                    <i id="addcontato" class="far fa-plus-square" onclick="addEmailC('')"></i><i id="subcontato" class="far fa-minus-square" onclick="subEmailC('')"></i>
                     <input id="emailcont" name="email[]" type="email" class="form-control" required>
                     <div class="invalid-feedback">
                         Obrigatório

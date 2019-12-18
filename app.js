@@ -565,6 +565,7 @@ addcontato.addEventListener("click", function () {
 
     divEmail = document.createElement('div');
     divEmail.setAttribute('class', 'form-group  col-md-6');
+    divEmail.setAttribute('id', 'divEmailC'+cont);
 
     labelEmail = document.createElement('label');
     labelEmail.setAttribute('for', 'emailcont'+cont);
@@ -576,9 +577,21 @@ addcontato.addEventListener("click", function () {
     inputEmail.setAttribute('name', 'email[]');
     inputEmail.setAttribute('id', 'emailcont'+cont);
 
+    var iE = document.createElement('i');
+    iE.setAttribute('class', 'far fa-plus-square');
+    iE.setAttribute('id', 'addEmailC'+cont);
+    iE.setAttribute('onclick', 'addEmailC('+cont+')');
+
+    var iE1 = document.createElement('i');
+    iE1.setAttribute('class', 'far fa-minus-square');
+    iE1.setAttribute('id', 'subEmailC'+cont);
+    iE1.setAttribute('onclick', 'subEmailC('+cont+')');
+
     divCont.appendChild(div1);
     div1.appendChild(divEmail);
     divEmail.appendChild(labelEmail);
+    divEmail.appendChild(iE);
+    divEmail.appendChild(iE1);
     divEmail.appendChild(inputEmail);
     //fim da criação de campo de email
 
@@ -663,7 +676,7 @@ subtelefonecont.addEventListener("click", function () {
 
 //funcções de adicionar mais campos de email para a empresa
 var qtd =0;
-function addEmail() {
+function addEmailJ() {
     var divEmailJ = document.getElementById('divEmailJ');
     var label = document.createElement('label');
     label.setAttribute('for', 'email');
@@ -679,7 +692,7 @@ function addEmail() {
     qtd = qtd+1;
 }
 
-function subEmail() {
+function subEmailJ() {
     var divEmailJ = document.getElementById('divEmailJ');
     if(qtd !=0){
         divEmailJ.lastChild.remove();
@@ -713,8 +726,6 @@ function addTelefone(atual) {
     divContTel.appendChild(divNovoTelefoneContato);
     divNovoTelefoneContato.appendChild(label);
     divNovoTelefoneContato.appendChild(input);
-    console.log(atual);
-
 }
 
 function subTelefone(atual) {
@@ -722,3 +733,31 @@ function subTelefone(atual) {
     elemento.remove();
 }
 //---------------------------------------------------------------
+
+function addEmailC(atual) {
+    var divEmailC = document.getElementById('divEmailC'+atual);
+
+    var divNovoEmailContato = document.createElement('div');
+    divNovoEmailContato.setAttribute('class', 'form-group');
+    divNovoEmailContato.setAttribute('id', 'divNovoEmailContato'+atual);
+
+    var label = document.createElement('label');
+    label.setAttribute('for', 'inputEmailCont'+atual);
+    label.setAttribute('id', 'labelEmailCont'+atual);
+    label.innerHTML = 'Email';
+
+    var input = document.createElement('input');
+    input.setAttribute('class', 'form-control');
+    input.setAttribute('type', 'email');
+    input.setAttribute('name', 'email[]');
+    input.setAttribute('id', 'inputEmailCont'+atual);
+
+    divEmailC.appendChild(divNovoEmailContato);
+    divNovoEmailContato.appendChild(label);
+    divNovoEmailContato.appendChild(input);
+}
+
+function subEmailC(atual) {
+    elemento = document.getElementById('divNovoEmailContato'+atual);
+    elemento.remove();
+}
