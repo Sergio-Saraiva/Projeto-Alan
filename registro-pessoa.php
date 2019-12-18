@@ -53,7 +53,7 @@ if($v == 1){
                 <label for="email">E-Mail</label>
                 <i class="far fa-plus-square" onclick="addEmailJ()"></i>
                 <i class="far fa-minus-square" onclick="subEmailJ()"></i>
-                <input id="email" name="email" type="email" class="form-control" required>
+                <input id="email" name="email[]" type="email" class="form-control" required>
                 <div class="invalid-feedback">
                     Obrigatório
                 </div>
@@ -135,6 +135,7 @@ if($v == 1){
                     <div class="form-group col-md-6">
                         <label for="nomeResponsavel">Nome do Responsável</label>
                         <input class="form-control" type="text" name="nomeResponsavel[]" id="nomeResponsavel">
+                        <input type="hidden" name="qtdResp" id="qtdResp" value="1">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="setor">Setor</label>
@@ -144,15 +145,15 @@ if($v == 1){
                 <div class="form-row">
                 <div class="form-group col-md-6" id="divEmailC">
                     <label for="emailcont">E-Mail</label>
-                    <i id="addcontato" class="far fa-plus-square" onclick="addEmailC('')"></i><i id="subcontato" class="far fa-minus-square" onclick="subEmailC('')"></i>
-                    <input id="emailcont" name="email[]" type="email" class="form-control" required>
+                    <i id="addEmailContato" class="far fa-plus-square" onclick="addEmailC(1)"></i><i id="subEmailContato" class="far fa-minus-square" onclick="subEmailC(1)"></i>
+                    <input id="emailcont" name="emailcont[1][]" type="email" class="form-control" required>
                     <div class="invalid-feedback">
                         Obrigatório
                     </div>
                 </div>
                     <div class="form-group col-md-6" id="divContTel">
                         <label for="telefonecont">Telefone</label><i id="addtelefonecont" class="far fa-plus-square"></i><i id="subtelefonecont" class=" far fa-minus-square"></i>
-                        <input class="form-control phone_with_ddd" type="text" id="telefonecont" name="telefone[]"  placeholder="(__) ____-____" required>
+                        <input class="form-control phone_with_ddd" type="number" id="telefonecont" name="telefonecont[]"  placeholder="(__) ____-____" required>
                         <div class="invalid-feedback">
                             Obrigatório
                         </div>
