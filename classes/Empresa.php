@@ -75,6 +75,67 @@
 
         }
 
+        //função para selecionar id da empresa por cnpj
+         public function selecionaEmpresaIdPorCnpj($cnpj){
+            $query = "SELECT id_juridica FROM juridica WHERE cnpj='$cnpj'";
+            $id_sql = $conexao->query($query);
+            $idV = $id_sql->fetchAll();
+            foreach ($idV as $elemento) {
+                return $id = $elemento['id_juridica'];
+            }
+        }
+
+        //adiciona o responsavel de acordo com a empresa 
+        public function adicionaRespContato($idEmpresa, $i){
+            $conexao = Conexao::getConexao();
+            $responsavel = $this->contato[$i]['nomeResp'];
+            $setor = $this->contato[$i]['setor'];
+            $query = "INSERT INTO contato_juridica(nomeResp, setor, juridica_id_juridica) VALUES (:responsavel, :setor, :idEmpresa)";
+            $stmt = $conexao->prepare($query);
+            $stmt->bindValue(":responsavel", $responsavel);
+            $stmt->bindValue(":setor", $setor);
+            $stmt->bindValue(":idEmpresa", $idEmpresa);
+            $stmt->execute();
+        }
+
+        //seleciona id do contato de acordo com o nome do responsavel
+        public function selecionaIdRespContato($responsavel){
+            $conexao = Conexao::getConexao();
+            $query = "SELECT idcontato_juridica FROM contato_juridica WHERE nomeResp='$responsavel'";
+                $id_sql = $conexao->query($query);
+                $idV = $id_sql->fetchAll();
+                foreach ($idV as $elemento) {
+                    return $id = $elemento['idcontato_juridica'];
+                }
+        }
+
+
+        //adiciona email do contato de acordo com o id do responsavel
+        public function adicionaEmailContato($idContato, $c, $i){
+            $conexao = Conexao::getConexao();
+            for ($aux=0; $aux < $c; $aux++) { 
+                $emailResp =  $this->contato[$i]['emailResp'.$aux];
+                $query = "INSERT INTO email_contato_juridica(email, contato_idcontato) VALUES (:emailResp, :idResponsavel)";
+                $stmt = $conexao->prepare($query);
+                $stmt->bindValue(":emailResp", $emailResp);
+                $stmt->bindValue(":idResponsavel", $idContato);
+                $stmt->execute();
+            }
+        }
+
+        //adiciona telefone do contato de acordo com o id do responsavel
+        public function adicionaTelefoneContato($idContato, $c, $i){
+            $conexao = Conexao::getConexao();
+            for ($aux=0; $aux < $c; $aux++) { 
+                $telefoneResp =  $this->contato[$i]['telefoneResp'.$aux];
+                $query = "INSERT INTO telefone_contato_juridica(telefone_contato_juridica, contato_idcontato) VALUES (:telefoneResp, :idResponsavel)";
+                $stmt = $conexao->prepare($query);
+                $stmt->bindValue(":telefoneResp", $telefoneResp);
+                $stmt->bindValue(":idResponsavel", $idContato);
+                $stmt->execute();
+            }
+        }
+
         public function validaCnpj(){
             $conexao = Conexao::getConexao();
 

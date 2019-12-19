@@ -611,7 +611,7 @@ addcontato.addEventListener("click", function () {
     inputTel = document.createElement('input');
     inputTel.setAttribute('class', 'form-control');
     inputTel.setAttribute('type', 'text');
-    inputTel.setAttribute('name', 'telefonecont[]');
+    inputTel.setAttribute('name', 'telefonecont['+cont+'][]');
     inputTel.setAttribute('id', 'telefonecont'+cont);
 
     var i = document.createElement('i');
@@ -643,40 +643,6 @@ subcontato.addEventListener("click", function () {
     cont--;
 });
 //--------------------------------------------------------------
-
-
-//funções de adicionar mais campos de telefone para o contato
-var telCont = 1;
-var addtelefonecont = document.getElementById('addtelefonecont');
-addtelefonecont.addEventListener("click", function () {
-    telCont++;
-    var divContTel = document.getElementById('divContTel');
-
-    var label = document.createElement('label');
-    label.setAttribute('for', 'inputTelefoneCont'+telCont);
-    label.setAttribute('id', 'labelTelefoneCont'+telCont);
-    label.innerHTML = 'Telefone';
-
-    var input = document.createElement('input');
-    input.setAttribute('class', 'form-control');
-    input.setAttribute('type', 'text');
-    input.setAttribute('name', 'telefonecont[]');
-    input.setAttribute('id', 'inputTelefoneCont'+telCont);
-
-    divContTel.appendChild(label);
-    divContTel.appendChild(input);
-});
-
-var subtelefonecont = document.getElementById('subtelefonecont');
-subtelefonecont.addEventListener("click", function () {
-    var elemento = document.getElementById('labelTelefoneCont'+telCont);
-    var elemento1 = document.getElementById('inputTelefoneCont'+telCont);
-    elemento.parentNode.removeChild(elemento);
-    elemento1.parentNode.removeChild(elemento1);
-    telCont--;
-});
-//--------------------------------------------------------------
-
 
 //funcções de adicionar mais campos de email para a empresa
 var qtd =0;
@@ -710,12 +676,22 @@ function subEmailJ() {
 
 //funções para adicionar e remover campos de cada contato de cada responsável
 function addTelefone(atual) {
-    
+    if(atual ==1){
+        atual = '';
+    }
+
     var divContTel = document.getElementById('divTel'+atual);
 
     var divNovoTelefoneContato = document.createElement('div');
     divNovoTelefoneContato.setAttribute('class', 'form-group ');
     divNovoTelefoneContato.setAttribute('id', 'divNovoTelefoneContato'+atual);
+
+    if(atual == ''){
+        atual = 1;
+    }
+
+    console.log(divNovoTelefoneContato);
+    console.log(divContTel);
     
     var label = document.createElement('label');
     label.setAttribute('for', 'inputTelefoneCont'+atual);
@@ -725,7 +701,7 @@ function addTelefone(atual) {
     var input = document.createElement('input');
     input.setAttribute('class', 'form-control');
     input.setAttribute('type', 'text');
-    input.setAttribute('name', 'telefonecont[]');
+    input.setAttribute('name', 'telefonecont['+atual+'][]');
     input.setAttribute('id', 'inputTelefoneCont'+atual);
 
     divContTel.appendChild(divNovoTelefoneContato);
@@ -734,6 +710,9 @@ function addTelefone(atual) {
 }
 
 function subTelefone(atual) {
+    if(atual==1){
+        atual = '';
+    }
     elemento = document.getElementById('divNovoTelefoneContato'+atual);
     elemento.remove();
 }
