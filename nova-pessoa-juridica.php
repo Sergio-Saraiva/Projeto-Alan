@@ -3,11 +3,7 @@
     require_once 'classes/Empresa.php';
 
     $empresa = new Empresa();
-
-    // if($_POST['dono']!=NULL){
-        
-    // }
-    // try{
+    try{
 
     foreach($_POST['telefone'] as $elemento){
         $empresa->telefone[] = $elemento;
@@ -16,18 +12,6 @@
     foreach($_POST['email'] as $elemento){
         $empresa->email[] = $elemento;
     }
-
-    $tam = 0;
-    $i = 0;
-
-    // echo $_POST['emailcont'][1][2];
-
-    // foreach ($_POST['nomeResponsavel'] as $nomeResponsavel) {
-    //     $nomeResp = $nomeResponsavel;
-    //     $setor = $_POST['setor'][$tam];
-    //     $tam++;
-        
-    // }
     
     $tam = 0;
     foreach ($_POST['nome'] as $nomepost) {
@@ -48,8 +32,6 @@
     $empresa->email = $_POST['email'];
 
     $qtdResp =  $_POST['qtdResp'];
-    // echo $qtdResp;
-    // echo sizeof($_POST['emailcont'][1]);
 
     $empresa->novaEmpresa();
     $idEmpresa = $empresa->selecionaEmpresaIdPorCnpj($_POST['cnpj']);
@@ -74,15 +56,10 @@
         $empresa->adicionaTelefoneContato($idResp, sizeof($_POST['telefonecont'][$i]), $i);
     }
     var_dump($empresa);
-    
-
-    
-    
-        
-        // header("Location: consultar.php");
-    // }catch(Exception $e){
-        // Erro::tratarErro($e);
-    // }
+    header("Location: consultar.php");
+    }catch(Exception $e){
+        Erro::tratarErro($e);
+    }
     
 
     // if($empresa->cnpjEstaVazio() OR $empresa->razaoEstaVazio()){
