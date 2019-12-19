@@ -151,9 +151,9 @@ if($v == 1){
                         Obrigatório
                     </div>
                 </div>
-                    <div class="form-group col-md-6" id="divContTel">
-                        <label for="telefonecont">Telefone</label><i id="addtelefonecont" class="far fa-plus-square"></i><i id="subtelefonecont" class=" far fa-minus-square"></i>
-                        <input class="form-control phone_with_ddd" type="number" id="telefonecont" name="telefonecont[]"  placeholder="(__) ____-____" required>
+                    <div class="form-group col-md-6" id="divTel">
+                        <label for="telefonecont">Telefone</label><i onclick="addTelefone(1)" id="addtelefonecont" class="far fa-plus-square"></i><i onclick="subTelefone(1)" id="subtelefonecont" class=" far fa-minus-square"></i>
+                        <input class="form-control phone_with_ddd" type="number" id="telefonecont" name="telefonecont[1][]"  placeholder="(__) ____-____" required>
                         <div class="invalid-feedback">
                             Obrigatório
                         </div>
