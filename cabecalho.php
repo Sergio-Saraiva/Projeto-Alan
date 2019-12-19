@@ -1,3 +1,6 @@
+<?php
+include 'verificarSessao.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,10 +25,11 @@
             <img class="logo" src="img\logo.png" href="index.php">
             <div class="" >
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link active" href="index.php">Home</a>
+                    <a class="nav-item nav-link " href="home.php">Home</a>
                     <a class="nav-item nav-link " href="registro-pessoa.php">Registrar</a>
                     <a class="nav-item nav-link " href="consultar.php">Consultar</a>
                     <a class="nav-item nav-link " href="registro-projeto.php">Registrar Projeto</a>
+                    <a class="nav-item nav-link " href="logout.php">Sair</a>
                 </div>
             </div>
         </nav>

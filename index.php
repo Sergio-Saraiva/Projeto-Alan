@@ -1,42 +1,76 @@
-<?php include('cabecalho.php');
-?>
-      <h1 class="display-3">Bem Vindo!</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla blandit lobortis nibh sed semper. Fusce eu ante tincidunt, iaculis justo a, venenatis nibh. Nulla facilisi. Phasellus vitae massa vitae sem convallis hendrerit at in odio. Phasellus quis mollis ex, a pulvinar ante. Phasellus posuere erat in leo commodo, eget volutpat.</p>
-    </div>
-  </div>
-  <div class="container marketing">
-
-    <!-- Three columns of text below the carousel -->
-    <div class="row " align="center">
-      <div class="col-lg-4">
-        <img src="img/telecom.png" class="bd-placeholder-img rounded-circle" width="140" height="140" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
-        
-        <h2>Telecom</h2>
-        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-        
-      </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-        <img src="img/radio.png" class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
-        <h2>Radio</h2>
-        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-        
-      </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-        <img src="img/consultoria.png" class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
-        <h2>Heading</h2>
-        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        
-      </div><!-- /.col-lg-4 -->
-    </div><!-- /.row -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="fontawesome/css/all.css">
+    <style type="text/css">
+    body {background: #ffffff;}
+    </style>
     
-  <footer>
-    <nav class="navbar fixed-bottom navbar-light bg-light">
-        <a class="navbar-brand" href="#">Alan Araujo - 2018 &copy</>
-    </nav>
-</footer>
+    
+    <title>Sistema de Login - Alan Araujo</title>
+</head>
+<body>
+    <br>
+    <br>
+    <div id="main" class="d-flex justify-content-center" >
 
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="app.js"></script>
+    <div class="card bg-light mb-6" style="max-width: 22rem;">
+        <div class="card-header">Sistema de Login</div>
+            <div class="card-body">
+                <div class="d-flex justify-content-center">
+                    <img src="imgs/icone_alan_eng.png" height="40rem" width="40rem" />
+                </div>
+            
+                <!-- Alerta-->
+                <?php
+                    if(isset($_GET['erro']) and $_GET['erro']==1){
+                        echo '</br>';
+                        echo "<div class='alert alert-warning' role='alert' style='font-size: 0.9rem; text-align:center;'>";
+                        echo "E-mail e/ou senha não conferem, verifique as informações e tente novamente.";
+                        echo "</div>";
+                    }
+                    if(isset($_GET['erro']) and $_GET['erro']==2){
+                        echo '</br>';
+                        echo "<div class='alert alert-danger' role='alert' style='font-size: 0.9rem; text-align:center;'>";
+                        echo "Página restrita, efetue login para ter acesso.";
+                        echo "</div>";
+                    }
+                    if(isset($_GET['erro']) and $_GET['erro']==3){
+                        echo '</br>';
+                        echo "<div class='alert alert-success' role='alert' style='font-size: 0.9rem; text-align:center;'>";
+                        echo "Sessão finalizada com sucesso.";
+                        echo "</div>";
+                    }
+                ?>
+                <!--- Fim de alerta--->
+            <form action="validacao.php" method="post">
+            <div class="form-group">
+                <label for="txtUsuario">Login</label>
+                <input type="email" name="email" class="form-control" id="txtUsuario" aria-describedby="usuarioHelp" placeholder="E-mail" required autofocus>
+                <small id="usuarioHelp" class="form-text text-muted">Jamais forneça seus dados pessoais a terceiros.</small>
+            </div>
+            <div class="form-group">
+                <label for="txtSenha">Senha</label>
+                <input type="password" name="senha" class="form-control" id="txtSenha" placeholder="Senha" required> 
+            </div>
+            <div class="form-check" style=" text-align: center;">
+                <input type="checkbox" class="form-check-input" id="manterCon">
+                <label class="form-check-label" for="manterCon">Manter-se conectado</label>
+            </div>
+            <p style="font-size:0.9rem; text-align:center;"><label><a href="#" >Solicitar cadastro</a></label></p>
+            <hr />
+            <button type="submit" class="btn btn-primary">Entrar</button>
+            </form>
+            
+
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
-

@@ -27,11 +27,25 @@
                         echo "<b clas='h6'>CNPJ:</b> ".$elemento['cnpj']."</br>";
                         echo "<b clas='h6'>E-MAIL:</b> ".$elemento['email']."</br>";
                         echo "</p>";
-                    echo "<div class='btn-group'>";
-                    echo "<a href='projetos.php?id=".$elemento['id_juridica']."' class='btn btn-primary'>Serviços</a>";
-                    echo "<a href='colaboradoresEmpresa.php?id=".$elemento['id_juridica']."' class='btn btn-secondary' style='text-color:white;'>Sócios</a>"; 
-                    echo "<a href='maisInformacoesEmpresa.php?id=".$elemento['id_juridica']."' class='btn btn-info'>Informações</a>";
-                    echo "</div>";
+                    ?>
+                    <div class="btn-group">
+                        <form method="post" action="servicos.php" id="submeterServicos">
+                            <a href="#" onClick="document.getElementById('submeterServicos').submit();aguardar();" class="btn btn-primary">Serviços</a>
+                            <input type="hidden" name="id" id="id" value="<?php print $elemento['id_juridica'] ?>" />
+                        </form>
+                        &nbsp
+                        <form method="post" action="colaboradoresEmpresa.php" id="submeterColaborador">
+                            <a href="#" onClick="document.getElementById('submeterColaborador').submit();aguardar();" class="btn btn-secondary">Contatos</a>
+                            <input type="hidden" name="id" id="id" value="<?php print $elemento['id_juridica'] ?>" />
+                        </form>
+                        &nbsp
+                        <form method="post" action="maisInformacoesEmpresa.php" id="submeterInfo">
+                            <a href="#" onClick="document.getElementById('submeterInfo').submit();aguardar();" class="btn btn-info">Informações</a>
+                            <input type="hidden" name="id" id="id" value="<?php print $elemento['id_juridica'] ?>" />
+                        </form>
+
+                    </div>
+                    <?php
                 echo "</div>";
             echo "</div>";
             echo "</br>";
