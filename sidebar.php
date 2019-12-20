@@ -1,43 +1,58 @@
-<head>
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+<head>
+
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/simple-sidebar.css" rel="stylesheet">
+
 </head>
 
-<div class="d-flex" id="wrapper">
+  
+  <div class="float-left" style="position: relative;" >
+  <div class="d-flex" id="wrapper" style="position:absolute; ">
+    <!-- Sidebar -->
+    <div class="bg-sidebar border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading" style="text-align:right"> <img src="img\logo.png" href="home.php" width="135rem" height="30rem" ></div>
+      <div class="list-group list-group-flush">
+        <a href="home.php" class="list-group-item list-group-item-action bg-primary">Home</a>
+        <a href="registro-pessoa.php" class="list-group-item list-group-item-action bg-primary">Registro</a>
+        <a href="consultar.php" class="list-group-item list-group-item-action bg-primary">Consultar</a>
+        <a href="logout.php" class="list-group-item list-group-item-action bg-primary">sair</a>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
 
-<!-- Sidebar -->
-<div class="bg-light border-right" id="sidebar-wrapper">
-  <div class="sidebar-heading">Start Bootstrap </div>
-  <div class="list-group list-group-flush">
-    <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-    <a href="#" class="list-group-item list-group-item-action bg-light">Shortcuts</a>
-    <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
-    <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
-    <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-    <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
+    <!-- Page Content -->
+    <div id="page-content-wrapper" style="position:fixed;">
+        <button class="btn btn-primary" id="menu-toggle"><i class='fa fa-arrow-left' aria-hidden='true'></i></br>Recolher</button>
+    </div>
+    <!-- /#page-content-wrapper -->
+
   </div>
-</div>
-<!-- /#sidebar-wrapper -->
+  </div>
+  <!-- /#wrapper -->
 
-<!-- Page Content -->
-<div id="page-content-wrapper">
-    <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
-</div>
-<!-- /#page-content-wrapper -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="jquery/jquery.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
 
-</div>
-
-<!-- Bootstrap core JavaScript -->
-<script src="jquery.min.js"></script>
-<script src="js/bootstrap.bundle.min.js"></script>
-
- <!-- Menu Toggle Script -->
- <script>
+  <!-- Menu Toggle Script -->
+  <script>
     $("#menu-toggle").click(function(e) {
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
+
+      if($("#wrapper").hasClass("toggled")){
+        $('#menu-toggle').html("<i class='fa fa-bars' aria-hidden='true'></i></br>Menu");
+      }else{
+        $('#menu-toggle').html("<i class='fa fa-arrow-left' aria-hidden='true'></i></br>Recolher");
+      }
+      
     });
   </script>
+
+
+

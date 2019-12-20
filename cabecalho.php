@@ -1,6 +1,8 @@
 <?php
 include 'verificarSessao.php';
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,8 +21,11 @@ include 'verificarSessao.php';
     
     <title>Alan Araujo</title>
 </head>
-<body>
-    <header>
+<?php include 'sidebar.php'; ?>
+
+<body style="z-index: 1 !important;">
+<!--
+<header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
             <img class="logo" src="img\logo.png" href="index.php">
             <div class="" >
@@ -34,6 +39,9 @@ include 'verificarSessao.php';
             </div>
         </nav>
     </header>
+    -->
     <br>
     <br>
     <div id="main" class="container">
+        
+    

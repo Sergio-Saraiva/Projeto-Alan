@@ -89,19 +89,19 @@
         -->
       </p>
       <div class="btn-group">
-        <form method="post" action="servicos.php" id="submeterServicos">
-            <a href="#" onClick="document.getElementById('submeterServicos').submit();aguardar();" class="btn btn-primary">Serviços</a>
-            <input type="hidden" name="id" id="id" value="<?php print $elemento['id_juridica'] ?>" />
+        <form method="post" action="servicos.php" id="submeterServicos<?php echo $elemento['id_juridica']?>">
+            <a href="#" onClick="document.getElementById('submeterServicos<?php echo $elemento['id_juridica']?>').submit();aguardar();" class="btn btn-primary">Serviços</a>
+            <input type="hidden" name="id" id="id" value="<?php echo $elemento['id_juridica'] ?>" />
         </form>
         &nbsp
-        <form method="post" action="colaboradoresEmpresa.php" id="submeterColaborador">
-            <a href="#" onClick="document.getElementById('submeterColaborador').submit();aguardar();" class="btn btn-secondary">Contatos</a>
-            <input type="hidden" name="id" id="id" value="<?php print $elemento['id_juridica'] ?>" />
+        <form method="post" action="colaboradoresEmpresa.php" id="submeterColaborador<?php echo $elemento['id_juridica']?>">
+            <a href="#" onClick="document.getElementById('submeterColaborador<?php echo $elemento['id_juridica']?>').submit();aguardar();" class="btn btn-secondary">Contatos</a>
+            <input type="hidden" name="id" id="id" value="<?php echo $elemento['id_juridica'] ?>" />
         </form>
         &nbsp
-        <form method="post" action="maisInformacoesEmpresa.php" id="submeterInfo">
-            <a href="#" onClick="document.getElementById('submeterInfo').submit();aguardar();" class="btn btn-info">Informações</a>
-            <input type="hidden" name="id" id="id" value="<?php print $elemento['id_juridica'] ?>" />
+        <form method="post" action="maisInformacoesEmpresa.php" id="submeterInfo<?php echo $elemento['id_juridica']?>">
+            <a href="#" onClick="document.getElementById('submeterInfo<?php echo $elemento['id_juridica']?>').submit();aguardar();" class="btn btn-info">Informações</a>
+            <input type="hidden" name="id" id="id" value="<?php echo $elemento['id_juridica'] ?>" />
         </form>
 
       </div>
