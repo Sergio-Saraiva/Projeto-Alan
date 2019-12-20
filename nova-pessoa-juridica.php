@@ -29,12 +29,11 @@
     $empresa->cnpj = $_POST['cnpj'];
     $empresa->razao = $_POST['razao'];
     $empresa->fantasia = $_POST['fantasia'];
-    $empresa->email = $_POST['email'];
 
     $qtdResp =  $_POST['qtdResp'];
 
     $empresa->novaEmpresa();
-    $idEmpresa = $empresa->selecionaEmpresaIdPorCnpj($_POST['cnpj']);
+    $idEmpresa = $empresa->selecionaEmpresaIdPorCnpj($empresa->cnpj);
 
 
 
@@ -55,7 +54,6 @@
         $empresa->adicionaEmailContato($idResp, sizeof($_POST['emailcont'][$i]), $i);
         $empresa->adicionaTelefoneContato($idResp, sizeof($_POST['telefonecont'][$i]), $i);
     }
-    var_dump($empresa);
     header("Location: consultar.php");
     }catch(Exception $e){
         Erro::tratarErro($e);

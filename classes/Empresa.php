@@ -25,12 +25,11 @@
             $conexao = Conexao::getConexao();
             
             //insere empresa na tabela juridica
-            $query = "INSERT INTO juridica(cnpj, razao, fantasia, email) VALUES (:cnpj, :razao, :fantasia, :email)";
+            $query = "INSERT INTO juridica(cnpj, razao, fantasia) VALUES (:cnpj, :razao, :fantasia)";
             $stmt = $conexao->prepare($query);
             $stmt->bindValue(":cnpj", $this->cnpj);
             $stmt->bindValue(":razao", $this->razao);
             $stmt->bindValue(":fantasia", $this->fantasia);
-            $stmt->bindValue(":email", $this->email);
             $stmt->execute();
 
             //pega id da empresa inserida
@@ -73,12 +72,21 @@
                 $stmt->execute();
             }
 
+            foreach($this->email as $email){
+                $query = $query = "INSERT INTO email_juridica(email_juridica, juridica_id_juridica) VALUES(:email, :id)";
+                $stmt = $conexao->prepare($query);
+                $stmt->bindValue(":email", $email);
+                $stmt->bindValue(":id", $id);
+                $stmt->execute();
+            }
+
         }
 
         //função para selecionar id da empresa por cnpj
          public function selecionaEmpresaIdPorCnpj($cnpj){
-            $query = "SELECT id_juridica FROM juridica WHERE cnpj='$cnpj'";
-            $id_sql = $conexao->query($query);
+            $conexao = Conexao::getConexao();
+            $query1 = "SELECT id_juridica FROM juridica WHERE cnpj='$cnpj'";
+            $id_sql = $conexao->query($query1);
             $idV = $id_sql->fetchAll();
             foreach ($idV as $elemento) {
                 return $id = $elemento['id_juridica'];
