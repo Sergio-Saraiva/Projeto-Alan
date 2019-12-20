@@ -309,7 +309,55 @@
 
         }
 
+        public function deletaPessoaJuridica($id){
+            $conexao = Conexao::getConexao();
+            $query = "DELETE FROM juridica WHERE id_juridica='$id'";
+            $conexao->exec($query);
 
+        }
+
+        public function selecionaIdContatoPorIdJuridica($idJuridica){
+            $conexao = Conexao::getConexao();
+            $query = "SELECT idcontato_juridica FROM contato_juridica WHERE juridica_id_juridica='$idJuridica'";
+            $id_sql = $conexao->query($query);
+            return $id = $id_sql->fetchAll();
+        }
+
+        public function deletaTelefoneContato($idContato){
+            $conexao = Conexao::getConexao();
+            $query = "DELETE FROM telefone_contato_juridica WHERE contato_idcontato='$idContato'";
+            $conexao->exec($query);
+        }
+
+        public function deletaEmailContato($idContato){
+            $conexao = Conexao::getConexao();
+            $query = "DELETE FROM email_contato_juridica WHERE contato_idcontato='$idContato'";
+            $conexao->exec($query);
+        }
+
+        public function deletaContato($idJuridica){
+            $conexao = Conexao::getConexao();
+            $query = "DELETE FROM contato_juridica WHERE juridica_id_juridica = '$idJuridica'";
+            $conexao->exec($query);
+        }
+
+        public function deletaTelefone($idJuridica){
+            $conexao = Conexao::getConexao();
+            $query = "DELETE FROM telefone_juridica WHERE juridica_id_juridica = '$idJuridica'";
+            $conexao->exec($query);
+        }
+
+        public function deletaEmail($idJuridica){
+            $conexao = Conexao::getConexao();
+            $query = "DELETE FROM email_juridica WHERE juridica_id_juridica = '$idJuridica'";
+            $conexao->exec($query);
+        }
+
+        public function deletaEndereco($idJuridica){
+            $conexao = Conexao::getConexao();
+            $query = "DELETE FROM endereco_juridica WHERE juridica_id_juridica = '$idJuridica'";
+            $conexao->exec($query);
+        }
 
 
         // public function razaoEstaVazio(){

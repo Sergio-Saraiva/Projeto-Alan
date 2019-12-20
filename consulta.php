@@ -74,7 +74,12 @@
 <div class="resultado" id ="resultado" style="display: block;">
   <?php foreach($lista[1] as $elemento){ ?>
   <div class="card">
-    <h5 class="card-header"><i class="fa fa-briefcase" aria-hidden="true"></i><?php echo " ".$elemento['fantasia'] ?></h5>
+    <h5 class="card-header"><i class="fa fa-briefcase" aria-hidden="true"></i><?php echo " ".$elemento['fantasia'] ?><div class="btn-group float-right">
+        <form method="post" action="deleta-pessoa-juridica.php" id="submeterDelete<?php echo $elemento['id_juridica'] ?>">
+            <a href="#" onClick="document.getElementById('submeterDelete<?php echo $elemento['id_juridica'] ?>').submit();aguardar();" class="btn btn-primary"><i class="fas fa-trash-alt"></i></a>
+            <input type="hidden" name="id" id="id" value="<?php echo $elemento['id_juridica'] ?>"/>
+        </form></h5>
+    
     <div class="card-body">
       <p class="card-text">
         <b clas="h6">RAZÃO SOCIAL:</b> <?php echo $elemento['razao'] ?></br>
