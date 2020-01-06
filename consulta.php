@@ -75,16 +75,30 @@
   <?php foreach($lista[1] as $elemento){ ?>
   <div class="card">
     <h5 class="card-header"><i class="fa fa-briefcase" aria-hidden="true"></i><?php echo " ".$elemento['fantasia'] ?><div class="btn-group float-right">
+        
+    <?php if( $_SESSION['UsuarioNivel'] < 2){?>
         <form method="post" action="deleta-pessoa-juridica.php" id="submeterDelete<?php echo $elemento['id_juridica'] ?>">
-            <a href="#" onClick="document.getElementById('submeterDelete<?php echo $elemento['id_juridica'] ?>').submit();aguardar();" class="btn btn-primary"><i class="fas fa-trash-alt"></i></a>
+            <a href="#" onClick="document.getElementById('submeterDelete<?php echo $elemento['id_juridica'] ?>').submit();aguardar();" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
             <input type="hidden" name="id" id="id" value="<?php echo $elemento['id_juridica'] ?>"/>
-        </form></h5>
-    
+        </form>
+    <?php }?>
+    </h5>
     <div class="card-body">
       <p class="card-text">
         <b clas="h6">RAZÃO SOCIAL:</b> <?php echo $elemento['razao'] ?></br>
         <b clas="h6">CNPJ:</b> <?php echo $elemento['cnpj'] ?></br>
-        <b clas="h6">E-MAIL:</b> <?php echo $elemento['email'] ?></br>
+        <!--Código para mostrar apenas email principal da empresa-->
+        <?php 
+        
+        $email_1 = $empresas->listarEmailPessoasJuridicas($elemento['id_juridica']);
+
+        foreach($email_1[1] as $emailPrincipal){?>
+          <b clas="h6">E-MAIL PRINCIPAL:</b> <?php echo $emailPrincipal['email_juridica'] ?></br>
+
+        <?php
+        };
+        ?>
+        <!-- Fim de código para mostrar apenas email principal da empresa -->
        <!--
           <b>ESTADO:</b> <?php echo $elemento['estado'] ?>&nbsp &nbsp <b>CIDADE:</b> <?php echo $elemento['cidade'] ?> &nbsp &nbsp <b>CEP:</b> <?php echo $elemento['cep'] ?></br>
         <b>ENDEREÇO:</b> <?php echo $elemento['endereco'] ?></br>
@@ -95,11 +109,11 @@
       </p>
       <div class="btn-group">
         <form method="post" action="servicos.php" id="submeterServicos<?php echo $elemento['id_juridica']?>">
-            <a href="#" onClick="document.getElementById('submeterServicos<?php echo $elemento['id_juridica']?>').submit();aguardar();" class="btn btn-primary">Serviços</a>
+            <a href="#" onClick="document.getElementById('submeterServicos<?php echo $elemento['id_juridica']?>').submit();aguardar();" class="btn btn-primary ">Serviços</a>
             <input type="hidden" name="id" id="id" value="<?php echo $elemento['id_juridica'] ?>" />
         </form>
         &nbsp
-        <form method="post" action="colaboradoresEmpresa.php" id="submeterColaborador<?php echo $elemento['id_juridica']?>">
+        <form method="post" action="Contatos-Empresa.php" id="submeterColaborador<?php echo $elemento['id_juridica']?>">
             <a href="#" onClick="document.getElementById('submeterColaborador<?php echo $elemento['id_juridica']?>').submit();aguardar();" class="btn btn-secondary">Contatos</a>
             <input type="hidden" name="id" id="id" value="<?php echo $elemento['id_juridica'] ?>" />
         </form>

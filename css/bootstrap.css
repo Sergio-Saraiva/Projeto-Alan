@@ -4214,9 +4214,13 @@ input[type="button"].btn-block {
 }
 
 .navbar-text {
-  display: inline-block;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  /*display: inline-block;*/
+  z-index: 1000;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  text-align: right;
+  float: right;
+  
 }
 
 .navbar-collapse {
@@ -4424,12 +4428,14 @@ input[type="button"].btn-block {
   flex-flow: row nowrap;
   -ms-flex-pack: start;
   justify-content: flex-start;
+  
 }
 
 .navbar-expand > .container,
 .navbar-expand > .container-fluid {
   padding-right: 0;
   padding-left: 0;
+  
 }
 
 .navbar-expand .navbar-nav {
@@ -4444,6 +4450,7 @@ input[type="button"].btn-block {
 .navbar-expand .navbar-nav .nav-link {
   padding-right: 0.5rem;
   padding-left: 0.5rem;
+  
 }
 
 .navbar-expand > .container,
@@ -4501,10 +4508,12 @@ input[type="button"].btn-block {
 
 .navbar-light .navbar-text {
   color: rgba(0, 0, 0, 0.5);
+  
 }
 
 .navbar-light .navbar-text a {
   color: rgba(0, 0, 0, 0.9);
+  
 }
 
 .navbar-light .navbar-text a:hover, .navbar-light .navbar-text a:focus {

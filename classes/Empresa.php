@@ -233,7 +233,20 @@
             $query_juridica_2 = "SELECT * FROM juridica ORDER BY id_juridica LIMIT $inicio,$maximo";
             $lista_sql_2 = $conexao->query($query_juridica_2);
             $lista[1] = $lista_sql_2->fetchAll();
-         
+
+            return $lista;
+        }
+
+        public function listarEmailPessoasJuridicas($idJuridica){
+            $conexao = Conexao::getConexao();
+
+            $query_email_principal = "SELECT * FROM email_juridica WHERE juridica_id_juridica = '$idJuridica' LIMIT 1";
+            $lista_sql_1 = $conexao->query($query_email_principal);
+            $lista[1] = $lista_sql_1->fetchAll();
+
+            $query_email = "SELECT * FROM email_juridica WHERE juridica_id_juridica = '$idJuridica'";
+            $lista_sql_2 = $conexao->query($query_email);
+            $lista[2] = $lista_sql_2->fetchAll();
 
             return $lista;
         }
@@ -271,10 +284,10 @@
         }
 
         
-        public function colaboradoresEmpresa($id){
+        public function contatosEmpresa($id){
             $conexao = Conexao::getConexao();
 
-            $sql = "SELECT * FROM juridica_has_pessoa WHERE juridica_id_juridica = '$id'";
+            $sql = "SELECT * FROM contato_juridica WHERE juridica_id_juridica = '$id'";
             $resultado_sql = $conexao->query($sql);
 
             $resultado = $resultado_sql->fetchAll();
@@ -282,9 +295,9 @@
 
         }
 
-        public function cEmpresaColaborador($idColaborador){
+        public function contatosEmpresaEmails($idColaborador){
             $conexao = Conexao::getConexao();
-            $sql_2="SELECT * FROM pessoa WHERE idPessoa = '$idColaborador'";
+            $sql_2="SELECT * FROM email_contato_juridica WHERE contato_idcontato = '$idColaborador'";
             $resultado_sql_2 = $conexao->query($sql_2);
 
             $idPessoas = $resultado_sql_2->fetchAll();

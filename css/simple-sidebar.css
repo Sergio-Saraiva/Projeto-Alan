@@ -8,7 +8,7 @@
   background-color: #005453;
   z-index:1000 !important; 
   display: inline-block;
-  border-radius: 0.4rem;
+  border-radius: 0rem;
   height: auto; 
   
 }
@@ -19,8 +19,11 @@
   display: inline-block;
 }
 
+
+
+
 #sidebar-wrapper {
-  min-height: 45vh;
+  min-height: 100vh;
   margin-left: -15rem;
   -webkit-transition: margin .25s ease-out;
   -moz-transition: margin .25s ease-out;
@@ -46,7 +49,7 @@
   margin-left: 0;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 0px) {
 
   .bg-sidebar{
     background-color: #005453 !important;

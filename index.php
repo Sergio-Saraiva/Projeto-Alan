@@ -16,8 +16,8 @@
 </head>
 <body>
     <br>
-    <br>
-    <div id="main" class="d-flex justify-content-center" >
+
+    <div id="main" class="d-flex justify-content-center">
 
     <div class="card bg-light mb-6" style="max-width: 22rem;">
         <div class="card-header">Sistema de Login</div>
@@ -52,19 +52,19 @@
             <div class="form-group">
                 <label for="txtUsuario">Login</label>
                 <input type="email" name="email" class="form-control" id="txtUsuario" aria-describedby="usuarioHelp" placeholder="E-mail" required autofocus>
-                <small id="usuarioHelp" class="form-text text-muted">Jamais forneça seus dados pessoais a terceiros.</small>
+                <small id="usuarioHelp" class="form-text text-muted text-center">Jamais forneça seus dados pessoais a terceiros.</small>
             </div>
             <div class="form-group">
                 <label for="txtSenha">Senha</label>
                 <input type="password" name="senha" class="form-control" id="txtSenha" placeholder="Senha" required> 
+                <small id="usuarioHelp" class="form-text text-muted text-center">Senha informada no processo da solicitação de cadastro.</small>
             </div>
-            <div class="form-check" style=" text-align: center;">
-                <input type="checkbox" class="form-check-input" id="manterCon">
-                <label class="form-check-label" for="manterCon">Manter-se conectado</label>
-            </div>
-            <p style="font-size:0.9rem; text-align:center;"><label><a href="#" >Solicitar cadastro</a></label></p>
-            <hr />
+            
             <button type="submit" class="btn btn-primary">Entrar</button>
+            <label style="font-size:0.9rem; text-align:right; float: right;"><label><a href="#" class="btn btn-outline-secondary" >Solicitar cadastro</a></label></label>
+            <hr />
+            <div class="text-center text-muted" style="margin-bottom:-0rem; font-size:0.8rem;">Alan Araujo - 2020 &copy</></div>
+            
             </form>
             
 

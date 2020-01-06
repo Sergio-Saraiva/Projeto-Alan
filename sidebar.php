@@ -12,7 +12,7 @@
 
   
   <div class="float-left" style="position: relative;" >
-  <div class="d-flex" id="wrapper" style="position:absolute; ">
+  <div class="toggled" id="wrapper" style="position:absolute; ">
     <!-- Sidebar -->
     <div class="bg-sidebar border-right" id="sidebar-wrapper">
       <div class="sidebar-heading" style="text-align:right"> <img src="img\logo.png" href="home.php" width="135rem" height="30rem" ></div>
@@ -27,7 +27,7 @@
 
     <!-- Page Content -->
     <div id="page-content-wrapper" style="position:fixed;">
-        <button class="btn btn-primary" id="menu-toggle"><i class='fa fa-arrow-left' aria-hidden='true'></i></br>Recolher</button>
+        <button class="btn btn-primary" id="menu-toggle"><i class='fa fa-bars' aria-hidden='true'></i></br>Menu</button>
     </div>
     <!-- /#page-content-wrapper -->
 
@@ -36,8 +36,7 @@
   <!-- /#wrapper -->
 
   <!-- Bootstrap core JavaScript -->
-  <script src="jquery/jquery.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
+
 
   <!-- Menu Toggle Script -->
   <script>
@@ -45,10 +44,10 @@
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
 
-      if($("#wrapper").hasClass("toggled")){
-        $('#menu-toggle').html("<i class='fa fa-bars' aria-hidden='true'></i></br>Menu");
+      if(!$("#wrapper").hasClass("toggled")){
+        $('#menu-toggle').html("<div class='botaoRecolher'><i class='fa fa-arrow-left' aria-hidden='true''></i></br>Recolher</div>");
       }else{
-        $('#menu-toggle').html("<i class='fa fa-arrow-left' aria-hidden='true'></i></br>Recolher");
+        $('#menu-toggle').html("<i class='fa fa-bars' aria-hidden='true'></i></br>Menu");
       }
       
     });

@@ -34,7 +34,7 @@
                             <input type="hidden" name="id" id="id" value="<?php print $elemento['id_juridica'] ?>" />
                         </form>
                         &nbsp
-                        <form method="post" action="colaboradoresEmpresa.php" id="submeterColaborador">
+                        <form method="post" action="Contatos-Empresa.php" id="submeterColaborador">
                             <a href="#" onClick="document.getElementById('submeterColaborador').submit();aguardar();" class="btn btn-secondary">Contatos</a>
                             <input type="hidden" name="id" id="id" value="<?php print $elemento['id_juridica'] ?>" />
                         </form>

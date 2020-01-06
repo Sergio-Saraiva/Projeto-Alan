@@ -29,8 +29,20 @@
         <b class="h6">NOME FANTASIA:</b> <?php echo $registro['fantasia'] ?></br>
         <b class="h6">RAZÃO SOCIAL:</b> <?php echo $registro['razao'] ?></br>
          <b class="h6">CNPJ:</b> <?php echo $registro['cnpj'] ?></br>
-         <b class="h6">E-Mail:</b> <?php echo $registro['email'] ?></br>
+         <b class="h6">E-Mail(s):</b>
+         <!-- Listagem de e-mails-->
+         <?php 
+        
+        $email_1 = $empresa->listarEmailPessoasJuridicas($registro['id_juridica']);
 
+        foreach($email_1[2] as $emailsPrincipal){?>
+          <?php echo $emailsPrincipal['email_juridica'] ?> / 
+
+        <?php
+        };
+        ?>
+         <!-- Fim de listagem de emails -->
+         </br>
          <b class="h6">TELEFONES:</b> <?php foreach($lista[2] as $listatelefonica){ echo $listatelefonica['telefone_juridica']." / "; } ?></br>
          </br>
          <b class="h6">ENDEREÇOS</b></br>
