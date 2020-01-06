@@ -16,7 +16,7 @@
         // var_dump($emailAntigo);
         $empresa->atualizaDadosEmpresa($_POST['id'], $emailAntigo);
 
-        // header("Location: consultar.php");
+        header("Location: consultar.php");
     }catch(Exception $e){
         Erro::tratarErro($e);
     }

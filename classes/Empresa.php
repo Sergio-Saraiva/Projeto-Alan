@@ -401,8 +401,6 @@
             $qtd = count($idEmail);
 
             for($i=0; $i<$qtd; $i++){
-                // echo $this->email[$i];
-                echo $idEmail[$i];
                 $query = $query = "UPDATE email_juridica SET email_juridica = :email WHERE idemail='$idEmail[$i]'";
                 $stmt = $conexao->prepare($query);
                 $stmt->bindValue(":email", $this->email[$i]);
