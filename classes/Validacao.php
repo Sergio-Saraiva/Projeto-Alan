@@ -6,7 +6,8 @@
         public function validar($email,$senha){
             $conexao = Conexao::getConexao();
 
-            $sql = "SELECT `id`, `nome`, `nivel` FROM `usuarios` WHERE (`email` = '".$email ."') AND (`senha` = '". sha1($senha) ."') AND (`ativo` = 1) LIMIT 1";
+            $sql = "SELECT `id`, `nome`, `nivel`, `ativo` FROM `usuarios` WHERE (`email` = '".$email ."') AND (`ativo` = 1) AND (`senha` = '". sha1($senha) ."') LIMIT 1";
+            // AND (`ativo` = 1)
 
             $query = $conexao->query($sql);
 

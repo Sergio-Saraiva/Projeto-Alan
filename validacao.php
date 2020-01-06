@@ -29,6 +29,7 @@ if ($query->rowCount() != 1){
      // Se a sessão não existir, inicia uma
      if (!isset($_SESSION)) session_start();
    foreach($resultado as $res){
+     
        // Salva os dados encontrados na sessão
      $_SESSION['UsuarioID'] = $res['id'];
      $_SESSION['UsuarioNome'] = $res['nome'];

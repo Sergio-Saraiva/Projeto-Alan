@@ -46,6 +46,12 @@
                         echo "Sessão finalizada com sucesso.";
                         echo "</div>";
                     }
+                    if(isset($_GET['erro']) and $_GET['erro']==4){
+                        echo '</br>';
+                        echo "<div class='alert alert-danger' role='alert' style='font-size: 0.9rem; text-align:center;'>";
+                        echo "Usuário se encontra em processo de análise para liberação de acesso à plataforma.";
+                        echo "</div>";
+                    }
                 ?>
                 <!--- Fim de alerta--->
             <form action="validacao.php" method="post">
@@ -61,7 +67,7 @@
             </div>
             
             <button type="submit" class="btn btn-primary">Entrar</button>
-            <label style="font-size:0.9rem; text-align:right; float: right;"><label><a href="#" class="btn btn-outline-secondary" >Solicitar cadastro</a></label></label>
+            <label style="font-size:0.9rem; text-align:right; float: right;"><label><a href="solicitar-acesso.php" class="btn btn-outline-secondary" >Solicitar acesso</a></label></label>
             <hr />
             <div class="text-center text-muted" style="margin-bottom:-0rem; font-size:0.8rem;">Alan Araujo - 2020 &copy</></div>
             
