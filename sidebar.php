@@ -37,7 +37,6 @@
 
   <!-- Bootstrap core JavaScript -->
 
-
   <!-- Menu Toggle Script -->
   <script>
     $("#menu-toggle").click(function(e) {

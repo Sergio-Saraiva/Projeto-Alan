@@ -12,7 +12,7 @@
 
 <div class="text-center">
     <h1 align="center">Informações Gerais Sobre a Empresa</h1>
-    <a href="#">
+    <a href="editar-pessoa-juridica-form.php?<?php echo $id ?>">
         <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar 
     </a>
     
