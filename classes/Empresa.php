@@ -372,6 +372,24 @@
             $conexao->exec($query);
         }
 
+        public function selecionaDadosEnderecoEmpresa($id){
+            $conexao = Conexao::getConexao();
+            $query = "SELECT juridica.cnpj, juridica.razao, juridica.fantasia, endereco_juridica.nome, endereco_juridica.logradouro, endereco_juridica.bairro, endereco_juridica.numero, endereco_juridica.cidade, endereco_juridica.estado, endereco_juridica.CEP FROM juridica INNER JOIN endereco_juridica ON juridica.id_juridica = endereco_juridica.juridica_id_juridica WHERE juridica.id_juridica = '$id'";
+            $lista_sql = $conexao->query($query);
+            $lista = $lista_sql->fetchAll();
+            return $lista;
+        }
+
+        public function atualizaDadosEmpresa($id){
+            $conexao = Conexao::getConexao();
+            $query = "UPDATE juridica SET cnpj = :cnpj, razao = :razao, fantasia = :fantasia WHERE id_juridica='$id'";
+            $stmt = $conexao->prepare($query);
+            $stmt->bindValue(":cnpj", $this->cnpj);
+            $stmt->bindValue(":razao", $this->razao);
+            $stmt->bindValue(":fantasia", $this->fantasia);
+            $stmt->execute();
+        }
+
 
         // public function razaoEstaVazio(){
         //     if($this->razao == ""){
