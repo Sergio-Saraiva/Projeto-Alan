@@ -304,7 +304,16 @@
             return $idPessoas;
 
         }
-        
+
+        public function contatosEmpresaTelefones($idColaborador){
+            $conexao = Conexao::getConexao();
+            $sql_2="SELECT * FROM telefone_contato_juridica WHERE contato_idcontato = '$idColaborador'";
+            $resultado_sql_2 = $conexao->query($sql_2);
+
+            $idPessoas = $resultado_sql_2->fetchAll();
+            return $idPessoas;
+
+        }
 
         public function consultaProjetos($id){
             $conexao = Conexao::getConexao();
@@ -380,7 +389,7 @@
             return $lista;
         }
 
-        public function atualizaDadosEmpresa($id, $emailAntigo){
+        public function atualizaDadosEmpresa($id, $emailAntigo, $telefoneAntigo){
             $conexao = Conexao::getConexao();
             $query = "UPDATE juridica SET cnpj = :cnpj, razao = :razao, fantasia = :fantasia WHERE id_juridica='$id'";
             $stmt = $conexao->prepare($query);
@@ -406,7 +415,55 @@
                 $stmt->bindValue(":email", $this->email[$i]);
                 $stmt->execute();
             }
+
+            foreach ($telefoneAntigo as $telefoneAntigoAux) {
+                $query = "SELECT id_telefone_juridica FROM telefone_juridica WHERE telefone_juridica = '$telefoneAntigoAux'";
+                $id_sql = $conexao->query($query);
+                $idV = $id_sql->fetchAll();
+                foreach ($idV as $elemento) {
+                    $idTelefone[] = $elemento['id_telefone_juridica'];
+                }
+            }
+
+            $qtd = count($idTelefone);
+
+            for($i=0; $i<$qtd; $i++){
+                $query = $query = "UPDATE telefone_juridica SET telefone_juridica = :telefone WHERE id_telefone_juridica='$idTelefone[$i]'";
+                $stmt = $conexao->prepare($query);
+                $stmt->bindValue(":telefone", $this->telefone[$i]);
+                $stmt->execute();
+            }
+
         }
+
+        public function atualizaEnderecoEmpresa($id){
+            $conexao = Conexao::getConexao();
+
+            $aux = 0;
+            foreach ($this->endereco as $elemento) {
+                $query = "UPDATE endereco_juridica SET nome = :nome, logradouro = :logradouro, bairro = :bairro, numero = :numero, cidade = :cidade, estado= :estado, CEP = :cep WHERE idEndereco='$id[$aux]'";
+                $stmt = $conexao->prepare($query);
+                $nome = $elemento['nome'];
+                $stmt->bindValue(":nome", $nome);
+                $logradouro = $elemento['logradouro'];
+                $stmt->bindValue(":logradouro", $logradouro);
+                $bairro = $elemento['bairro'];
+                $stmt->bindValue(":bairro", $bairro);
+                $numero = $elemento['numero'];
+                $stmt->bindValue(":numero", $numero);
+                $cidade = $elemento['cidade'];
+                $stmt->bindValue(":cidade", $cidade);
+                $estado = $elemento['estado'];
+                $stmt->bindValue(":estado", $estado);
+                $cep = $elemento['cep'];
+                $stmt->bindValue(":cep", $cep);
+                $stmt->execute();
+                $aux++;
+            }
+
+        }
+
+        
 
 
         // public function razaoEstaVazio(){

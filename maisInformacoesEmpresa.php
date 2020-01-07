@@ -45,7 +45,11 @@
          </br>
          <b class="h6">TELEFONES:</b> <?php foreach($lista[2] as $listatelefonica){ echo $listatelefonica['telefone_juridica']." / "; } ?></br>
          </br>
-         <b class="h6">ENDEREÇOS</b></br>
+         <b class="h6">ENDEREÇOS</b>
+         <a href="editar-endereco-pessoa-juridica-form.php?id=<?php echo $id ?>">
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar 
+    </a>
+         </br>
          
          <?php foreach($lista[3] as $listaenderecos){ 
              echo "<hr>";

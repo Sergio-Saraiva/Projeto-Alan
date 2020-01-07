@@ -59,6 +59,25 @@
                     </div>
                 <?php } ?>
             </div>
+            <div class="form-group col-md-6">
+                    <label for="telefone">Telefone</label>
+                    <i id="addtelefone" class="far fa-plus-square"></i>
+                    <i id="subtelefone" class=" far fa-minus-square"></i>
+                    <input class="form-control phone_with_ddd" type="text" id="telefone" name="telefone[]"  placeholder="(__) ____-____" value="<?php echo $lista[2][0]['telefone_juridica'] ?>" required>
+                    <input type="hidden" name="telefoneAntigo[]" value="<?php echo $lista[2][0]['telefone_juridica'] ?>">
+                    <div class="invalid-feedback">
+                        Obrigatório
+                    </div>
+                    <?php $qtd = count($lista[2]);
+                          for($i=1; $i<$qtd; $i++){ ?>
+                        <label for="telefone">Telefone</label>
+                        <input class="form-control phone_with_ddd" type="text" id="telefone" name="telefone[]"  placeholder="(__) ____-____" value="<?php echo $lista[2][$i]['telefone_juridica'] ?>" required>
+                        <input type="hidden" name="telefoneAntigo[]" value="<?php echo $lista[2][$i]['telefone_juridica'] ?>">
+                        <div class="invalid-feedback">
+                            Obrigatório
+                        </div>
+                        <?php } ?>
+                </div>
         </div>
             <button type="submit" class="btn btn-primary">Salvar</button>
         </div>

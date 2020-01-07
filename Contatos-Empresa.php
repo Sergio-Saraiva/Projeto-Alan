@@ -22,7 +22,9 @@
        
 
             <div class="card">
-                <h5 class="card-header"><i class="fa fa-address-card" aria-hidden="true"></i><?php echo " ".$registro['nomeResp'] ?></h5>
+                <h5 class="card-header"><i class="fa fa-address-card" aria-hidden="true"></i><?php echo " ".$registro['nomeResp'] ?> <a href="editar-contato-juridica-form.php?id=<?php echo $registro['idcontato_juridica'] ?>">
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar 
+    </a></h5>
                 <div class="card-body">
                 <p class="card-text">
                 <b class="h6">NOME :</b> <?php echo $registro['nomeResp'] ?></br>
@@ -40,6 +42,18 @@
                 ?> 
             
                 <?php echo $dados['email'] ?></br>
+
+                <?php 
+                    }
+                ?>
+
+                <b class="h6">Telefones:</br></b>
+                <?php 
+                    $telefoneContatos = $empresa->contatosEmpresaTelefones($registro['idcontato_juridica']); 
+                    foreach($telefoneContatos as $dados){
+                ?> 
+            
+                <?php echo $dados['telefone_contato_juridica'] ?></br>
 
                 <?php 
                     }
