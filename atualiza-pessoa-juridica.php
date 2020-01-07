@@ -10,11 +10,18 @@
             $empresa->email[] = $elemento;
         }
 
+        foreach($_POST['telefone'] as $elemento){
+            $empresa->telefone[] = $elemento;
+        }
+
         foreach($_POST['emailAntigo'] as $elemento){
             $emailAntigo[] = $elemento;
         }
-        // var_dump($emailAntigo);
-        $empresa->atualizaDadosEmpresa($_POST['id'], $emailAntigo);
+        foreach($_POST['telefoneAntigo'] as $elemento){
+            $telefoneAntigo[] = $elemento;
+        }
+        
+        $empresa->atualizaDadosEmpresa($_POST['id'], $emailAntigo, $telefoneAntigo);
 
         header("Location: consultar.php");
     }catch(Exception $e){

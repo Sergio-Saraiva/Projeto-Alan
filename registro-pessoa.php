@@ -64,8 +64,8 @@ if($v == 1){
                     <i id="subtelefone" class=" far fa-minus-square"></i>
                     <input class="form-control phone_with_ddd" type="text" id="telefone" name="telefone"  placeholder="(__) ____-____" required>
                     <div class="invalid-feedback">
-                 Obrigatório
-            </div>
+                        Obrigatório
+                    </div>
                 </div>
         </div>
         

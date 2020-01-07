@@ -380,7 +380,7 @@
             return $lista;
         }
 
-        public function atualizaDadosEmpresa($id, $emailAntigo){
+        public function atualizaDadosEmpresa($id, $emailAntigo, $telefoneAntigo){
             $conexao = Conexao::getConexao();
             $query = "UPDATE juridica SET cnpj = :cnpj, razao = :razao, fantasia = :fantasia WHERE id_juridica='$id'";
             $stmt = $conexao->prepare($query);
@@ -406,6 +406,25 @@
                 $stmt->bindValue(":email", $this->email[$i]);
                 $stmt->execute();
             }
+
+            foreach ($telefoneAntigo as $telefoneAntigoAux) {
+                $query = "SELECT id_telefone_juridica FROM telefone_juridica WHERE telefone_juridica = '$telefoneAntigoAux'";
+                $id_sql = $conexao->query($query);
+                $idV = $id_sql->fetchAll();
+                foreach ($idV as $elemento) {
+                    $idTelefone[] = $elemento['id_telefone_juridica'];
+                }
+            }
+
+            $qtd = count($idTelefone);
+
+            for($i=0; $i<$qtd; $i++){
+                $query = $query = "UPDATE telefone_juridica SET telefone_juridica = :telefone WHERE id_telefone_juridica='$idTelefone[$i]'";
+                $stmt = $conexao->prepare($query);
+                $stmt->bindValue(":telefone", $this->telefone[$i]);
+                $stmt->execute();
+            }
+
         }
 
 
