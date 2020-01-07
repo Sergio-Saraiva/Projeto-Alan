@@ -304,7 +304,16 @@
             return $idPessoas;
 
         }
-        
+
+        public function contatosEmpresaTelefones($idColaborador){
+            $conexao = Conexao::getConexao();
+            $sql_2="SELECT * FROM telefone_contato_juridica WHERE contato_idcontato = '$idColaborador'";
+            $resultado_sql_2 = $conexao->query($sql_2);
+
+            $idPessoas = $resultado_sql_2->fetchAll();
+            return $idPessoas;
+
+        }
 
         public function consultaProjetos($id){
             $conexao = Conexao::getConexao();
@@ -453,6 +462,8 @@
             }
 
         }
+
+        
 
 
         // public function razaoEstaVazio(){
