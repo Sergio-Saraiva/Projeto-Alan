@@ -427,6 +427,33 @@
 
         }
 
+        public function atualizaEnderecoEmpresa($id){
+            $conexao = Conexao::getConexao();
+
+            $aux = 0;
+            foreach ($this->endereco as $elemento) {
+                $query = "UPDATE endereco_juridica SET nome = :nome, logradouro = :logradouro, bairro = :bairro, numero = :numero, cidade = :cidade, estado= :estado, CEP = :cep WHERE idEndereco='$id[$aux]'";
+                $stmt = $conexao->prepare($query);
+                $nome = $elemento['nome'];
+                $stmt->bindValue(":nome", $nome);
+                $logradouro = $elemento['logradouro'];
+                $stmt->bindValue(":logradouro", $logradouro);
+                $bairro = $elemento['bairro'];
+                $stmt->bindValue(":bairro", $bairro);
+                $numero = $elemento['numero'];
+                $stmt->bindValue(":numero", $numero);
+                $cidade = $elemento['cidade'];
+                $stmt->bindValue(":cidade", $cidade);
+                $estado = $elemento['estado'];
+                $stmt->bindValue(":estado", $estado);
+                $cep = $elemento['cep'];
+                $stmt->bindValue(":cep", $cep);
+                $stmt->execute();
+                $aux++;
+            }
+
+        }
+
 
         // public function razaoEstaVazio(){
         //     if($this->razao == ""){

@@ -14,6 +14,7 @@
             <div class="form-group">
                 <label for="nome">Titulo</label>
                 <input type="text"class="form-control" name="nome[]" id="nome" value="<?php echo $elemento['nome'] ?>">
+                <input type="hidden" name="id[]" value="<?php echo $elemento['idEndereco'] ?>">
             </div>
             <div id="div" class="form-row">
                 <div class="form-group col-md-6">
