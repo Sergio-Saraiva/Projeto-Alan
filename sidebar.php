@@ -20,7 +20,12 @@
         <a href="home.php" class="list-group-item list-group-item-action bg-primary">Home</a>
         <a href="registro-pessoa.php" class="list-group-item list-group-item-action bg-primary">Registro</a>
         <a href="consultar.php" class="list-group-item list-group-item-action bg-primary">Consultar</a>
-        <a href="logout.php" class="list-group-item list-group-item-action bg-primary">sair</a>
+        <!-- acesso restrito-->
+        <?php if( $_SESSION['UsuarioNivel'] < 2){?>
+          <a href="acessos.php" class="list-group-item list-group-item-action bg-primary">Acesso</a>    
+        <?php }?>
+        <!-- fim -->
+        <a href="logout.php" class="list-group-item list-group-item-action bg-primary">Sair</a>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->

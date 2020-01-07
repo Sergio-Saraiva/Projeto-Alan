@@ -41,6 +41,36 @@
             
         }
 
+        public function listarCadastros($ativo,$acesso){
+            
+            $conexao = Conexao::getConexao();
+
+            $sql = "SELECT * FROM `usuarios` WHERE (`ativo` = '".$ativo."') AND (`nivel` = '".$acesso."')";
+            $resultado_1 = $conexao->query($sql);
+
+            $resultado = $resultado_1->fetchAll();
+
+            return $resultado;
+
+        }
+
+        public function modificarCadastro($id,$ativo,$acesso){
+            $conexao = Conexao::getConexao();
+            
+            $sql = "UPDATE `usuarios` SET `ativo` = ? , `nivel` = ? WHERE `id` = ?";
+
+            $status = $conexao->prepare($sql);
+
+            $status->bindParam(1, $ativo);
+            $status->bindParam(2, $acesso);
+            $status->bindParam(3, $id);
+
+            $status->execute();
+            
+            return 0;
+
+        }
+
     }
 
 ?>

@@ -48,7 +48,7 @@
                 </div>
 
                 <!--- Fim de alerta--->
-            <form action="enviarSolicitarAcesso.php" method="post" id="enviarSolicitar">
+            <form action="enviarSolicitarAcesso.php" method="post" id="enviarSolicitar" class="needs-validation" novalidate>
             <div class="form-group">
                 <label for="solicitarNome">Nome completo</label>
                 <input type="text" name="solicitarNome" class="form-control" id="solicitarNome" aria-describedby="usuarioHelp" placeholder="Nome" required autofocus>
