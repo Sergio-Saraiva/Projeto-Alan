@@ -463,7 +463,40 @@
 
         }
 
-        
+        public function selecionaContatoPorId($id){
+            $conexao = Conexao::getConexao();
+            $query = "SELECT * FROM contato_juridica WHERE idcontato_juridica='$id'";
+            $resultado_sql = $conexao->query($query);
+            $resultado = $resultado_sql->fetchAll();
+            return $resultado; 
+        }
+
+        public function atualizaDadosContato($id, $idEmail, $idTelefone, $nomeResp, $setor, $emailResp, $telefoneResp){
+            $conexao = Conexao::getConexao();
+            $query = "UPDATE contato_juridica SET nomeResp = :nomeResp, setor = :setor WHERE idcontato_juridica = '$id'";
+            $stmt = $conexao->prepare($query);
+            $stmt->bindValue(":nomeResp", $nomeResp);
+            $stmt->bindValue(":setor", $setor);
+            $stmt->execute();
+
+            $aux = 0;
+            foreach ($emailResp as $email) {
+                $query = "UPDATE email_contato_juridica SET email = :email WHERE idemail_contato_juridica='$idEmail[0]'";
+                $stmt = $conexao->prepare($query);
+                $stmt->bindValue(":email", $email[0]);
+                $aux++;
+                $stmt->execute();
+            }
+
+            $aux = 0;
+            foreach ($telefoneResp as $telefone) {
+                $query = "UPDATE telefone_contato_juridica SET telefone_contato_juridica = :telefone WHERE idtelefone_contato_juridica='$idTelefone[0]'";
+                $stmt = $conexao->prepare($query);
+                $stmt->bindValue(":telefone", $telefone[0]);
+                $aux++;
+                $stmt->execute();
+            }
+        }
 
 
         // public function razaoEstaVazio(){
