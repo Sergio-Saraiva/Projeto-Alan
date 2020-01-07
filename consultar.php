@@ -9,7 +9,14 @@
       
      
 ?>
-
+ <?php
+                    if(isset($_GET['alerta']) and $_GET['alerta']==1){
+                        
+                        echo "<div class='alert alert-danger' role='alert' style='font-size: 0.9rem; text-align:center;'>";
+                        echo "Empresa deletada com sucesso.";
+                        echo "</div>";
+                    }
+?>
 <div class="row d-flex justify-content-center">
       <div class="btn-group" role="group" aria-label="Basic example" >
             <button id="busca-juridica" name="busca-juridica" type="button" class="btn btn-primary">Pessoa Juridica</button>

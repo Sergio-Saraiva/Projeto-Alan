@@ -14,7 +14,7 @@ try{
     $empresa->deletaEmail($id);
     $empresa->deletaEndereco($id);
     $empresa->deletaPessoaJuridica($id);
-    header("Location: consultar.php");
+    header("Location: consultar.php?alerta=1");
 }catch(Exception $e){
     Erro::tratarErro($e);
 }
