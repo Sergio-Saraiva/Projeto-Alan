@@ -10,7 +10,7 @@
                 echo '</pre>';
                 exit;
             }else{
-                echo "Erro no sistema";
+                header("location: erro.php?alerta=1");
                 exit;
             }
         }
