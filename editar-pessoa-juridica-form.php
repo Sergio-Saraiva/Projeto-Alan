@@ -43,8 +43,6 @@
                     $qtd = count($email_1[2]);
             ?>
                 <label for="email">E-Mail</label>
-                <i class="far fa-plus-square" onclick="addEmailJ()"></i>
-                <i class="far fa-minus-square" onclick="subEmailJ()"></i>
                 <input id="email" name="email[]" type="email" class="form-control" value="<?php echo $email_1[2][0]['email_juridica'] ?>"  required>
                 <input type="hidden" name="emailAntigo[]" value="<?php echo $email_1[2][0]['email_juridica'] ?>">
                 <div class="invalid-feedback">
@@ -61,8 +59,6 @@
             </div>
             <div class="form-group col-md-6">
                     <label for="telefone">Telefone</label>
-                    <i id="addtelefone" class="far fa-plus-square"></i>
-                    <i id="subtelefone" class=" far fa-minus-square"></i>
                     <input class="form-control phone_with_ddd" type="text" id="telefone" name="telefone[]"  placeholder="(__) ____-____" value="<?php echo $lista[2][0]['telefone_juridica'] ?>" required>
                     <input type="hidden" name="telefoneAntigo[]" value="<?php echo $lista[2][0]['telefone_juridica'] ?>">
                     <div class="invalid-feedback">
