@@ -49,7 +49,7 @@
                     if(isset($_GET['erro']) and $_GET['erro']==4){
                         echo '</br>';
                         echo "<div class='alert alert-danger' role='alert' style='font-size: 0.9rem; text-align:center;'>";
-                        echo "Usuário se encontra em processo de análise para liberação de acesso à plataforma.";
+                        echo "Usuário se encontra em análise para liberação de acesso à plataforma.";
                         echo "</div>";
                     }
                 ?>

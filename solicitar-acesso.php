@@ -55,6 +55,11 @@
                 <small id="usuarioHelp" class="form-text text-muted">Ex.: Luis Antônio Pereira Silva</small>
             </div>
             <div class="form-group">
+                <label for="solicitarFuncao">Função</label>
+                <input type="text" name="solicitarFuncao" class="form-control" id="solicitarFuncao" aria-describedby="usuarioHelp" placeholder="Função" required autofocus>
+                <small id="usuarioHelp" class="form-text text-muted">Ex.: Colaborador, Cliente, Fornecedor. </small>
+            </div>
+            <div class="form-group">
                 <label for="solicitarEmail">E-mail</label>
                 <input type="email" name="solicitarEmail" class="form-control" id="solicitarEmail" aria-describedby="usuarioHelp" placeholder="Nome" required>
                 <small id="usuarioHelp" class="form-text text-muted">Ex.: antonio.pereira@exemplo.com</small>

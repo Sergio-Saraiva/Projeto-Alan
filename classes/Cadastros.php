@@ -5,6 +5,7 @@
 
         public $id;
         public $nome;
+        public $funcao;
         public $email;
         public $senha;
         public $nivel;
@@ -24,7 +25,7 @@
 
             if(count($resultado)<1){
             
-            $query = "INSERT INTO usuarios( nome, email, senha, nivel, ativo) VALUES (:nome, :email, :senha, :nivel, :ativo)";
+            $query = "INSERT INTO usuarios( nome, email, senha, nivel, ativo, funcao) VALUES (:nome, :email, :senha, :nivel, :ativo, :funcao)";
             
             $envio = $conexao->prepare($query);
             $envio->bindValue(":nome", $this->nome);
@@ -32,6 +33,7 @@
             $envio->bindValue(":senha", $this->senha);
             $envio->bindValue(":nivel", $this->nivel);
             $envio->bindValue(":ativo", $this->ativo);
+            $envio->bindValue(":funcao", $this->funcao);
             $envio->execute();
                 
                 return 0;

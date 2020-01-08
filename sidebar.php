@@ -4,6 +4,7 @@
 
   <!-- Bootstrap core CSS -->
   <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/font-awesome.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
   <link href="css/simple-sidebar.css" rel="stylesheet">
@@ -26,6 +27,11 @@
         <?php }?>
         <!-- fim -->
         <a href="logout.php" class="list-group-item list-group-item-action bg-primary">Sair</a>
+        <div style="color: #cedbdb; font-size: 0.8rem; text-align:center">
+          </br><span style="font-size: 3rem;"><i class="fa fa-user-circle-o" aria-hidden="true"></i></span>
+          </br>Bem vindo</br><p style="margin-bottom: -1.8rem;"><?php echo $_SESSION['UsuarioNome']; ?></p></br>
+          <hr style="border-color: #cedbdb; width:6rem; margin-bottom: -0.1rem;"><span style=""><?php echo $_SESSION['UsuarioFuncao']; ?></span>
+        </div>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->

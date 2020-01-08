@@ -26,14 +26,19 @@ if ($query->rowCount() != 1){
      // Salva os dados encontrados na variável $resultado
      $resultado = $query;
     
-     // Se a sessão não existir, inicia uma
-     if (!isset($_SESSION)) session_start();
+     
    foreach($resultado as $res){
      
+      if($res['ativo']==0){
+        header("Location: index.php?erro=4"); exit;
+      }
+      // Se a sessão não existir, inicia uma
+      if (!isset($_SESSION)) session_start();
        // Salva os dados encontrados na sessão
      $_SESSION['UsuarioID'] = $res['id'];
      $_SESSION['UsuarioNome'] = $res['nome'];
      $_SESSION['UsuarioNivel'] = $res['nivel'];
+     $_SESSION['UsuarioFuncao'] = $res['funcao'];
    
      // Redireciona o visitante
      header("Location: home.php"); exit;

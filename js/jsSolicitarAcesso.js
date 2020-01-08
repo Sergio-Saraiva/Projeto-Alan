@@ -1,10 +1,12 @@
 function checkForm(){
     var nome = document.getElementById("solicitarNome").value;
+    var funcao = document.getElementById("solicitarColaborador").value;
     var email = document.getElementById("solicitarEmail").value;
     var senha1 = document.getElementById("solicitarSenha1").value;
     var senha2 = document.getElementById("solicitarSenha2").value;
     
-    if(nome != '' && email != '' && senha1 != '' && senha2 != ''){
+    
+    if(nome != '' && email != '' && senha1 != '' && senha2 != '' && funcao != ''){
 
         if(senha1 == senha2){
             
