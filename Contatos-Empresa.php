@@ -22,9 +22,13 @@
        
 
             <div class="card">
-                <h5 class="card-header"><i class="fa fa-address-card" aria-hidden="true"></i><?php echo " ".$registro['nomeResp'] ?> <a href="editar-contato-juridica-form.php?id=<?php echo $registro['idcontato_juridica'] ?>">
-        <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar 
-    </a></h5>
+                    <h5 class="card-header"><i class="fa fa-address-card" aria-hidden="true"></i><?php echo " ".$registro['nomeResp'] ?>
+                    <a href="editar-contato-juridica-form.php?id=<?php echo $registro['idcontato_juridica'] ?>">
+                    <div class="float-right" style="font-size: 1rem;">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar 
+                    </div>
+                    </a>
+                </h5>
                 <div class="card-body">
                 <p class="card-text">
                 <b class="h6">NOME :</b> <?php echo $registro['nomeResp'] ?></br>
