@@ -2,7 +2,7 @@
 include 'cabecalho.php';
 include 'config.php';
 
-if( !($_SESSION['UsuarioNivel'] < 2)){header("Location: home.php"); exit;}
+if( !($_SESSION['UsuarioNivel'] < 2)){header("Location: erro.php"); exit;}
 
 $cadastros = new Cadastros;
 
@@ -115,6 +115,7 @@ $data_atual = date('y/m/d');
           <?php echo $usersOff['nome']; ?>
           <a href="#" onClick="document.getElementById('liberarConta<?php echo $usersOff['id'] ?>').submit();" class="btn btn-success" style="float:right;"><i class="fa fa-check" aria-hidden="true"></i> Liberar</a>
         </h6>
+        <small id="usuarioHelp" class="form-text text-muted"><b>Função:</b> <?php echo $usersOff['funcao']; ?></small>
         <small id="usuarioHelp" class="form-text text-muted"><b>E-mail:</b> <?php echo $usersOff['email']; ?></small>
         <small id="usuarioHelp" class="form-text text-muted"><b>Cadastro:</b> <?php echo $usersOff['cadastro'];?></small>
       </div>

@@ -34,6 +34,7 @@ if ($query->rowCount() != 1){
      $_SESSION['UsuarioID'] = $res['id'];
      $_SESSION['UsuarioNome'] = $res['nome'];
      $_SESSION['UsuarioNivel'] = $res['nivel'];
+     $_SESSION['UsuarioFuncao'] = $res['funcao'];
    
      // Redireciona o visitante
      header("Location: home.php"); exit;

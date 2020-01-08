@@ -4,6 +4,7 @@
  $NOVOcadastro = new Cadastros();
  
  $NOVOcadastro->nome = $_POST['solicitarNome'];
+ $NOVOcadastro->funcao = $_POST['solicitarFuncao'];
  $NOVOcadastro->email = $_POST['solicitarEmail'];
  $NOVOcadastro->senha = sha1($_POST['solicitarSenha1']);
  $NOVOcadastro->nivel = 2;
