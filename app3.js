@@ -43,7 +43,7 @@ var qs = (function(a) {
     document.getElementById('visivel1').style.display="none";
   }
   
-  var delay=1000; //1 seconds
+  var delay=0100; //0.1 seconds
 setTimeout(function(){
     document.getElementById('loading').style.display = "none";
     document.getElementById('conteudo').style.display="block";

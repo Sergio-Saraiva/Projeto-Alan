@@ -28,7 +28,7 @@
 
 
     $pfisica->novaPessoaFisica();
-    header("Location: consultar.php");
+    header("Location: consultar.php?alerta=2&p=1");
 
 
 ?>

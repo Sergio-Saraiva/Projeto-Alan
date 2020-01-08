@@ -54,7 +54,7 @@
         $empresa->adicionaEmailContato($idResp, sizeof($_POST['emailcont'][$i]), $i);
         $empresa->adicionaTelefoneContato($idResp, sizeof($_POST['telefonecont'][$i]), $i);
     }
-    header("Location: consultar.php");
+    header("Location: consultar.php?alerta=3");
     }catch(Exception $e){
         Erro::tratarErro($e);
     }

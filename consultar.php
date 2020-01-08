@@ -16,6 +16,18 @@
                         echo "Empresa deletada com sucesso.";
                         echo "</div>";
                     }
+                    if(isset($_GET['alerta']) and $_GET['alerta']==2){
+                        
+                        echo "<div class='alert alert-success' role='alert' style='font-size: 0.9rem; text-align:center;'>";
+                        echo "<b>Pessoa física</b> cadastrada com sucesso.";
+                        echo "</div>";
+                    }
+                    if(isset($_GET['alerta']) and $_GET['alerta']==3){
+                        
+                        echo "<div class='alert alert-success' role='alert' style='font-size: 0.9rem; text-align:center;'>";
+                        echo "<b>Empresa</b> cadastrada com sucesso.";
+                        echo "</div>";
+                    }
 ?>
 <div class="row d-flex justify-content-center">
       <div class="btn-group" role="group" aria-label="Basic example" >
